@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import heroImg from "./../assets/hero-image.jpeg";
 
 export default function Home() {
   return (
@@ -7,7 +6,7 @@ export default function Home() {
       id="home"
       className="min-h-screen flex items-center justify-center text-center px-4 relative"
       style={{
-        backgroundImage: `url(${heroImg})`,
+        backgroundImage: `url(/hero-image.jpeg)`, // Absolute path from public directory
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
