@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "role": "UI/UX Designer Intern",
+    "description": "Collaborate with the design team to create wireframes, mockups, and prototypes. Assist in conducting user research and usability testing. Work on improving the user experience of existing products.",
+    "experience": "0-1 years of experience in UI/UX design.",
+    "qualifications": [
+      "Currently pursuing or recently completed a degree in Graphic Design, Interaction Design, Human-Computer Interaction, or a related field.",
+      "Proficiency in design tools such as Adobe XD, Sketch, Figma, or similar.",
+      "Basic understanding of HTML/CSS is a plus.",
+      "Strong attention to detail and a keen eye for aesthetics.",
+      "Excellent communication and teamwork skills."
+    ],
+    "location": "Remote"
+  },
+  {
+    "id": 2,
+    "role": "Kotlin Intern",
+    "description": "Assist in the development of mobile applications using Kotlin. Collaborate with the development team to design, develop, and test new features. Debug and resolve issues in existing applications.",
+    "experience": "0-1 years of experience in Kotlin or Android development.",
+    "qualifications": [
+      "Currently pursuing or recently completed a degree in Computer Science, Software Engineering, or a related field.",
+      "Basic knowledge of Kotlin and Android development.",
+      "Familiarity with Android Studio and related tools.",
+      "Strong problem-solving skills and attention to detail.",
+      "Excellent communication and teamwork skills."
+    ],
+    "location": "Remote"
+  },
+  {
+    "id": 3,
+    "role": "Backend Developer Intern (Python)",
+    "description": "Assist in the development and maintenance of backend services and APIs using Python. Collaborate with the development team to design, implement, and test new features.",
+    "experience": "0-1 years of experience in backend development with Python.",
+    "qualifications": [
+      "Currently pursuing or recently completed a degree in Computer Science, Software Engineering, or a related field.",
+      "Basic knowledge of Python and backend development.",
+      "Familiarity with web frameworks such as Django or Flask is a plus.",
+      "Strong problem-solving skills and attention to detail.",
+      "Excellent communication and teamwork skills."
+    ],
+    "location": "Remote"
+  },
+  {
+    "id": 4,
+    "role": "Marketing Intern",
+    "description": "Assist in the development and implementation of marketing campaigns. Create engaging content for social media, blogs, and other marketing channels.",
+    "experience": "0-1 years of experience in marketing or a related field.",
+    "qualifications": [
+      "Currently pursuing or recently completed a degree in Marketing, Business, Communications, or a related field.",
+      "Basic understanding of marketing principles and practices.",
+      "Proficiency in social media platforms and content creation tools.",
+      "Strong written and verbal communication skills.",
+      "Creativity and a keen eye for detail."
+    ],
+    "location": "Remote"
+  },
+  {
+    "id": 5,
+    "role": "HR Intern",
+    "description": "Assist in the recruitment process, including job postings, resume screening, and coordination of interviews. Support onboarding and offboarding processes.",
+    "experience": "0-1 years of experience in human resources or a related field.",
+    "qualifications": [
+      "Currently pursuing or recently completed a degree in Human Resources, Business Administration, Psychology, or a related field.",
+      "Basic understanding of HR principles and practices.",
+      "Strong organizational and multitasking abilities.",
+      "Excellent written and verbal communication skills.",
+      "High level of confidentiality and professionalism."
+    ],
+    "location": "Remote"
+  },
+  {
+    "id": 6,
+    "role": "Python Developer Intern",
+    "description": "Assist in the development of software applications using Python. Collaborate with the development team to design, implement, and test new features.",
+    "experience": "0-1 years of experience in Python development.",
+    "qualifications": [
+      "Currently pursuing or recently completed a degree in Computer Science, Software Engineering, or a related field.",
+      "Basic knowledge of Python programming.",
+      "Familiarity with web frameworks such as Django or Flask is a plus.",
+      "Strong problem-solving skills and attention to detail.",
+      "Excellent communication and teamwork skills."
+    ],
+    "location": "Remote"
+  }
+]
