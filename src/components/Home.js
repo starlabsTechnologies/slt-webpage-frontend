@@ -6,7 +6,7 @@ export default function Home() {
       id="home"
       className="min-h-screen flex items-center justify-center text-center px-4 relative"
       style={{
-        backgroundImage: `url(/hero-image.jpeg)`, // Absolute path from public directory
+        backgroundImage: `url('https://i.imgur.com/vOcDGON.jpeg')`, // Use Imgur URL for background image
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

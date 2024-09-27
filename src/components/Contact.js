@@ -54,7 +54,7 @@ export default function Contact() {
       <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between">
         <div className="lg:w-1/2 mb-10 lg:mb-0 ml-6 mr-6 mt-4">
           <img
-            src="/contact-call.webp" // Absolute path from the public directory
+            src="https://i.imgur.com/zhPf9CC.png" // Use the Imgur URL directly
             alt="Contact Call"
             className="w-full h-auto rounded-lg shadow-lg"
           />
