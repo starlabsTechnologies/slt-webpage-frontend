@@ -1,7 +1,6 @@
 import { useState } from "react";
-import emailjs from "emailjs-com";
-import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast
-import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -16,37 +15,33 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      message: formData.message,
-      subject: formData.subject,
-    };
-
-    emailjs
-      .send(
-        "service_17c371i",
-        "template_cgeewpi",
-        templateParams,
-        "Gk9yjH54-ju1Mce5S"
-      )
-      .then(
-        (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          toast.success("Message sent successfully!"); // Show success toast
-          setFormData({ name: "", email: "", message: "", subject: "" });
-          setIsSubmitting(false);
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API}/contact-us`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        (error) => {
-          console.log("FAILED...", error);
-          toast.error("Failed to send message. Please try again later."); // Show error toast
-          setIsSubmitting(false);
-        }
-      );
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("SUCCESS!", result);
+        toast.success("Message sent successfully!"); // Show success toast
+        setFormData({ name: "", email: "", message: "", subject: "" });
+      } else {
+        throw new Error("Network response was not ok.");
+      }
+    } catch (error) {
+      console.error("FAILED...", error);
+      toast.error("Failed to send message. Please try again later."); // Show error toast
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -54,7 +49,7 @@ export default function Contact() {
       <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between">
         <div className="lg:w-1/2 mb-10 lg:mb-0 ml-6 mr-6 mt-4">
           <img
-            src="https://i.imgur.com/zhPf9CC.png" // Use the Imgur URL directly
+            src="https://i.imgur.com/zhPf9CC.png"
             alt="Contact Call"
             className="w-full h-auto rounded-lg shadow-lg"
           />
@@ -130,7 +125,7 @@ export default function Contact() {
           </form>
         </div>
       </div>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </section>
   );
 }

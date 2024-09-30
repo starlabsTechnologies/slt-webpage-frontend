@@ -24,7 +24,7 @@ export default function Modal({ isOpen, onClose, selectedJob }) {
     formDataWithJob.append("job_role", selectedJob);
 
     try {
-      const response = await fetch("https://website-backend.starlabs.co.in/api/carrier", {
+      const response = await fetch(`${process.env.REACT_APP_API}/carrier`, {
         method: "POST",
         body: formDataWithJob,
       });
