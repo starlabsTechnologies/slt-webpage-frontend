@@ -9,6 +9,9 @@ import Values from "./components/Values";
 import Contact from "./components/Contact";
 import Careers from "./components/Careers";
 import { ToastContainer } from "react-toastify";
+import Culture from "./components/Culture";
+import Mission from "./components/Mission";
+import History from "./components/History";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -34,8 +37,11 @@ export default function App() {
                 <>
                   <Home />
                   <About />
+                  <Mission />
                   <Services />
                   <Values />
+                  <Culture />
+                  <History />
                   <Contact />
                 </>
               }

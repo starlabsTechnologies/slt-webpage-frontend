@@ -13,9 +13,9 @@ export default function Home() {
     >
       <div className="absolute inset-0 bg-black opacity-50" />{" "}
       {/* Overlay with opacity */}
-      <div className="relative z-10">
+      <div className="relative z-10 mt-32">
         {" "}
-        {/* Content above the overlay */}
+        {/* Added margin-top here */} {/* Content above the overlay */}
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -24,18 +24,23 @@ export default function Home() {
         >
           Starlabs Technologies
         </motion.h1>
+        {/* New content about STARLABS TECHNOLOGIES */}
         <motion.p
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-lg md:text-xl mb-6 max-w-3xl mx-auto text-white"
         >
-          Starting a new era of IoT
+          is a cutting-edge technology company that specializes in providing
+          innovative solutions to various industries. Our expertise lies in
+          developing and deploying IIOT-IOT devices, SAAS, Industrial Software
+          Solutions, NAS, Automatic RFID-based Boom Barriers, ANPR, AI-powered
+          technologies, and smart home solutions.
         </motion.p>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
           <button
             onClick={() =>
