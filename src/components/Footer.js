@@ -3,17 +3,16 @@ import {
   MapPinIcon,
   PhoneIcon,
   MailIcon,
-  FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-  YoutubeIcon,
+  InstagramIcon,
 } from "lucide-react";
 
 export default function Footer() {
   const navigate = useNavigate();
 
   return (
-    <footer className="bg-gray-100 py-12 px-4">
+    <footer className="bg-gray-200 py-12 px-4">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -23,11 +22,11 @@ export default function Footer() {
             <address className="not-italic">
               <p className="flex items-center mb-2 text-gray-700">
                 <MapPinIcon className="w-5 h-5 mr-2 text-blue-600" />
-                48, Water Board Colony, Bhagatdih, Jharia, Dhanbad.
+                Dhanbad, Jharkhand – 828111 - IN
               </p>
               <p className="flex items-center mb-2 text-gray-700">
                 <PhoneIcon className="w-5 h-5 mr-2 text-blue-600" />
-                +91 9939181875
+                +91-5446796599
               </p>
               <p className="flex items-center text-gray-700">
                 <MailIcon className="w-5 h-5 mr-2 text-blue-600" />
@@ -92,28 +91,20 @@ export default function Footer() {
             </h3>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                <FacebookIcon className="w-6 h-6" />
-              </a>
-              <a
-                href="https://www.youtube.com/@StarlabsTechnologies"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                <YoutubeIcon className="w-6 h-6" />
-              </a>
-              <a
                 href="https://x.com/StarLabsTechno"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-700 hover:text-blue-600 transition-colors"
               >
                 <TwitterIcon className="w-6 h-6" />
+              </a>
+              <a
+                href="https://www.instagram.com/starlabstechno"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                <InstagramIcon className="w-6 h-6" />
               </a>
               <a
                 href="https://linkedin.com"

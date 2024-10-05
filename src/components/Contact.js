@@ -45,7 +45,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-gray-200">
+    <section id="contact" className="py-20 px-4 bg-gray-100">
       <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between">
         <div className="lg:w-1/2 mb-10 lg:mb-0 ml-6 mr-6 mt-4">
           <img

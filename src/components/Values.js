@@ -8,7 +8,7 @@ import {
 
 export default function Values() {
   return (
-    <section id="values" className="py-20 px-4 bg-gray-100">
+    <section id="values" className="py-20 px-4 bg-gray-200">
       <div className="container mx-auto">
         <h2 className="text-4xl font-bold mb-8 text-center text-gray-900">
           Our Values
