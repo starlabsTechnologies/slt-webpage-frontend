@@ -15,15 +15,13 @@ export default function Careers() {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch(
-          "https://website-backend.starlabs.co.in/api/jobs",
-          {
-            method: "GET",
-          }
-        );
+        const response = await fetch(`${process.env.REACT_APP_API}/jobs`, {
+          method: "GET",
+        });
 
         if (response.ok) {
           const jobs = await response.json();
+          console.log(jobs, "kjjbasdbasbdabdajdj");
           setOpenPositions(jobs);
         } else {
           toast.error("Failed to fetch job positions");
