@@ -1,16 +1,39 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "./CareerModal";
 import { MapPinIcon } from "lucide-react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import jobPositions from "./../data/job.json";
 
 export default function Careers() {
   const fileInputRef = useRef(null);
-  const [openPositions] = useState(jobPositions);
+  const [openPositions, setOpenPositions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Fetch jobs from the API
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API}/jobs`, {
+          method: "GET",
+        });
+
+        if (response.ok) {
+          const jobs = await response.json();
+          console.log(jobs, "kjjbasdbasbdabdajdj");
+          setOpenPositions(jobs);
+        } else {
+          toast.error("Failed to fetch job positions");
+        }
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+        toast.error("Error fetching job positions");
+      }
+    };
+
+    fetchJobs();
+  }, []);
 
   const handleApplyNow = (jobTitle) => {
     setSelectedJob(jobTitle);
@@ -90,39 +113,49 @@ export default function Careers() {
 
         {/* Job Positions Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {openPositions.map((position) => (
-            <div
-              key={position.id}
-              className="shadow-lg rounded-lg p-6 bg-gray-100 text-gray-900"
-            >
-              <h3 className="text-xl font-semibold mb-2">{position.role}</h3>
-              <p className="text-gray-600 mb-2">{position.experience}</p>
-              <div className="flex items-center mb-2">
-                <MapPinIcon className="w-5 h-5 mr-2 text-blue-600" />
-                <p className="text-gray-600">{position.location}</p>
-              </div>
+          {openPositions.length === 0 ? (
+            <p className="text-center text-gray-700">
+              No open positions available
+            </p>
+          ) : (
+            openPositions.map((position) => (
+              <div
+                key={position.id}
+                className="shadow-lg rounded-lg p-6 bg-gray-100 text-gray-900"
+              >
+                <h3 className="text-xl font-semibold mb-2">{position.role}</h3>
+                <p className="text-gray-600 mb-2">{position.experience}</p>
+                <div className="flex items-center mb-2">
+                  <MapPinIcon className="w-5 h-5 mr-2 text-blue-600" />
+                  <p className="text-gray-600">{position.location}</p>
+                </div>
 
-              {/* Directly display Job Description and Qualifications */}
-              <div className="mt-4">
-                <p className="mb-2 text-gray-800 font-bold">Job Description:</p>
-                <p className="text-gray-700 mb-4">{position.description}</p>
-                <p className="mb-2 text-gray-800 font-bold">Qualifications:</p>
-                <ul className="list-disc ml-5 text-gray-700">
-                  {position.qualifications.map((qualification, index) => (
-                    <li key={index}>{qualification}</li>
-                  ))}
-                </ul>
+                {/* Directly display Job Description and Qualifications */}
+                <div className="mt-4">
+                  <p className="mb-2 text-gray-800 font-bold">
+                    Job Description:
+                  </p>
+                  <p className="text-gray-700 mb-4">{position.description}</p>
+                  <p className="mb-2 text-gray-800 font-bold">
+                    Qualifications:
+                  </p>
+                  <ul className="list-disc ml-5 text-gray-700">
+                    {position.qualifications.map((qualification, index) => (
+                      <li key={index}>{qualification}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="mt-4">
+                  <button
+                    className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+                    onClick={() => handleApplyNow(position.role)}
+                  >
+                    Apply Now
+                  </button>
+                </div>
               </div>
-              <div className="mt-4">
-                <button
-                  className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
-                  onClick={() => handleApplyNow(position.role)}
-                >
-                  Apply Now
-                </button>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
         {/* Application Form */}
@@ -135,7 +168,7 @@ export default function Careers() {
             opportunities.
           </p>
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/*Name*/}
+            {/* Name */}
             <div>
               <label
                 htmlFor="name"
@@ -154,7 +187,7 @@ export default function Careers() {
               />
             </div>
 
-            {/*Email*/}
+            {/* Email */}
             <div>
               <label
                 htmlFor="email"
@@ -173,7 +206,7 @@ export default function Careers() {
               />
             </div>
 
-            {/*Job Role*/}
+            {/* Job Role */}
             <div>
               <label
                 htmlFor="job_role"
@@ -182,7 +215,7 @@ export default function Careers() {
                 Looking for<span className="text-red-500">*</span>
               </label>
               <input
-                type="job_role"
+                type="text"
                 id="job_role"
                 name="job_role"
                 value={formData.job_role}
@@ -192,7 +225,7 @@ export default function Careers() {
               />
             </div>
 
-            {/*message*/}
+            {/* Message */}
             <div>
               <label
                 htmlFor="message"
@@ -211,7 +244,7 @@ export default function Careers() {
               />
             </div>
 
-            {/*Resume*/}
+            {/* Resume */}
             <div>
               <label
                 htmlFor="resume"
@@ -225,11 +258,10 @@ export default function Careers() {
                 id="resume"
                 ref={fileInputRef}
                 accept=".pdf,.doc,.docx"
-                class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none
+                className="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none
         file:bg-gray-50 file:border-0
         file:me-4
-        file:py-3 file:px-4
-      "
+        file:py-3 file:px-4"
                 required
                 onChange={handleInputChange}
               />
