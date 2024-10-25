@@ -55,12 +55,26 @@ export default function Careers() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Create form data for both requests
     const formDataWithJob = new FormData();
     formDataWithJob.append("name", formData.name);
     formDataWithJob.append("email", formData.email);
     formDataWithJob.append("resume", formData.resume);
     formDataWithJob.append("message", formData.message);
     formDataWithJob.append("job_role", formData.job_role);
+
+    // Prepare formData for the second API
+    const formDataForResumesApi = new FormData();
+    formDataForResumesApi.append("name", formData.name);
+    formDataForResumesApi.append("email", formData.email);
+    formDataForResumesApi.append("phone", formData.phone);
+    formDataForResumesApi.append("country", formData.country);
+    formDataForResumesApi.append("coverLetterText", formData.coverLetterText);
+    formDataForResumesApi.append("role", formData.job_role);
+    formDataForResumesApi.append("message", formData.message);
+    formDataForResumesApi.append("status", "new");
+    formDataForResumesApi.append("resume", formData.resume);
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API}/carrier`, {
@@ -69,25 +83,39 @@ export default function Careers() {
       });
 
       if (response.ok) {
-        toast.success("Application Submitted Successfully!");
-        setIsSubmitting(false);
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
-          job_role: "",
-          resume: null,
-        });
-        if (fileInputRef.current) {
-          fileInputRef.current.value = "";
+        const responseResume = await fetch(
+          `${process.env.REACT_APP_API}/resumes`,
+          {
+            method: "POST",
+            body: formDataForResumesApi,
+          }
+        );
+
+        if (responseResume.ok) {
+          toast.success("Application Submitted Successfully!");
+          setIsSubmitting(false);
+          setFormData({
+            name: "",
+            email: "",
+            message: "",
+            job_role: "",
+            resume: null,
+          });
+          if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+          }
+        } else {
+          toast.error("Failed to submit application to resumes API");
+          setIsSubmitting(false);
         }
       } else {
-        toast.error("Failed to submit application");
+        toast.error("Failed to submit application to carrier API");
         setIsSubmitting(false);
       }
     } catch (error) {
       console.error("Error:", error);
       toast.error("Error submitting the application");
+      setIsSubmitting(false);
     }
   };
 
