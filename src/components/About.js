@@ -1,15 +1,99 @@
-import FeatureCard from "./FeatureCard";
-import { RocketIcon, ShieldCheckIcon, BrainIcon } from "lucide-react";
+// export default function About() {
+//   return (
+//     <section id="about" className="py-20 px-4 bg-white">
+//       <div className="container mx-auto">
+//         {/* Who We Are Section */}
+//         <h2 className="text-4xl font-bold mb-8 text-center text-blue-900">
+//           Who We Are
+//         </h2>
+//         <p className="text-lg mb-8 max-w-3xl mx-auto text-center text-gray-700">
+//           STARLABS stands for Specialized Team for Alternative Research Labs. At
+//           STARLABS, we are passionate about harnessing the power of technology
+//           to transform industries and lives. Our team of experts is dedicated to
+//           delivering innovative solutions that meet the unique needs of our
+//           customers. We believe in building long-term relationships with our
+//           customers, partners, and team members, and we strive to create a
+//           collaborative environment that fosters growth, learning, and success.
+//         </p>
+
+//         {/* Feature Sections */}
+//         <div className="space-y-12">
+//           {/* Innovative Solutions */}
+//           <div className="flex flex-col md:flex-row items-center md:justify-between md:gap-12">
+//             <div className="md:w-1/2 order-2 md:order-1 flex flex-col justify-center text-center md:text-left">
+//               <h3 className="text-4xl font-bold mb-2 text-gray-900">
+//                 Innovative Solutions
+//               </h3>
+//               <p className="text-gray-700 text-2xl">
+//                 We thrive on innovation, crafting solutions that are not only
+//                 functional but futuristic.
+//               </p>
+//             </div>
+//             <div className="md:w-1/4 order-1 md:order-2 flex justify-end">
+//               <img
+//                 src="/About/Innovative.png"
+//                 alt="Innovative Solutions"
+//                 className="w-full h-auto rounded-lg shadow-lg"
+//               />
+//             </div>
+//           </div>
+
+//           {/* Expertise Across Industries */}
+//           <div className="flex flex-col md:flex-row items-center md:justify-between md:gap-4 ml-3">
+//             <div className="md:w-1/4 flex justify-start">
+//               <img
+//                 src="/About/Expertise.png"
+//                 alt="Expertise Across Industries"
+//                 className="w-full h-auto rounded-lg shadow-lg"
+//               />
+//             </div>
+//             <div className="md:w-1/2 flex flex-col justify-center text-center md:text-left mt-4 md:mt-0">
+//               <h3 className="text-4xl font-bold mb-2 text-gray-900">
+//                 Expertise Across Industries
+//               </h3>
+//               <p className="text-gray-700 text-2xl">
+//                 With deep expertise in Computer Systems Design and Technical
+//                 Services, we cater to a wide range of industries.
+//               </p>
+//             </div>
+//           </div>
+
+//           {/* Client-Centric Approach */}
+//           <div className="flex flex-col md:flex-row items-center md:justify-between md:gap-12">
+//             <div className="md:w-1/2 order-2 md:order-1 flex flex-col justify-center text-center md:text-left">
+//               <h3 className="text-4xl font-bold mb-2 text-gray-900">
+//                 Client-Centric Approach
+//               </h3>
+//               <p className="text-gray-700 text-2xl">
+//                 Our solutions are designed with your unique business needs in
+//                 mind, ensuring optimal performance and a competitive edge.
+//               </p>
+//             </div>
+//             <div className="md:w-1/4 order-1 md:order-2 flex justify-end">
+//               <img
+//                 src="/About/Client-Centric.png"
+//                 alt="Client-Centric Approach"
+//                 className="w-full h-auto rounded-lg shadow-lg"
+//               />
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+/////////////
 
 export default function About() {
   return (
-    <section id="about" className="py-20 px-4 bg-white">
-      <div className="container mx-auto">
+    <section id="about" className="py-16 px-6 bg-white">
+      <div className="container mx-auto px-4">
         {/* Who We Are Section */}
-        <h2 className="text-4xl font-bold mb-8 text-center text-gray-900">
+        <h2 className="text-4xl font-bold mb-6 text-center text-blue-900">
           Who We Are
         </h2>
-        <p className="text-lg mb-8 max-w-3xl mx-auto text-center text-gray-700">
+        <p className="text-lg mb-6 max-w-3xl mx-auto text-center text-gray-700">
           STARLABS stands for Specialized Team for Alternative Research Labs. At
           STARLABS, we are passionate about harnessing the power of technology
           to transform industries and lives. Our team of experts is dedicated to
@@ -19,23 +103,67 @@ export default function About() {
           collaborative environment that fosters growth, learning, and success.
         </p>
 
-        {/* Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <FeatureCard
-            icon={<RocketIcon className="w-12 h-12 text-blue-600" />}
-            title="Innovative Solutions"
-            description="We thrive on innovation, crafting solutions that are not only functional but futuristic."
-          />
-          <FeatureCard
-            icon={<ShieldCheckIcon className="w-12 h-12 text-blue-600" />}
-            title="Expertise Across Industries"
-            description="With deep expertise in Computer Systems Design and Technical Services, we cater to a wide range of industries."
-          />
-          <FeatureCard
-            icon={<BrainIcon className="w-12 h-12 text-blue-600" />}
-            title="Client-Centric Approach"
-            description="Our solutions are designed with your unique business needs in mind, ensuring optimal performance and a competitive edge."
-          />
+        {/* Feature Sections */}
+        <div className="space-y-8">
+          {/* Innovative Solutions */}
+          <div className="flex flex-col md:flex-row items-center md:justify-between md:gap-4 ml-4 mr-4">
+            <div className="md:w-1/2 order-2 md:order-1 flex flex-col justify-center text-center md:text-left">
+              <h3 className="text-4xl font-bold mb-4 text-blue-900 relative text-center">
+                Innovative Solutions
+              </h3>
+              <p className="text-gray-700 text-xl">
+                We thrive on innovation, crafting solutions that are not only
+                functional but futuristic.
+              </p>
+            </div>
+            <div className="md:w-1/4 order-1 md:order-2 flex justify-end">
+              <img
+                src="/About/Innovative.png"
+                alt="Innovative Solutions"
+                className="w-full h-auto rounded-lg shadow-lg mb-4"
+              />
+            </div>
+          </div>
+
+          {/* Expertise Across Industries */}
+          <div className="flex flex-col md:flex-row items-center md:justify-between md:gap-4 ml-4 mr-4">
+            <div className="md:w-1/4 flex justify-start">
+              <img
+                src="/About/Expertise.png"
+                alt="Expertise Across Industries"
+                className="w-full h-auto rounded-lg shadow-lg mb-4"
+              />
+            </div>
+            <div className="md:w-1/2 flex flex-col justify-center text-center md:text-left mt-4 md:mt-0">
+              <h3 className="text-4xl font-bold mb-4 text-blue-900 relative text-center">
+                Expertise Across Industries
+              </h3>
+              <p className="text-gray-700 text-xl">
+                With deep expertise in Computer Systems Design and Technical
+                Services, we cater to a wide range of industries.
+              </p>
+            </div>
+          </div>
+
+          {/* Client-Centric Approach */}
+          <div className="flex flex-col md:flex-row items-center md:justify-between md:gap-4 ml-4 mr-4">
+            <div className="md:w-1/2 order-2 md:order-1 flex flex-col justify-center text-center md:text-left">
+              <h3 className="text-4xl font-bold mb-4 text-blue-900 relative text-center">
+                Client-Centric Approach
+              </h3>
+              <p className="text-gray-700 text-xl">
+                Our solutions are designed with your unique business needs in
+                mind, ensuring optimal performance and a competitive edge.
+              </p>
+            </div>
+            <div className="md:w-1/4 order-1 md:order-2 flex justify-end">
+              <img
+                src="/About/Client-Centric.png"
+                alt="Client-Centric Approach"
+                className="w-full h-auto rounded-lg shadow-lg mb-4"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

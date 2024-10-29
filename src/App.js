@@ -37,9 +37,9 @@ export default function App() {
                 <>
                   <Home />
                   <About />
-                  <Mission />
                   <Services />
                   <Values />
+                  <Mission />
                   <Culture />
                   <History />
                   <Contact />

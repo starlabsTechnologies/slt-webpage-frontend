@@ -1,145 +1,178 @@
-import ServiceCard from "./ServiceCard";
-
 export default function Services() {
   return (
-    <section id="services" className="py-20 px-4 bg-gray-100">
+    <section id="services" className="py-20 px-4 bg-gray-200">
       <div className="container mx-auto">
-        <h2 className="text-4xl font-bold mb-8 text-center text-gray-900">
+        <h2 className="text-4xl font-bold mb-8 text-center text-blue-900">
           Our Core Services
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <ServiceCard
-            title="IIOT-IOT Devices Development and Deployment"
-            description="We design, develop, and deploy customized IIOT-IOT devices that cater to the specific needs of various industries, enabling them to automate processes and make data-driven decisions."
-          />
-          <ServiceCard
-            title="SAAS (Software as a Service)"
-            description="Our SAAS solutions provide cloud-based software applications that are scalable, flexible, and cost-effective, allowing businesses to focus on their core competencies."
-          />
-          <ServiceCard
-            title="Industrial Software Solutions"
-            description="We offer customized industrial software solutions that help businesses streamline operations, improve productivity, and reduce costs."
-          />
-          <ServiceCard
-            title="NAS (Network-Attached Storage)"
-            description="Our NAS solutions provide secure, reliable, and scalable storage to meet the growing data storage needs of businesses."
-          />
-          <ServiceCard
-            title="Automatic RFID-based Boom Barriers"
-            description="We design and deploy automatic RFID-based boom barriers that offer secure and efficient access control solutions for various industries."
-          />
-          <ServiceCard
-            title="ANPR (Automatic Number Plate Recognition)"
-            description="Our ANPR solutions use AI-powered technology to recognize and track vehicle number plates, enabling businesses to efficiently manage their vehicle fleets."
-          />
-          <ServiceCard
-            title="AI (Artificial Intelligence)"
-            description="We leverage AI technology to develop intelligent solutions that automate processes, provide insights from data, and support informed decision-making."
-          />
-          <ServiceCard
-            title="Home Automation Systems"
-            description="Our home automation systems allow users to control home appliances, lighting, temperature, and security systems remotely, making life more convenient."
-          />
-          <ServiceCard
-            title="Home Security Systems"
-            description="We provide advanced home security systems with intrusion detection, video surveillance, and alarm features to ensure a safe living environment."
-          />
+          {/* Service Card 1 */}
+          <div className="relative group overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+            <img
+              src="/service/Service-IIOT.png"
+              alt="IIOT-IOT Devices Development and Deployment"
+              className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 p-4">
+              <h3 className="text-xl font-bold">
+                IIOT-IOT Devices Development and Deployment
+              </h3>
+              <p className="mt-2 text-sm">
+                We design, develop, and deploy customized IIOT-IOT devices that
+                cater to the specific needs of various industries, enabling them
+                to automate processes and make data-driven decisions.
+              </p>
+            </div>
+          </div>
+
+          {/* Service Card 2 */}
+          <div className="relative group overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+            <img
+              src="/service/Service-SAAS.png"
+              alt="SAAS (Software as a Service)"
+              className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 p-4">
+              <h3 className="text-xl font-bold">
+                SAAS (Software as a Service)
+              </h3>
+              <p className="mt-2 text-sm">
+                Our SAAS solutions provide cloud-based software applications
+                that are scalable, flexible, and cost-effective, allowing
+                businesses to focus on their core competencies.
+              </p>
+            </div>
+          </div>
+
+          {/* Service Card 3 */}
+          <div className="relative group overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+            <img
+              src="/service/Service-Industrial.png"
+              alt="Industrial Software Solutions"
+              className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 p-4">
+              <h3 className="text-xl font-bold">
+                Industrial Software Solutions
+              </h3>
+              <p className="mt-2 text-sm">
+                We offer customized industrial software solutions that help
+                businesses streamline operations, improve productivity, and
+                reduce costs.
+              </p>
+            </div>
+          </div>
+
+          {/* Service Card 4 */}
+          <div className="relative group overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+            <img
+              src="/service/Service-NAS.png"
+              alt="NAS (Network-Attached Storage)"
+              className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 p-4">
+              <h3 className="text-xl font-bold">
+                NAS (Network-Attached Storage)
+              </h3>
+              <p className="mt-2 text-sm">
+                Our NAS solutions provide secure, reliable, and scalable storage
+                to meet the growing data storage needs of businesses.
+              </p>
+            </div>
+          </div>
+
+          {/* Service Card 5 */}
+          <div className="relative group overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+            <img
+              src="/service/Service-RFID.png"
+              alt="Automatic RFID-based Boom Barriers"
+              className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 p-4">
+              <h3 className="text-xl font-bold">
+                Automatic RFID-based Boom Barriers
+              </h3>
+              <p className="mt-2 text-sm">
+                We design and deploy automatic RFID-based boom barriers that
+                offer secure and efficient access control solutions for various
+                industries.
+              </p>
+            </div>
+          </div>
+
+          {/* Service Card 6 */}
+          <div className="relative group overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+            <img
+              src="/service/Service-ANPR.png"
+              alt="ANPR (Automatic Number Plate Recognition)"
+              className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 p-4">
+              <h3 className="text-xl font-bold">
+                ANPR (Automatic Number Plate Recognition)
+              </h3>
+              <p className="mt-2 text-sm">
+                Our ANPR solutions use AI-powered technology to recognize and
+                track vehicle number plates, enabling businesses to efficiently
+                manage their vehicle fleets.
+              </p>
+            </div>
+          </div>
+
+          {/* Service Card 7 */}
+          <div className="relative group overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+            <img
+              src="/service/Service-AI.png"
+              alt="AI (Artificial Intelligence)"
+              className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 p-4">
+              <h3 className="text-xl font-bold">
+                AI (Artificial Intelligence)
+              </h3>
+              <p className="mt-2 text-sm">
+                We leverage AI technology to develop intelligent solutions that
+                automate processes, provide insights from data, and support
+                informed decision-making.
+              </p>
+            </div>
+          </div>
+
+          {/* Service Card 8 */}
+          <div className="relative group overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+            <img
+              src="/service/Service-HomeAuto.png"
+              alt="Home Automation Systems"
+              className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 p-4">
+              <h3 className="text-xl font-bold">Home Automation Systems</h3>
+              <p className="mt-2 text-sm">
+                Our home automation systems allow users to control home
+                appliances, lighting, temperature, and security systems
+                remotely, making life more convenient.
+              </p>
+            </div>
+          </div>
+
+          {/* Service Card 9 */}
+          <div className="relative group overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+            <img
+              src="/service/Service-Home.png"
+              alt="Home Security Systems"
+              className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 p-4">
+              <h3 className="text-xl font-bold">Home Security Systems</h3>
+              <p className="mt-2 text-sm">
+                We provide advanced home security systems with intrusion
+                detection, video surveillance, and alarm features to ensure a
+                safe living environment.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-////////With Carousel//////////
-
-// import React from "react";
-// import Slider from "react-slick";
-// import ServiceCard from "./ServiceCard";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-
-// export default function Services() {
-//   const settings = {
-//     dots: true,
-//     infinite: true,
-//     speed: 500,
-//     slidesToShow: 3,
-//     slidesToScroll: 3,
-//     arrows: false,
-//     responsive: [
-//       {
-//         breakpoint: 1024,
-//         settings: {
-//           slidesToShow: 3,
-//           slidesToScroll: 3,
-//           infinite: true,
-//           dots: true,
-//         },
-//       },
-//       {
-//         breakpoint: 768,
-//         settings: {
-//           slidesToShow: 2,
-//           slidesToScroll: 2,
-//           infinite: true,
-//           dots: true,
-//         },
-//       },
-//       {
-//         breakpoint: 480,
-//         settings: {
-//           slidesToShow: 1,
-//           slidesToScroll: 1,
-//         },
-//       },
-//     ],
-//   };
-
-//   return (
-//     <section id="services" className="py-20 px-4 bg-gray-200">
-//       <div className="container mx-auto">
-//         <h2 className="text-4xl font-bold mb-8 text-center text-gray-900">
-//           Our Core Services
-//         </h2>
-//         <Slider {...settings}>
-//           <ServiceCard
-//             title="IIOT-IOT Devices Development and Deployment"
-//             description="We design and deploy custom IIOT-IOT devices that meet the unique needs of industries, allowing them to automate processes, improve efficiency, and enhance decision-making through data insights."
-//           />
-//           <ServiceCard
-//             title="SAAS (Software as a Service)"
-//             description="We offer scalable, flexible, and cost-effective cloud-based SAAS applications, enabling businesses to streamline operations, focus on their strengths, and achieve growth with greater ease."
-//           />
-//           <ServiceCard
-//             title="Industrial Software Solutions"
-//             description="Our specialized software solutions help industrial clients optimize processes, boost productivity, and lower operational costs, with technology tailored to their business needs."
-//           />
-//           <ServiceCard
-//             title="NAS (Network-Attached Storage)"
-//             description="We provide robust, secure, and scalable NAS solutions designed to support growing data storage demands while ensuring business continuity and data protection for organizations."
-//           />
-//           <ServiceCard
-//             title="Automatic RFID-based Boom Barriers"
-//             description="We implement advanced RFID-based boom barriers, providing automated, secure, and streamlined access control systems that ensure reliable operations across various sectors."
-//           />
-//           <ServiceCard
-//             title="ANPR (Automatic Number Plate Recognition)"
-//             description="Our AI-powered ANPR technology automates the detection and tracking of vehicle plates, enhancing fleet management, security, and operational efficiency for our clients."
-//           />
-//           <ServiceCard
-//             title="AI (Artificial Intelligence)"
-//             description="We harness AI to create intelligent systems that automate workflows, deliver actionable insights from data, and help businesses make smarter, more informed decisions."
-//           />
-//           <ServiceCard
-//             title="Home Automation Systems"
-//             description="We provide smart home solutions, offering remote control of appliances, lighting, security, and more, enhancing comfort and convenience for modern living environments."
-//           />
-//           <ServiceCard
-//             title="Home Security Systems"
-//             description="Our home security offerings include intrusion detection, surveillance, and alarms, ensuring comprehensive protection for individuals and their homes."
-//           />
-//         </Slider>
-//       </div>
-//     </section>
-//   );
-// }

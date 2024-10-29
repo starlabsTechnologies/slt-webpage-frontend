@@ -45,87 +45,104 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-gray-100">
-      <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between">
-        <div className="lg:w-1/2 mb-10 lg:mb-0 ml-6 mr-6 mt-4">
-          <img
-            src="https://i.imgur.com/zhPf9CC.png"
-            alt="Contact Call"
-            className="w-full h-auto rounded-lg shadow-lg"
-          />
+    <section
+      id="contact"
+      className="relative py-20 px-4 bg-gray-100"
+      style={{
+        backgroundImage: "url('./contact.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Overlay to adjust opacity */}
+      <div className="absolute inset-0 bg-black opacity-30"></div>
+
+      <div className="relative flex flex-col lg:flex-row items-center lg:items-start lg:justify-between z-10">
+        {/* Title and Description */}
+        <div className="lg:w-1/2 mb-10 lg:mb-0 ml-6 mr-6 mt-20 lg:mt-32 xl:mt-48 text-blue-500 text-4xl font-bold">
+          Contact Us
+          <p className="mt-4 text-white text-2xl">
+            Connect with Starlabs Technologies to explore cutting-edge solutions
+            tailored to your business needs. Our team is here to help you
+            innovate and achieve your goals.
+          </p>
         </div>
+
+        {/* Contact Form */}
         <div className="lg:w-1/2 lg:pl-10">
-          <h2 className="text-4xl text-black font-bold mb-8 text-center lg:text-left">
-            Join Us in Shaping the Future
+          <h2 className="text-4xl text-blue-500 font-bold mb-8 text-center lg:text-left">
+            Get In Touch
           </h2>
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full lg:w-3/4 px-4 py-3 rounded-lg bg-gray-300 text-black placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
+          <div className="bg-black bg-opacity-70 p-6 rounded-lg shadow-md">
+            {/* Background for the form */}
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div>
+                <label className="block text-sm font-medium text-gray-300">
+                  Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg bg-transparent border border-gray-500 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Email <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full lg:w-3/4 px-4 py-3 rounded-lg bg-gray-300 text-black placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-300">
+                  Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg bg-transparent border border-gray-500 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Subject <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full lg:w-3/4 px-4 py-3 rounded-lg bg-gray-300 text-black placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-300">
+                  Subject <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg bg-transparent border border-gray-500 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Message <span className="text-red-500">*</span>
-              </label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={4}
-                className="w-full lg:w-3/4 px-4 py-3 rounded-lg bg-gray-300 text-black placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              ></textarea>
-            </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-300">
+                  Message <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full px-4 py-3 rounded-lg bg-transparent border border-gray-500 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                ></textarea>
+              </div>
 
-            <button
-              type="submit"
-              className="w-full lg:w-3/4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition-colors"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
-          </form>
+              <button
+                type="submit"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition-colors"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-      {/* <ToastContainer /> */}
     </section>
   );
 }
