@@ -11,26 +11,26 @@ export default function Footer() {
   const navigate = useNavigate();
 
   return (
-    <footer className="bg-gray-200 py-12 px-4">
+    <footer className="bg-gray-900 py-12 px-4">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-gray-900">
+            <h3 className="text-xl font-semibold mb-4 text-gray-200">
               Address
             </h3>
             <address className="not-italic">
-              <p className="flex items-center mb-2 text-gray-700">
+              <p className="flex items-center mb-2 text-gray-200">
                 <MapPinIcon className="w-5 h-5 mr-2 text-blue-600" />
                 Dhanbad, Jharkhand – 828111 - IN
               </p>
-              <p className="flex items-center text-gray-700">
+              <p className="flex items-center text-gray-200">
                 <MailIcon className="w-5 h-5 mr-2 text-blue-600" />
                 administrator@starlabs.co.in
               </p>
             </address>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-gray-900">
+            <h3 className="text-xl font-semibold mb-4 text-gray-200">
               Quick Links
             </h3>
             <ul className="space-y-2">
@@ -38,7 +38,7 @@ export default function Footer() {
                 <a
                   href="#home"
                   onClick={() => navigate("/")}
-                  className="text-gray-700 hover:text-blue-600 transition-colors"
+                  className="text-gray-200 hover:text-blue-600 transition-colors"
                 >
                   Home
                 </a>
@@ -47,7 +47,7 @@ export default function Footer() {
                 <a
                   href="#about"
                   onClick={() => navigate("/")}
-                  className="text-gray-700 hover:text-blue-600 transition-colors"
+                  className="text-gray-200 hover:text-blue-600 transition-colors"
                 >
                   About Us
                 </a>
@@ -56,7 +56,7 @@ export default function Footer() {
                 <a
                   href="#services"
                   onClick={() => navigate("/")}
-                  className="text-gray-700 hover:text-blue-600 transition-colors"
+                  className="text-gray-200 hover:text-blue-600 transition-colors"
                 >
                   Services
                 </a>
@@ -65,7 +65,7 @@ export default function Footer() {
                 <a
                   href="#contact"
                   onClick={() => navigate("/")}
-                  className="text-gray-700 hover:text-blue-600 transition-colors"
+                  className="text-gray-200 hover:text-blue-600 transition-colors"
                 >
                   Contact
                 </a>
@@ -73,7 +73,7 @@ export default function Footer() {
               <li>
                 <a
                   href="/careers"
-                  className="text-gray-700 hover:text-blue-600 transition-colors"
+                  className="text-gray-200 hover:text-blue-600 transition-colors"
                 >
                   Careers
                 </a>
@@ -81,7 +81,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-gray-900">
+            <h3 className="text-xl font-semibold mb-4 text-gray-200">
               Follow Us
             </h3>
             <div className="flex space-x-4">
@@ -89,7 +89,7 @@ export default function Footer() {
                 href="https://x.com/StarLabsTechno"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-gray-200 hover:text-blue-600 transition-colors"
               >
                 <TwitterIcon className="w-6 h-6" />
               </a>
@@ -97,7 +97,7 @@ export default function Footer() {
                 href="https://www.instagram.com/starlabstechno"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-gray-200 hover:text-blue-600 transition-colors"
               >
                 <InstagramIcon className="w-6 h-6" />
               </a>
@@ -105,7 +105,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-gray-200 hover:text-blue-600 transition-colors"
               >
                 <LinkedinIcon className="w-6 h-6" />
               </a>
@@ -113,7 +113,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-300 text-center">
-          <p className="text-gray-700">
+          <p className="text-gray-200">
             &copy; {new Date().getFullYear()} Starlabs Technologies Pvt. Ltd.
             All rights reserved.
           </p>
