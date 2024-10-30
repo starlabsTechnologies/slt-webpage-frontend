@@ -15,7 +15,7 @@ export default function Visual() {
           {/* Left Image */}
           <div className="flex-shrink-0 w-1/4 md:w-1/6 flex justify-center">
             <img
-              src="visual/visual-2.png"
+              src="https://website-container.s3.ap-south-1.amazonaws.com/Visual/visual-2.png"
               alt="Visual Journey Part 2"
               className="w-full h-auto object-contain"
             />
@@ -24,7 +24,7 @@ export default function Visual() {
           {/* Center Image (Reduced Size) */}
           <div className="flex-shrink-0 w-1/2 md:w-1/3 flex justify-center">
             <img
-              src="visual/visual-1.png"
+              src="https://website-container.s3.ap-south-1.amazonaws.com/Visual/visual-1.png"
               alt="Visual Journey Part 1"
               className="w-3/4 h-auto object-contain"
             />
@@ -33,7 +33,7 @@ export default function Visual() {
           {/* Right Image */}
           <div className="flex-shrink-0 w-1/4 md:w-1/6 flex justify-center">
             <img
-              src="visual/visual-3.png"
+              src="https://website-container.s3.ap-south-1.amazonaws.com/Visual/visual-3.png"
               alt="Visual Journey Part 3"
               className="w-full h-auto object-contain"
             />
