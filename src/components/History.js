@@ -1,6 +1,6 @@
 export default function History() {
   return (
-    <section id="history" className="py-20 px-4 bg-blue-500">
+    <section id="history" className="py-20 px-4 bg-blue-800">
       <div className="container mx-auto">
         {/* Our History Section */}
         <div className="mt-12 text-center">
