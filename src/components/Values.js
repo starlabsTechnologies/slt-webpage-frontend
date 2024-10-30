@@ -95,7 +95,7 @@ export default function Values() {
           {/* Integrity */}
           <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
             <img
-              src="/value/Integrity.png"
+              src="https://website-container.s3.ap-south-1.amazonaws.com/Value/Integrity.png"
               alt="Integrity"
               className="w-full h-full object-cover"
             />
@@ -114,7 +114,7 @@ export default function Values() {
           {/* Innovation */}
           <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
             <img
-              src="/value/Value-Innovation.png"
+              src="https://website-container.s3.ap-south-1.amazonaws.com/Value/Value-Innovation.png"
               alt="Innovation"
               className="w-full h-full object-cover"
             />
@@ -133,7 +133,7 @@ export default function Values() {
           {/* Collaboration */}
           <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
             <img
-              src="/value/Value-Collaboration.png"
+              src="https://website-container.s3.ap-south-1.amazonaws.com/Value/Value-Collaboration.png"
               alt="Collaboration"
               className="w-full h-full object-cover"
             />
@@ -153,7 +153,7 @@ export default function Values() {
           {/* Sustainability */}
           <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
             <img
-              src="/value/Value-Sustainability.png"
+              src="https://website-container.s3.ap-south-1.amazonaws.com/Value/Value-Sustainability.png"
               alt="Sustainability"
               className="w-full h-full object-cover"
             />

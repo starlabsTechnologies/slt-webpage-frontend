@@ -31,7 +31,7 @@ export default function About() {
             </div>
             <div className="md:w-1/4 flex justify-end mt-6 md:mt-0">
               <img
-                src="/About/Innovative.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/About/Innovative.png"
                 alt="Innovative Solutions"
                 className="w-full h-auto rounded-lg shadow-lg"
               />
@@ -42,7 +42,7 @@ export default function About() {
           <div className="flex flex-col md:flex-row items-center md:justify-between p-8 rounded-lg shadow-md bg-[#FFF7F7]">
             <div className="md:w-1/4 flex justify-start mb-6 md:mb-0">
               <img
-                src="/About/Expertise.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/About/Expertise.png"
                 alt="Expertise Across Industries"
                 className="w-full h-auto rounded-lg shadow-lg"
               />
@@ -71,7 +71,7 @@ export default function About() {
             </div>
             <div className="md:w-1/4 flex justify-end mt-6 md:mt-0">
               <img
-                src="/About/Client-Centric.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/About/Client-Centric.png"
                 alt="Client-Centric Approach"
                 className="w-full h-auto rounded-lg shadow-lg"
               />

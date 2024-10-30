@@ -70,7 +70,7 @@ export default function Home() {
       id="home"
       className="min-h-screen flex items-center justify-start text-left px-4 relative"
       style={{
-        backgroundImage: `url('/hero-image-2.png')`,
+        backgroundImage: `url('https://website-container.s3.ap-south-1.amazonaws.com/hero-image-2.png')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

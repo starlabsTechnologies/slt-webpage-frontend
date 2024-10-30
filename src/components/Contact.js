@@ -49,7 +49,7 @@ export default function Contact() {
       id="contact"
       className="relative py-20 px-4 bg-gray-100"
       style={{
-        backgroundImage: "url('./contact.png')",
+        backgroundImage: "url('https://website-container.s3.ap-south-1.amazonaws.com/contact.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

@@ -10,7 +10,7 @@ export default function Services() {
           <div className="flex flex-col items-center">
             <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
               <img
-                src="/service/Service-IIOT.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/Service/Service-IIOT.png"
                 alt="IIOT-IOT Devices Development and Deployment"
                 className="w-full h-full object-cover"
               />
@@ -33,7 +33,7 @@ export default function Services() {
           <div className="flex flex-col items-center">
             <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
               <img
-                src="/service/Service-SAAS.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/Service/Service-SaaS.png"
                 alt="SAAS (Software as a Service)"
                 className="w-full h-full object-cover"
               />
@@ -55,7 +55,7 @@ export default function Services() {
           <div className="flex flex-col items-center">
             <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
               <img
-                src="/service/Service-Industrial.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/Service/Service-Industrial.png"
                 alt="Industrial Software Solutions"
                 className="w-full h-full object-cover"
               />
@@ -77,7 +77,7 @@ export default function Services() {
           <div className="flex flex-col items-center">
             <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
               <img
-                src="/service/Service-NAS.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/Service/Service-NAS.png"
                 alt="NAS (Network-Attached Storage)"
                 className="w-full h-full object-cover"
               />
@@ -98,7 +98,7 @@ export default function Services() {
           <div className="flex flex-col items-center">
             <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
               <img
-                src="/service/Service-RFID.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/Service/Service-RFID.png"
                 alt="Automatic RFID-based Boom Barriers"
                 className="w-full h-full object-cover"
               />
@@ -120,7 +120,7 @@ export default function Services() {
           <div className="flex flex-col items-center">
             <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
               <img
-                src="/service/Service-ANPR.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/Service/Service-ANPR.png"
                 alt="ANPR (Automatic Number Plate Recognition)"
                 className="w-full h-full object-cover"
               />
@@ -142,7 +142,7 @@ export default function Services() {
           <div className="flex flex-col items-center">
             <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
               <img
-                src="/service/Service-AI.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/Service/Service-AI.png"
                 alt="AI (Artificial Intelligence)"
                 className="w-full h-full object-cover"
               />
@@ -164,7 +164,7 @@ export default function Services() {
           <div className="flex flex-col items-center">
             <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
               <img
-                src="/service/Service-HomeAuto.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/Service/Service-HomeAuto.png"
                 alt="Home Automation Systems"
                 className="w-full h-full object-cover"
               />
@@ -186,7 +186,7 @@ export default function Services() {
           <div className="flex flex-col items-center">
             <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
               <img
-                src="/service/Service-Home.png"
+                src="https://website-container.s3.ap-south-1.amazonaws.com/Service/Service-Home.png"
                 alt="Home Security Systems"
                 className="w-full h-full object-cover"
               />

@@ -20,7 +20,7 @@ export default function Mission() {
         {/* Image Content */}
         <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center md:justify-end">
           <img
-            src="/mission.png"
+            src="https://website-container.s3.ap-south-1.amazonaws.com/mission.png"
             alt="Our Mission"
             className="w-full h-auto max-w-md rounded-lg shadow-lg object-cover"
           />
