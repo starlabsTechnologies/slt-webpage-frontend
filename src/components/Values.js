@@ -91,9 +91,9 @@ export default function Values() {
         <h2 className="text-4xl font-bold mb-8 text-center text-blue-900">
           Our Values
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 gap-8">
           {/* Integrity */}
-          <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+          <div className="relative overflow-hidden rounded-lg shadow-lg md:w-5/6 mx-auto h-80">
             <img
               src="https://website-container.s3.ap-south-1.amazonaws.com/Value/Integrity.png"
               alt="Integrity"
@@ -112,7 +112,7 @@ export default function Values() {
           </div>
 
           {/* Innovation */}
-          <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+          <div className="relative overflow-hidden rounded-lg shadow-lg md:w-5/6 mx-auto h-80">
             <img
               src="https://website-container.s3.ap-south-1.amazonaws.com/Value/Value-Innovation.png"
               alt="Innovation"
@@ -131,7 +131,7 @@ export default function Values() {
           </div>
 
           {/* Collaboration */}
-          <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+          <div className="relative overflow-hidden rounded-lg shadow-lg md:w-5/6 mx-auto h-80">
             <img
               src="https://website-container.s3.ap-south-1.amazonaws.com/Value/Value-Collaboration.png"
               alt="Collaboration"
@@ -151,7 +151,7 @@ export default function Values() {
           </div>
 
           {/* Sustainability */}
-          <div className="relative overflow-hidden rounded-lg shadow-lg md:w-3/4 mx-auto h-84">
+          <div className="relative overflow-hidden rounded-lg shadow-lg md:w-5/6 mx-auto h-80">
             <img
               src="https://website-container.s3.ap-south-1.amazonaws.com/Value/Value-Sustainability.png"
               alt="Sustainability"
