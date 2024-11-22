@@ -31,8 +31,11 @@ export default function Careers() {
 
         if (response.ok) {
           const jobs = await response.json();
-          console.log(jobs, "kjjbasdbasbdabdajdj");
-          setOpenPositions(jobs);
+          console.log(jobs, "Fetched job positions");
+
+          // Filter jobs to include only those with status "active"
+          const activeJobs = jobs.filter((job) => job.status === "active");
+          setOpenPositions(activeJobs);
         } else {
           toast.error("Failed to fetch job positions");
         }
