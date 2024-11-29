@@ -1,31 +1,49 @@
-export default function Mission() {
+import { motion, useInView } from "motion/react";
+import React, { useRef } from "react";
+import PortalSvg from "../assets/SVG/Mission/Portal.svg";
+
+const Mission = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.5, once: true });
   return (
-    <section id="mission" className="py-20 px-4 bg-gray-200">
-      <div className="container mx-auto flex flex-col md:flex-row items-center md:space-x-8">
-        {/* Text Content */}
-        <div className="md:w-1/2 text-center md:text-left">
-          <h3 className="text-4xl font-bold mb-4 text-blue-900 relative text-center">
+    <>
+      <div className="min-h-screen text-white bg-black" ref={ref}>
+        <div className="mx-auto w-11/12">
+          <motion.h1
+            className="mb-8 text-4xl font-bold text-center sm:text-5xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6 }}
+          >
             Our Mission
-          </h3>
-          <p className="text-2xl mb-8 text-gray-700">
+          </motion.h1>
+
+          <motion.p
+            className="mx-auto mb-5 w-full text-sm text-center text-gray-400 sm:text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             At STARLABS, our mission is to empower businesses and individuals
             with futuristic technology solutions that enhance their operational
             efficiency, productivity, profitability, and quality of life. We
             strive to create a connected world where technology seamlessly
             integrates with human life, making it easier, safer, and more
             convenient.
-          </p>
-        </div>
+          </motion.p>
 
-        {/* Image Content */}
-        <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center md:justify-end">
-          <img
-            src="https://website-container.s3.ap-south-1.amazonaws.com/mission.png"
-            alt="Our Mission"
-            className="w-full h-auto max-w-md rounded-lg shadow-lg object-cover"
-          />
+          <motion.div
+            className="flex relative justify-center"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <img src={PortalSvg} alt="" className="w-[50vw] h-[80vh]" />
+          </motion.div>
         </div>
       </div>
-    </section>
+    </>
   );
-}
+};
+
+export default Mission;

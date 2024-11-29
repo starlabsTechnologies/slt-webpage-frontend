@@ -1,90 +1,143 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import SLTLogo from "./../assets/SLT.png";
+import { motion } from "motion/react";
+import React from "react";
 
 const Navbar = ({ activeSection, scrollTo }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
+  // const [isOpen, setIsOpen] = useState(false);
+  // const navigate = useNavigate();
 
-  const handleClick = (section) => {
-    if (window.location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => scrollTo(section), 100);
-    } else {
-      scrollTo(section);
-    }
+  // const handleClick = (section) => {
+  //   if (window.location.pathname !== "/") {
+  //     navigate("/");
+  //     setTimeout(() => scrollTo(section), 100);
+  //   } else {
+  //     scrollTo(section);
+  //   }
+  // };
+
+  const links = [
+    {
+      name: "Home",
+      path: "/",
+    },
+    {
+      name: "about",
+      path: "/about",
+    },
+    {
+      name: "services",
+      path: "/about",
+    },
+    {
+      name: "values",
+      path: "/about",
+    },
+    {
+      name: "contact",
+      path: "/about",
+    },
+  ];
+  const container = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+    exit: {
+      opacity: 0,
+    },
+  };
+
+  const item = {
+    initial: {
+      opacity: 0,
+      y: 50,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.37, 0, 0.63, 1],
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: 50,
+    },
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-90 backdrop-blur-sm shadow-md">
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          <img src={SLTLogo} alt="SLT Logo" className="w-24 h-auto" />
-          <div className="hidden md:flex space-x-8">
-            {["home", "about", "services", "values", "contact"].map((item) => (
-              <button
-                key={item}
-                onClick={() => handleClick(item)}
-                className={`text-lg font-semibold uppercase tracking-wide transition-colors ${
-                  activeSection === item
-                    ? "text-blue-600"
-                    : "text-gray-600 hover:text-blue-400"
-                }`}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-          {/* Hamburger Menu for Mobile View */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 focus:outline-none hover:text-blue-400"
+    <div className="fixed z-50 w-full text-white bg-black/80">
+      <div className="flex items-center justify-between w-11/12 pt-8 mx-auto">
+        {/* Left side  i.e Logo */}
+        <div className="flex flex-col items-center overflow-hidden">
+          {/* start Svg */}
+          <div>
+            <motion.svg
+              width="27"
+              height="25"
+              viewBox="0 0 27 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              initial={{ y: -50 }}
+              whileHover={{ rotate: 360 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.4, ease: "linear" }}
             >
-              {/* Hamburger Icon */}
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white shadow-md">
-          <ul className="flex flex-col space-y-2 p-4">
-            {["home", "about", "services", "values", "contact"].map((item) => (
-              <li key={item}>
-                <button
-                  onClick={() => {
-                    handleClick(item);
-                    setIsOpen(false); // Close the menu after selection
-                  }}
-                  className={`text-lg font-semibold uppercase tracking-wide transition-colors ${
-                    activeSection === item
-                      ? "text-blue-600"
-                      : "text-gray-600 hover:text-blue-400"
-                  }`}
+              <path
+                d="M13.5 0L15.1437 12.9021L27 11.0683L16.1595 15.6013L21.8435 24.7697L13.5 17.2695L5.15654 24.7697L10.8405 15.6013L0 11.0683L11.8563 12.9021L13.5 0Z"
+                fill="url(#paint0_linear_313_51)"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_313_51"
+                  x1="13.5"
+                  y1="0"
+                  x2="13.5"
+                  y2="24.7697"
+                  gradientUnits="userSpaceOnUse"
                 >
-                  {item}
-                </button>
-              </li>
+                  <stop offset="0.254" stop-color="#53C888" />
+                  <stop offset="1" stop-color="#235192" />
+                </linearGradient>
+              </defs>
+            </motion.svg>
+          </div>
+          <motion.div
+            initial={{ y: 50 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}
+          >
+            STARLABS
+          </motion.div>
+        </div>
+        {/* Right side i.e NavLinks */}
+        <motion.div
+          className="justify-end hidden text-base font-semibold tracking-tight h-7 lg:flex"
+          variants={container}
+          initial="initial"
+          animate="animate"
+        >
+          <ul className="flex px-5 overflow-hidden list-none xl:gap-16 lg:gap-14">
+            {links.map((links, index) => (
+              <motion.div
+                key={index}
+                className="relative cursor-pointer group"
+                variants={item}
+              >
+                <li className="font-normal uppercase font-jeju">
+                  {links.name}
+                </li>
+              </motion.div>
             ))}
           </ul>
-        </div>
-      )}
-    </header>
+        </motion.div>
+      </div>
+    </div>
   );
 };
 
