@@ -1,23 +1,25 @@
-import React from "react";
-import bgImage from "../assets/Images/Star_bg.jfif";
+import React, { lazy, Suspense } from "react";
+import bgImage from "../assets/Images/Star_bg.png";
 import Btn from "./Btn";
-import { RotatingMoon } from "./index";
+import { motion } from "motion/react";
+
+const RotatingMoon = lazy(() => import("./RotatingMoon"));
 
 const HeroSection = () => {
   return (
     <section
-      className="relative w-full h-screen bg-black bg-center bg-cover"
+      className="relative w-full h-screen overflow-hidden bg-black bg-center bg-cover"
       style={{
         backgroundImage: `url(${bgImage})`,
       }}
     >
       {/* Content */}
-      <div className="relative z-20 pt-44">
+      <div className="relative z-20 pt-32 lg:pt-32 xl:pt-44">
         <div className="mx-auto space-y-10 text-center">
-          <h1 className="text-7xl font-bold tracking-wider text-white">
+          <h1 className="text-5xl font-bold tracking-wider text-white lg:text-6xl xl:text-7xl">
             Starlabs
           </h1>
-          <p className="mx-auto max-w-4xl text-lg tracking-wider leading-relaxed text-white lg:leading-loose md:text-xl">
+          <p className="mx-auto text-lg leading-relaxed tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl">
             is a cutting-edge technology company that specializes in providing
             innovative solutions to various industries. Our expertise lies in
             developing and deploying IIOT-IOT devices, SAAS, Industrial Software
@@ -25,7 +27,7 @@ const HeroSection = () => {
             technologies, and smart home solutions.
           </p>
           <div>
-            <Btn classname="inline-block px-8 py-3 text-white bg-emerald-500 rounded-md transition-colors hover:bg-emerald-600">
+            <Btn classname="inline-block px-8 py-3 text-white transition-colors rounded-md bg-emerald-500 hover:bg-emerald-600">
               Get Started
             </Btn>
           </div>
@@ -62,9 +64,9 @@ const HeroSection = () => {
       </div>
 
       {/* Rocket svg */}
-      <div className="absolute bottom-44 right-56 z-10">
+      <div className="absolute z-10 md:right-16 md:bottom-32 xl:bottom-44 xl:right-56">
         <svg
-          className="w-full h-64"
+          className="w-full h-60 lg:h-60 xl:h-64"
           viewBox="0 0 100 267"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -192,9 +194,9 @@ const HeroSection = () => {
       </div>
 
       {/* Rocket smoke */}
-      <div className="absolute right-0 bottom-0">
+      <div className="absolute bottom-0 lg:-right-[5.4rem] -right-[3.5rem] xl:right-0">
         <svg
-          className="w-[45.4vw] h-[33vh]"
+          className="w-[28rem] h-[12rem]  lg:w-[32rem] xl:w-[44rem] lg:h-[12rem] xl:h-[33vh]"
           viewBox="0 0 601 259"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -220,11 +222,13 @@ const HeroSection = () => {
         </svg>
       </div>
 
-      <div className="absolute left-0 bottom-24 z-40 w-96 h-96">
-        <RotatingMoon position={[0, 0, 50]} fov={45} />
+      <div className="absolute left-0 z-40 bottom-24 md:w-64 md:h-64 xl:w-96 xl:h-96">
+        <Suspense fallback={<div>Loading...</div>}>
+          <RotatingMoon position={[0, 0, 50]} fov={45} />
+        </Suspense>
       </div>
     </section>
   );
 };
 
-export default HeroSection;
+export default React.memo(HeroSection);

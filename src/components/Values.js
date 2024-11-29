@@ -58,7 +58,7 @@ const Values = () => {
   }, [slides.length]);
 
   return (
-    <div className="overflow-hidden relative z-40 pb-32 -mt-10 w-full text-white bg-black">
+    <div className="relative z-40 w-full pb-32 -mt-10 overflow-hidden text-white xl:-mt-16">
       <div className="px-4 mx-auto">
         <h1 className="mb-12 text-5xl font-bold text-center">Our Values</h1>
 
@@ -72,7 +72,7 @@ const Values = () => {
               transition={{ duration: 0.5 }}
               className=""
             >
-              <div className="grid gap-10 items-center h-full md:grid-cols-3">
+              <div className="grid items-center h-full gap-10 md:grid-cols-3">
                 <div className="relative w-full md:col-span-1 md:h-full">
                   <img
                     src={slides[currentSlide].image}
@@ -93,7 +93,7 @@ const Values = () => {
           </AnimatePresence>
         </div>
         {/* star buttons */}
-        <div className="flex relative justify-center items-center mt-8 w-full">
+        <div className="relative flex items-center justify-center w-full mt-8">
           <svg
             width="100%"
             height="54"

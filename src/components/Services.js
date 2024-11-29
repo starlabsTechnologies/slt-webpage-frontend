@@ -76,33 +76,34 @@ const Services = () => {
 
   return (
     <>
-      <section className="overflow-hidden relative pt-16 pb-32 text-white bg-black">
+      <section className="relative pt-16 pb-20 overflow-hidden text-white">
         {/* Top Curved Divider */}
         <div
-          className="flex absolute top-0 left-0 z-20 justify-center w-full h-96 bg-black"
+          className="absolute top-0 left-0 z-20 flex justify-center w-full bg-black h-96"
           style={{ clipPath: " ellipse(70% 44% at 50% 4%)" }}
         >
           <h2 className="mt-16 text-4xl font-bold">Our Core Services</h2>
         </div>
 
-        <div className="mx-auto w-11/12 text-5xl font-bold text-center">
+        <div className="w-11/12 mx-auto text-5xl font-bold text-center">
           Our Core Services
         </div>
 
         {/* Section Content */}
-        <div className="overflow-hidden relative w-full min-h-screen">
+        <div className="relative w-full min-h-screen overflow-hidden">
           {/* Title */}
-          <div className="flex justify-end items-center pt-20 mx-auto mb-16 w-11/12">
+          <div className="flex items-center justify-end w-11/12 pt-20 mx-auto mb-16"></div>
+          {/* <div className="flex items-center justify-end w-11/12 pt-20 mx-auto mb-16">
             <button
               onClick={() => setShowAllServices((prevState) => !prevState)}
-              className="z-20 px-6 py-2 text-sm rounded-full border-2 border-white transition hover:bg-white hover:text-black"
+              className="z-20 px-6 py-2 text-sm transition border-2 border-white rounded-full hover:bg-white hover:text-black"
             >
               {showAllServices ? "Back" : "See all Services"}
             </button>
-          </div>
+          </div> */}
 
           {/*  */}
-          <div className="absolute top-0">
+          <div className="-mt-48">
             {!showAllServices ? (
               <>
                 {/* Swiper Slider */}
@@ -120,7 +121,7 @@ const Services = () => {
                     slideShadows: true,
                   }}
                   loop={true}
-                  className="w-full"
+                  className="w-full "
                   onSwiper={(swiper) => (swiperRef.current = swiper)}
                   speed={800} // Smooth out the slider animation
                   autoplay={{
@@ -132,8 +133,8 @@ const Services = () => {
                     (service, index) =>
                       index % 2 === 0 && (
                         <SwiperSlide key={index}>
-                          <div className="pt-20 min-h-screen w-full text-white bg-[#151515] rounded-lg shadow-lg pb-20">
-                            <div className="pt-16 mx-auto w-11/12">
+                          <div className="pt-20 md:h-[125vh] lg:h-[118vh] xl:h-[109vh] w-full text-white bg-[#151515] rounded-lg  ">
+                            <div className="w-11/12 pt-16 mx-auto ">
                               <div className="flex flex-col items-center p-6 space-y-4 text-white rounded-lg md:flex-row md:items-start md:space-y-0 md:space-x-6">
                                 <div className="w-1/3">
                                   <img
@@ -146,18 +147,18 @@ const Services = () => {
                                   <h2 className="mb-2 text-3xl font-semibold">
                                     {service.title}
                                   </h2>
-                                  <p className="mt-6 w-1/2 text-sm text-gray-400">
+                                  <p className="w-1/2 mt-6 text-sm text-gray-400">
                                     {service.description}
                                   </p>
                                 </div>
                               </div>
                               {services[index + 1] && (
-                                <div className="flex flex-col justify-end items-center p-6 space-y-4 text-white rounded-lg shadow-lg md:flex-row md:items-start md:space-y-0 md:space-x-6">
+                                <div className="flex flex-col items-center justify-end p-6 space-y-4 text-white rounded-lg md:flex-row md:items-start md:space-y-0 md:space-x-6">
                                   <div className="w-1/2">
                                     <h2 className="mb-2 text-3xl font-semibold">
                                       {services[index + 1].title}
                                     </h2>
-                                    <p className="mt-6 w-8/12 text-sm text-gray-400">
+                                    <p className="w-8/12 mt-6 text-sm text-gray-400">
                                       {services[index + 1].description}
                                     </p>
                                   </div>
@@ -177,15 +178,15 @@ const Services = () => {
                   )}
                 </Swiper>
                 {/* Custom Navigation Buttons */}
-                <div className="flex absolute bottom-24 justify-center mt-4 space-x-4 w-full">
+                <div className="absolute flex justify-center w-full mt-4 space-x-4 bottom-24">
                   <button
-                    className="z-40 px-4 py-2 text-base font-semibold rounded-full border transition-all duration-100 ease-in text-white/60 border-white/60 hover:border-white hover:text-white"
+                    className="z-40 px-4 py-2 text-base font-semibold transition-all duration-100 ease-in border rounded-full text-white/60 border-white/60 hover:border-white hover:text-white"
                     onClick={() => swiperRef.current?.slidePrev()}
                   >
                     &lt;
                   </button>
                   <button
-                    className="z-40 px-4 py-2 text-base font-semibold rounded-full border transition-all duration-100 ease-in text-white/60 border-white/60 hover:border-white hover:text-white"
+                    className="z-40 px-4 py-2 text-base font-semibold transition-all duration-100 ease-in border rounded-full text-white/60 border-white/60 hover:border-white hover:text-white"
                     onClick={() => swiperRef.current?.slideNext()}
                   >
                     &gt;
@@ -203,7 +204,7 @@ const Services = () => {
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="object-contain mb-4 w-40 h-40"
+                      className="object-contain w-40 h-40 mb-4"
                     />
                     <h2 className="mb-2 text-lg font-semibold">
                       {service.title}
@@ -219,10 +220,10 @@ const Services = () => {
         </div>
 
         {/* Bottom Curved Divider */}
-        {/* <div
-          className="absolute bottom-0 left-0 z-20 w-full h-80 bg-black"
+        <div
+          className="absolute bottom-0 left-0 z-20 w-full bg-black h-80"
           style={{ clipPath: " ellipse(70% 44% at 50% 100%)" }}
-        ></div> */}
+        ></div>
       </section>
     </>
   );
