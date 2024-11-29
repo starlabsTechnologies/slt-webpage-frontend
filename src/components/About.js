@@ -1,12 +1,61 @@
-export default function About() {
+import React from "react";
+import "../index.css";
+import InnovationSvg from "../assets/SVG/Innovation.svg";
+import IndustrieSvg from "../assets/SVG/Industries.svg";
+
+const About = () => {
+  const FeaturedDetails = [
+    {
+      img: InnovationSvg,
+      title: "Innovative Solutions",
+      desc: "We thrive on innovation, crafting solutions that are not only functional but futuristic.",
+    },
+    {
+      img: InnovationSvg,
+      title: "Innovative Solutions",
+      desc: "We thrive on innovation, crafting solutions that are not only functional but futuristic.",
+    },
+    {
+      img: InnovationSvg,
+      title: "Innovative Solutions",
+      desc: "We thrive on innovation, crafting solutions that are not only functional but futuristic.",
+    },
+  ];
+
   return (
-    <section id="about" className="py-16 px-6 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Who We Are Section */}
-        <h2 className="text-4xl font-bold mb-6 text-center text-blue-900">
-          Who We Are
-        </h2>
-        <p className="text-lg mb-6 max-w-3xl mx-auto text-center text-gray-700">
+    <section className="bg-[#151515] w-full relative">
+      {/* Star Decoration */}
+      <div className="absolute top-0 right-44">
+        <svg
+          width="96"
+          height="525"
+          viewBox="0 0 96 625"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M48.0655 0.42176L53.3221 576.058L95.6652 568.315L56.4898 586.153L76.9382 624.031L47.868 592.285L18.1627 623.437L39.3717 585.98L0.564407 567.355L42.7425 575.951L48.0655 0.42176Z"
+            fill="url(#paint0_linear_261_151)"
+          />
+          <defs>
+            <linearGradient
+              id="paint0_linear_261_151"
+              x1="63.0957"
+              y1="-364.712"
+              x2="53.1159"
+              y2="623.733"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0.501" stop-color="#53C888" />
+              <stop offset="1" stop-color="#3A86FF" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      {/* Content Headline */}
+      <div className="flex flex-col items-center py-16 mx-auto w-11/12">
+        <h2 className="mb-16 text-4xl font-bold text-white">Who We Are</h2>
+        <p className="z-50 text-sm leading-relaxed text-center text-gray-300 md:text-lg">
           STARLABS stands for Specialized Team for Alternative Research Labs. At
           STARLABS, we are passionate about harnessing the power of technology
           to transform industries and lives. Our team of experts is dedicated to
@@ -15,70 +64,31 @@ export default function About() {
           customers, partners, and team members, and we strive to create a
           collaborative environment that fosters growth, learning, and success.
         </p>
+      </div>
 
-        {/* Feature Sections */}
-        <div className="space-y-12">
-          {/* Innovative Solutions */}
-          <div className="flex flex-col md:flex-row items-center md:justify-between bg-blue-100 p-8 rounded-lg shadow-md">
-            <div className="md:w-1/2 flex flex-col justify-center text-center md:text-left">
-              <h3 className="text-3xl font-bold mb-4 text-blue-900">
-                Innovative Solutions
+      {/* Features Grid */}
+      <div className="relative py-24 mx-auto w-11/12">
+        <div className="grid relative z-10 grid-cols-1 gap-12 md:grid-cols-3">
+          {FeaturedDetails.map((data, index) => (
+            <div
+              key={index}
+              className={index == 1 ? "mt-44" : index == 2 ? "mt-96" : ""}
+            >
+              <div className="mb-4">
+                <img src={data.img} alt="" className="mx-auto w-56 h-56" />
+              </div>
+              <h3 className="mx-auto mb-3 w-9/12 font-bold text-white lg:text-3xl">
+                {data.title}
               </h3>
-              <p className="text-gray-700 text-lg">
-                We thrive on innovation, crafting solutions that are not only
-                functional but futuristic.
+              <p className="mx-auto w-9/12 text-sm leading-7 text-left text-gray-400">
+                {data.desc}
               </p>
             </div>
-            <div className="md:w-1/4 flex justify-end mt-6 md:mt-0">
-              <img
-                src="https://website-container.s3.ap-south-1.amazonaws.com/About/Innovative.png"
-                alt="Innovative Solutions"
-                className="w-full h-auto rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-
-          {/* Expertise Across Industries */}
-          <div className="flex flex-col md:flex-row items-center md:justify-between p-8 rounded-lg shadow-md bg-[#FFF7F7]">
-            <div className="md:w-1/4 flex justify-start mb-6 md:mb-0">
-              <img
-                src="https://website-container.s3.ap-south-1.amazonaws.com/About/Expertise.png"
-                alt="Expertise Across Industries"
-                className="w-full h-auto rounded-lg shadow-lg"
-              />
-            </div>
-            <div className="md:w-1/2 flex flex-col justify-center text-center md:text-left">
-              <h3 className="text-3xl font-bold mb-4 text-blue-900">
-                Expertise Across Industries
-              </h3>
-              <p className="text-gray-700 text-lg">
-                With deep expertise in Computer Systems Design and Technical
-                Services, we cater to a wide range of industries.
-              </p>
-            </div>
-          </div>
-
-          {/* Client-Centric Approach */}
-          <div className="flex flex-col md:flex-row items-center md:justify-between bg-blue-100 p-8 rounded-lg shadow-md">
-            <div className="md:w-1/2 flex flex-col justify-center text-center md:text-left">
-              <h3 className="text-3xl font-bold mb-4 text-blue-900">
-                Client-Centric Approach
-              </h3>
-              <p className="text-gray-700 text-lg">
-                Our solutions are designed with your unique business needs in
-                mind, ensuring optimal performance and a competitive edge.
-              </p>
-            </div>
-            <div className="md:w-1/4 flex justify-end mt-6 md:mt-0">
-              <img
-                src="https://website-container.s3.ap-south-1.amazonaws.com/About/Client-Centric.png"
-                alt="Client-Centric Approach"
-                className="w-full h-auto rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default About;
