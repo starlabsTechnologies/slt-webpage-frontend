@@ -11,7 +11,7 @@ export default function Footer() {
   const navigate = useNavigate();
 
   return (
-    <footer className="px-4 py-12 bg-gray-900">
+    <footer className="px-4 py-12 bg-[#151515]">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>

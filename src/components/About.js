@@ -23,12 +23,11 @@ const About = () => {
   ];
 
   return (
-    <section className="bg-[#151515] w-full relative">
+    <section className="bg-[#151515] w-full relative" id="about">
       {/* Star Decoration */}
-      <div className="absolute top-0 right-44">
+      <div className="absolute top-0 right-4 xs:right-16 xl:right-36 2xl:right-44 opacity-65 md:opacity-85">
         <svg
-          width="96"
-          height="525"
+          className=" h-[32rem] xl:h-[33rem]  2xl:h-[35rem]"
           viewBox="0 0 96 625"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -53,9 +52,11 @@ const About = () => {
         </svg>
       </div>
       {/* Content Headline */}
-      <div className="flex flex-col items-center py-16 mx-auto w-11/12">
-        <h2 className="mb-16 text-4xl font-bold text-white">Who We Are</h2>
-        <p className="z-50 text-sm leading-relaxed text-center text-gray-300 md:text-lg">
+      <div className="flex flex-col items-center w-11/12 py-16 mx-auto">
+        <h2 className="mb-5 text-3xl font-bold text-white  sm:mb-16 sm:text-4xl">
+          Who We Are
+        </h2>
+        <p className="z-50 text-[0.9rem] leading-loose   xs:text-[1rem] xs:leading-loose text-center text-gray-300 md:text-lg">
           STARLABS stands for Specialized Team for Alternative Research Labs. At
           STARLABS, we are passionate about harnessing the power of technology
           to transform industries and lives. Our team of experts is dedicated to
@@ -67,20 +68,26 @@ const About = () => {
       </div>
 
       {/* Features Grid */}
-      <div className="relative py-24 mx-auto w-11/12">
-        <div className="grid relative z-10 grid-cols-1 gap-12 md:grid-cols-3">
+      <div className="relative w-11/12 pb-10 mx-auto">
+        <div className="relative z-10 grid grid-cols-1 gap-12 md:grid-cols-3">
           {FeaturedDetails.map((data, index) => (
             <div
               key={index}
-              className={index == 1 ? "mt-44" : index == 2 ? "mt-96" : ""}
+              className={
+                index == 1
+                  ? "md:mt-44 lg:mt-32"
+                  : index == 2
+                  ? "md:mt-96 lg:mt-72"
+                  : ""
+              }
             >
               <div className="mb-4">
-                <img src={data.img} alt="" className="mx-auto w-56 h-56" />
+                <img src={data.img} alt="" className="w-56 h-56 mx-auto" />
               </div>
-              <h3 className="mx-auto mb-3 w-9/12 font-bold text-white lg:text-3xl">
+              <h3 className="w-9/12 mx-auto mb-3 text-2xl font-bold text-white lg:text-3xl">
                 {data.title}
               </h3>
-              <p className="mx-auto w-9/12 text-sm leading-7 text-left text-gray-400">
+              <p className="w-9/12 mx-auto text-sm leading-7 text-left text-gray-400">
                 {data.desc}
               </p>
             </div>

@@ -7,13 +7,13 @@ const Culture = () => {
   const ref = useRef();
   const inView = useInView(ref, { amount: 0.5, once: true });
   return (
-    <div className="overflow-hidden relative pt-20 min-h-screen bg-black">
-      <div className="relative mx-auto w-11/12 text-center" ref={ref}>
+    <div className="relative py-20 overflow-hidden bg-black">
+      <div className="relative w-11/12 mx-auto text-center" ref={ref}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="mb-6 text-5xl font-bold text-white"
+          className="mb-6 text-3xl font-bold text-white sm:text-4xl "
         >
           Our Culture
         </motion.h2>
@@ -22,7 +22,7 @@ const Culture = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mx-auto mb-16 w-full text-gray-300"
+          className="w-full mx-auto mb-16 text-gray-300"
         >
           At STARLABS TECHNOLOGIES PRIVATE LIMITED, we believe in creating a
           culture that is inclusive, collaborative, and innovative. We encourage
@@ -33,11 +33,11 @@ const Culture = () => {
         </motion.p>
       </div>
 
-      <div className="flex relative justify-center items-center w-full">
+      <div className="relative flex items-center justify-center w-full">
         <motion.img
           src={EllipseSvg}
           alt=""
-          className="object-cover"
+          className="object-cover w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96"
           style={{ filter: "blur(20px)" }}
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}

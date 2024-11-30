@@ -13,6 +13,7 @@ import Careers from "./Careers";
 import JobDetailPage from "./JobDetailsPage";
 import Mission from "./Mission";
 import Footer from "./Footer";
+import SlidingWindow from "./SlidingWindow";
 
 export {
   Navbar,
@@ -30,4 +31,5 @@ export {
   JobDetailPage,
   Mission,
   Footer,
+  SlidingWindow,
 };
