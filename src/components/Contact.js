@@ -4,6 +4,7 @@ import StarBg from "../assets/Images/Star_bg.jfif";
 import TeamSvg from "../assets/SVG/Contact/Contact.svg";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MobileSvg from "../assets/SVG/Contact/Mobile.svg";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -51,6 +52,7 @@ export default function Contact() {
     <section
       className="relative min-h-screen overflow-hidden text-white bg-black bg-cover"
       style={{ backgroundImage: `url(${StarBg})` }}
+      id="contact"
     >
       <div className="relative mx-auto overflow-hidden">
         <div className="grid gap-10 lg:grid-cols-2">
@@ -60,7 +62,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="relative"
+            className="relative hidden lg:flex"
           >
             <div className="relative">
               <img
@@ -72,7 +74,7 @@ export default function Contact() {
           </motion.div>
 
           {/* Right side - Contact Form */}
-          <div className="py-10">
+          <div className="flex justify-center py-10">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -84,7 +86,7 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mb-5 text-5xl font-bold text-center text-emerald-400"
+                className="mb-8 text-3xl font-bold text-center md:mb-6 md:text-5xl text-emerald-400"
               >
                 Contact Us
               </motion.h1>
@@ -94,7 +96,7 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="px-3 text-center text-gray-200 lg:text-base"
+                className="text-[0.75rem] text-center text-gray-200 xs:text-sm lg:text-base"
               >
                 Connect with Starlabs Technologies to explore cutting-edge
                 solutions tailored to your business needs. Our team is here to
@@ -195,10 +197,10 @@ export default function Contact() {
                   />
                 </div>
 
-                <div>
+                <div className="w-full text-center">
                   <button
                     type="submit"
-                    className="w-full p-3 text-lg font-semibold text-black transition-all rounded-lg bg-emerald-500 hover:bg-emerald-600"
+                    className="w-8/12 p-2 font-semibold text-center text-black transition-all rounded-lg lg:w-full lg:p-3 bg-emerald-500 hover:bg-emerald-600"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Submitting..." : "Submit"}
@@ -207,6 +209,16 @@ export default function Contact() {
               </form>
             </motion.div>
           </div>
+          {/* Mobile illustration */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center lg:hidden"
+          >
+            <img src={MobileSvg} alt="Mobile SVG" />
+          </motion.div>
         </div>
       </div>
     </section>

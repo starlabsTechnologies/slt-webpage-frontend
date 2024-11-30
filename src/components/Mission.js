@@ -7,10 +7,10 @@ const Mission = () => {
   const isInView = useInView(ref, { amount: 0.5, once: true });
   return (
     <>
-      <div className="min-h-screen text-white bg-black" ref={ref}>
-        <div className="mx-auto w-11/12">
+      <div className="text-white bg-black " ref={ref}>
+        <div className="w-11/12 mx-auto">
           <motion.h1
-            className="mb-8 text-4xl font-bold text-center sm:text-5xl"
+            className="mb-8 text-3xl font-bold text-center sm:text-4xl "
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
@@ -19,7 +19,7 @@ const Mission = () => {
           </motion.h1>
 
           <motion.p
-            className="mx-auto mb-5 w-full text-sm text-center text-gray-400 sm:text-lg"
+            className="w-full mx-auto mb-5 text-sm text-center text-gray-400 sm:text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -33,12 +33,16 @@ const Mission = () => {
           </motion.p>
 
           <motion.div
-            className="flex relative justify-center"
+            className="relative flex justify-center"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <img src={PortalSvg} alt="" className="w-[50vw] h-[80vh]" />
+            <img
+              src={PortalSvg}
+              alt=""
+              className="w-[18rem] h-[18rem] xs:w-[25rem] xs:h-[25rem] md:w-[30rem] md:h-[30rem] xl:w-[50vw] xl:h-[80vh]"
+            />
           </motion.div>
         </div>
       </div>

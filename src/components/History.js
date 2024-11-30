@@ -48,14 +48,14 @@ const History = () => {
     <>
       <motion.section
         ref={sectionRef}
-        className="overflow-hidden relative py-24 w-full text-white bg-black"
+        className="relative w-full pb-24 overflow-hidden text-white bg-black"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={containerVariants}
       >
-        <div className="mx-auto w-11/12">
+        <div className="w-11/12 mx-auto">
           <motion.h2
-            className="mb-20 text-5xl font-bold text-center"
+            className="mb-10 text-3xl font-bold text-center  sm:mb-20 sm:text-4xl"
             variants={titleVariants}
           >
             Our History

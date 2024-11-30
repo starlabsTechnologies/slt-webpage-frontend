@@ -1,25 +1,27 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useRef, useEffect } from "react";
 import bgImage from "../assets/Images/Star_bg.png";
+import { ReactComponent as CloudSvgLarge } from "../assets/SVG/Hero/Cloud.svg";
+
 import Btn from "./Btn";
-import { motion } from "motion/react";
 
 const RotatingMoon = lazy(() => import("./RotatingMoon"));
 
 const HeroSection = () => {
   return (
     <section
-      className="relative w-full h-screen overflow-hidden bg-black bg-center bg-cover"
+      id="home"
+      className="relative w-full min-h-screen overflow-hidden bg-black bg-center bg-cover"
       style={{
         backgroundImage: `url(${bgImage})`,
       }}
     >
       {/* Content */}
-      <div className="relative z-20 pt-32 lg:pt-32 xl:pt-44">
-        <div className="mx-auto space-y-10 text-center">
-          <h1 className="text-5xl font-bold tracking-wider text-white lg:text-6xl xl:text-7xl">
+      <div className="relative z-20 pt-32 xs:pt-40 lg:pt-32 xl:pt-44">
+        <div className="mx-auto space-y-6 xs:space-y-8 md:space-y-10 text-center">
+          <h1 className="text-4xl xs:text-5xl font-bold tracking-widest text-white lg:text-6xl xl:text-7xl">
             Starlabs
           </h1>
-          <p className="mx-auto text-lg leading-relaxed tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl">
+          <p className="mx-auto w-11/12 xs:text-base text-sm md:text-lg  leading-loose xs:leading-[2.4rem] tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl">
             is a cutting-edge technology company that specializes in providing
             innovative solutions to various industries. Our expertise lies in
             developing and deploying IIOT-IOT devices, SAAS, Industrial Software
@@ -27,7 +29,14 @@ const HeroSection = () => {
             technologies, and smart home solutions.
           </p>
           <div>
-            <Btn classname="inline-block px-8 py-3 text-white transition-colors rounded-md bg-emerald-500 hover:bg-emerald-600">
+            <Btn
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+              classname="inline-block px-4 py-1 text-sm xs:text-base md:px-8 md:py-3 text-white transition-colors sm:rounded-md bg-emerald-500 hover:bg-emerald-600 rounded-full"
+            >
               Get Started
             </Btn>
           </div>
@@ -35,38 +44,16 @@ const HeroSection = () => {
       </div>
 
       {/* Cloud svg */}
-      <div className="absolute bottom-0 w-full">
-        <svg
-          className="w-full h-auto"
-          viewBox="0 0 1360 406"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0 208.632C0 208.632 63.9571 207.176 99 223C140.327 241.662 161.513 297.596 161.513 297.596C161.513 297.596 198.669 290.942 219.637 297.596C246.182 306.019 265.416 341.684 265.416 341.684C265.416 341.684 280.589 326.434 294.735 322.395C309.039 318.312 333.828 322.395 333.828 322.395C333.828 322.395 351.46 292.858 372.92 282.244C389.033 274.274 419.804 282.244 419.804 282.244C412.59 279.059 464.72 205.228 526.203 208.632C592.003 212.275 640.724 286.513 633.707 286.967C633.707 286.967 666.31 267.172 691.316 264.53C723.107 261.17 763.14 282.244 763.14 282.244C763.14 282.244 794.776 254.099 819.395 245.635C842.935 237.541 885.234 241.304 885.234 241.304C885.234 241.304 870.557 160.414 902.219 128.048C936.786 92.7111 1030.63 90.932 1030.63 90.932C1030.63 90.932 1034.69 44.8466 1099.87 39.7247C1167.26 34.4288 1184.08 90.932 1184.08 90.932C1184.08 90.932 1200.44 68.1252 1214.76 63.8269C1235.5 57.6026 1270.5 76.7608 1270.5 76.7608C1270.5 76.7608 1278.14 33.3116 1303.42 16.9267C1321.52 5.19315 1360 0 1360 0V446H0V208.632Z"
-            fill="url(#paint0_linear_225_130)"
-            fill-opacity="0.29"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear_225_130"
-              x1="513"
-              y1="355.5"
-              x2="1282.23"
-              y2="23.2105"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stop-color="#E5E1E1" />
-              <stop offset="1" stop-color="#4E4E4E" />
-            </linearGradient>
-          </defs>
-        </svg>
+      <div className="absolute bottom-0 right-20 sm:right-0 w-full">
+        <div className="">
+          <CloudSvgLarge className="w-full h-[12rem]  sm:h-auto scale-150 sm:scale-100" />
+        </div>
       </div>
 
       {/* Rocket svg */}
-      <div className="absolute z-10 md:right-16 md:bottom-32 xl:bottom-44 xl:right-56">
+      <div className="absolute z-10 bottom-20 right-14 xs:bottom-20 xs:right-20 md:right-[5.3rem] md:bottom-28 xl:bottom-44 xl:right-28 2xl:right-56">
         <svg
-          className="w-full h-60 lg:h-60 xl:h-64"
+          className="w-full h-36 md:h-40 lg:h-60 xl:h-64"
           viewBox="0 0 100 267"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -194,9 +181,9 @@ const HeroSection = () => {
       </div>
 
       {/* Rocket smoke */}
-      <div className="absolute bottom-0 lg:-right-[5.4rem] -right-[3.5rem] xl:right-0">
+      <div className="absolute bottom-0 lg:-right-[4rem] -right-[2.8rem] xs:-right-[1rem] xl:-right-[5.2rem] 2xl:right-0">
         <svg
-          className="w-[28rem] h-[12rem]  lg:w-[32rem] xl:w-[44rem] lg:h-[12rem] xl:h-[33vh]"
+          className="w-[20rem] h-[7rem] md:w-[22rem] md:h-[9rem]  lg:w-[32rem] xl:w-[40rem] xl:h-[15.4rem] 2xl:w-[44rem] lg:h-[12rem] 2xl:h-[33vh]"
           viewBox="0 0 601 259"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -222,7 +209,7 @@ const HeroSection = () => {
         </svg>
       </div>
 
-      <div className="absolute left-0 z-40 bottom-24 md:w-64 md:h-64 xl:w-96 xl:h-96">
+      <div className="absolute left-0 z-40 bottom-10 xs:bottom-14 h-[10rem] w-[10rem] xs:h-[12rem] xs:w-[12rem] md:w-64 md:h-64 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96">
         <Suspense fallback={<div>Loading...</div>}>
           <RotatingMoon position={[0, 0, 50]} fov={45} />
         </Suspense>

@@ -76,13 +76,18 @@ const Services = () => {
 
   return (
     <>
-      <section className="relative pt-16 pb-20 overflow-hidden text-white">
+      <section
+        className="relative pt-16 pb-20 overflow-hidden text-white"
+        id="services"
+      >
         {/* Top Curved Divider */}
         <div
-          className="absolute top-0 left-0 z-20 flex justify-center w-full bg-black h-96"
+          className="absolute left-0 z-20 flex justify-center w-full bg-black top-6 xs:top-5 sm:top-0 h-96"
           style={{ clipPath: " ellipse(70% 44% at 50% 4%)" }}
         >
-          <h2 className="mt-16 text-4xl font-bold">Our Core Services</h2>
+          <h2 className="mt-24 text-4xl font-bold sm:mt-16 sm:text-5xl">
+            Our Core Services
+          </h2>
         </div>
 
         <div className="w-11/12 mx-auto text-5xl font-bold text-center">
@@ -90,7 +95,7 @@ const Services = () => {
         </div>
 
         {/* Section Content */}
-        <div className="relative w-full min-h-screen overflow-hidden">
+        <div className="relative w-full overflow-hidden">
           {/* Title */}
           <div className="flex items-center justify-end w-11/12 pt-20 mx-auto mb-16"></div>
           {/* <div className="flex items-center justify-end w-11/12 pt-20 mx-auto mb-16">
@@ -103,7 +108,7 @@ const Services = () => {
           </div> */}
 
           {/*  */}
-          <div className="-mt-48">
+          <div className="-mt-48 ">
             {!showAllServices ? (
               <>
                 {/* Swiper Slider */}
@@ -133,40 +138,40 @@ const Services = () => {
                     (service, index) =>
                       index % 2 === 0 && (
                         <SwiperSlide key={index}>
-                          <div className="pt-20 md:h-[125vh] lg:h-[118vh] xl:h-[109vh] w-full text-white bg-[#151515] rounded-lg  ">
-                            <div className="w-11/12 pt-16 mx-auto ">
-                              <div className="flex flex-col items-center p-6 space-y-4 text-white rounded-lg md:flex-row md:items-start md:space-y-0 md:space-x-6">
-                                <div className="w-1/3">
+                          <div className="pt-20 h-[105vh] xs:h-[90vh] md:h-[125vh] lg:h-[118vh] xl:h-[109vh] w-full text-white bg-[#151515] rounded-lg  ">
+                            <div className="w-11/12 pt-16 mx-auto md:w-full ">
+                              <div className="flex items-center text-white rounded-lg">
+                                <div className="md:mr-20 max-md:w-1/2 ">
                                   <img
                                     src={service.image}
                                     alt={service.title}
-                                    className="object-cover mb-4 w-60 h-60"
+                                    className="object-cover w-40 mb-4 -ml-2 h-44 md:h-80 md:w-72 lg:h-96 lg:w-80"
                                   />
                                 </div>
-                                <div>
-                                  <h2 className="mb-2 text-3xl font-semibold">
+                                <div className="w-1/2 md:-mt-16 md:w-1/2 lg:-mt-28">
+                                  <h2 className="mb-2 text-sm font-semibold tracking-tighter md:text-3xl xl:text-4xl">
                                     {service.title}
                                   </h2>
-                                  <p className="w-1/2 mt-6 text-sm text-gray-400">
+                                  <p className=" mt-10 text-[0.7rem] md:text-base xl:text-[1.1rem] leading-loose md:leading-relaxed  text-gray-400">
                                     {service.description}
                                   </p>
                                 </div>
                               </div>
                               {services[index + 1] && (
-                                <div className="flex flex-col items-center justify-end p-6 space-y-4 text-white rounded-lg md:flex-row md:items-start md:space-y-0 md:space-x-6">
-                                  <div className="w-1/2">
-                                    <h2 className="mb-2 text-3xl font-semibold">
+                                <div className="flex justify-end text-white rounded-lg ">
+                                  <div className="w-1/2 mt-16 md:w-6/12 md:mt-10 xl:w-7/12 lg:-mt-10 ">
+                                    <h2 className="mb-2 text-sm font-semibold tracking-tighter md:text-3xl xl:text-4xl">
                                       {services[index + 1].title}
                                     </h2>
-                                    <p className="w-8/12 mt-6 text-sm text-gray-400">
+                                    <p className="mt-10 w-11/12 md:w-10/12  text-[0.7rem] md:text-base xl:text-[1.1rem] leading-loose md:leading-relaxed  text-gray-400">
                                       {services[index + 1].description}
                                     </p>
                                   </div>
-                                  <div className="w-1/6">
+                                  <div className="mt-10 md:-mt-10 lg:-mt-28 max-md:w-8/12">
                                     <img
                                       src={services[index + 1].image}
                                       alt={services[index + 1].title}
-                                      className="object-contain mb-4 w-60 h-60"
+                                      className="object-cover mb-4 w-[22rem] h-[10rem]  md:p-10 md:h-[22.7rem] md:w-[24.5rem] xl:h-80 xl:w-[22rem] "
                                     />
                                   </div>
                                 </div>
@@ -178,7 +183,7 @@ const Services = () => {
                   )}
                 </Swiper>
                 {/* Custom Navigation Buttons */}
-                <div className="absolute flex justify-center w-full mt-4 space-x-4 bottom-24">
+                <div className="absolute flex justify-center w-full mt-4 space-x-4 bottom-24 ">
                   <button
                     className="z-40 px-4 py-2 text-base font-semibold transition-all duration-100 ease-in border rounded-full text-white/60 border-white/60 hover:border-white hover:text-white"
                     onClick={() => swiperRef.current?.slidePrev()}
@@ -221,7 +226,7 @@ const Services = () => {
 
         {/* Bottom Curved Divider */}
         <div
-          className="absolute bottom-0 left-0 z-20 w-full bg-black h-80"
+          className="absolute left-0 z-20 w-full bg-black bottom-6 md:bottom-0 h-80"
           style={{ clipPath: " ellipse(70% 44% at 50% 100%)" }}
         ></div>
       </section>

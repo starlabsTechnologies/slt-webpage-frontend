@@ -7,9 +7,9 @@ import SustainabilitySvg from "../assets/SVG/Values/Sustainability.svg";
 
 const CustomStar = ({ filled }) => (
   <svg
-    width="68"
-    height="64"
-    viewBox="0 0 68 64"
+    height={window.innerWidth <= 640 ? "110" : "64"}
+    width={window.innerWidth <= 640 ? "100" : "64"}
+    viewBox="0 0 64 68"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -22,6 +22,7 @@ const CustomStar = ({ filled }) => (
 
 const Values = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
   const slides = [
     {
       title: "Integrity",
@@ -58,9 +59,14 @@ const Values = () => {
   }, [slides.length]);
 
   return (
-    <div className="relative z-40 w-full pb-32 -mt-10 overflow-hidden text-white xl:-mt-16">
+    <div
+      className="relative z-40 w-full pb-32 -mt-20 overflow-hidden text-white sm:-mt-10 xl:-mt-16"
+      id="values"
+    >
       <div className="px-4 mx-auto">
-        <h1 className="mb-12 text-5xl font-bold text-center">Our Values</h1>
+        <h1 className="mb-12 text-3xl font-bold text-center sm:text-4xl ">
+          Our Values
+        </h1>
 
         <div className="relative h-[50vh]  ">
           <AnimatePresence mode="wait">
@@ -72,15 +78,15 @@ const Values = () => {
               transition={{ duration: 0.5 }}
               className=""
             >
-              <div className="grid items-center h-full gap-10 md:grid-cols-3">
-                <div className="relative w-full md:col-span-1 md:h-full">
+              <div className="flex flex-col items-center h-full gap-10 md:gap-8 sm:flex-row ">
+                <div className="relative flex justify-center w-full py-4 sm:w-8/12 sm:justify-start md:h-full">
                   <img
                     src={slides[currentSlide].image}
                     alt={slides[currentSlide].title}
-                    className="object-cover w-full h-[50vh] rounded-lg"
+                    className="object-contain h-[18rem] w-full sm:w-[30rem] sm:h-[30rem] rounded-lg"
                   />
                 </div>
-                <div className="space-y-4 md:col-span-2">
+                <div className="space-y-4 sm:w-full">
                   <h2 className="text-3xl font-semibold">
                     {slides[currentSlide].title}
                   </h2>
@@ -93,7 +99,7 @@ const Values = () => {
           </AnimatePresence>
         </div>
         {/* star buttons */}
-        <div className="relative flex items-center justify-center w-full mt-8">
+        <div className="relative flex items-center justify-center w-full mt-36 sm:mt-36">
           <svg
             width="100%"
             height="54"
@@ -108,7 +114,7 @@ const Values = () => {
               y2="32"
               stroke="#4B5563"
               strokeWidth="2"
-              className="-z-20"
+              className="-z-20 "
             />
             {/* Animated foreground line */}
             <motion.line
