@@ -18,9 +18,24 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-20 pt-32 xs:pt-40 lg:pt-32 xl:pt-44">
         <div className="mx-auto space-y-6 xs:space-y-8 md:space-y-10 text-center">
-          <h1 className="text-4xl xs:text-5xl font-bold tracking-widest text-white lg:text-6xl xl:text-7xl">
+          {/* <h1 className="text-4xl xs:text-5xl font-bold tracking-widest text-white lg:text-6xl xl:text-7xl">
             Starlabs
-          </h1>
+          </h1> */}
+          <div
+            style={{
+              fontFamily: "Agency FB",
+              textAlign: "center",
+              color: "white",
+            }}
+          >
+            <h1 className="text-4xl xs:text-5xl font-bold tracking-widest lg:text-6xl xl:text-7xl">
+              STARLABS
+            </h1>
+            <h2 className="text-xl xs:text-2xl tracking-wide lg:text-3xl xl:text-4xl">
+              SPECIALIZED TEAM FOR ALTERNATIVE RESEARCH
+            </h2>
+          </div>
+
           <p className="mx-auto w-11/12 xs:text-base text-sm md:text-lg  leading-loose xs:leading-[2.4rem] tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl">
             is a cutting-edge technology company that specializes in providing
             innovative solutions to various industries. Our expertise lies in
