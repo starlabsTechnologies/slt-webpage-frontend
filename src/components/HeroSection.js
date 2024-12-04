@@ -21,7 +21,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className=" pt-32 pb-52 x:pt-44  z-20  ">
         <div className="mx-auto space-y-6 xs:space-y-8 md:space-y-10 text-center">
-          <h1 className="text-4xl xs:text-5xl font-bold tracking-widest text-white lg:text-6xl xl:text-7xl">
+          {/* <h1 className="text-4xl xs:text-5xl font-bold tracking-widest text-white lg:text-6xl xl:text-7xl">
             Starlabs
           </h1>
           <p className="mx-auto w-11/12 xs:text-base  text-sm md:text-lg leading-[10vw] xs:leading-[11vw]  tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl">
