@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useRef, useEffect } from "react";
+import React, { lazy, Suspense, useRef, useMemo } from "react";
 import bgImage from "../assets/Images/Star_bg.png";
 import { ReactComponent as CloudSvgLarge } from "../assets/SVG/Hero/Cloud.svg";
 
@@ -7,21 +7,24 @@ import Btn from "./Btn";
 const RotatingMoon = lazy(() => import("./RotatingMoon"));
 
 const HeroSection = () => {
+  // Memoize styles for better performance
+  const sectionStyle = useMemo(
+    () => ({ backgroundImage: `url(${bgImage})` }),
+    []
+  );
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen overflow-hidden bg-black bg-center bg-cover"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-      }}
+      className="relative w-full  min-h-screen  overflow-hidden bg-black bg-center bg-cover"
+      style={sectionStyle}
     >
       {/* Content */}
-      <div className="relative z-20 pt-32 xs:pt-40 lg:pt-32 xl:pt-44">
+      <div className=" pt-32 pb-52 x:pt-44  z-20  ">
         <div className="mx-auto space-y-6 xs:space-y-8 md:space-y-10 text-center">
           <h1 className="text-4xl xs:text-5xl font-bold tracking-widest text-white lg:text-6xl xl:text-7xl">
             Starlabs
           </h1>
-          <p className="mx-auto w-11/12 xs:text-base text-sm md:text-lg  leading-loose xs:leading-[2.4rem] tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl">
+          <p className="mx-auto w-11/12 xs:text-base  text-sm md:text-lg leading-[10vw] xs:leading-[11vw]  tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl">
             is a cutting-edge technology company that specializes in providing
             innovative solutions to various industries. Our expertise lies in
             developing and deploying IIOT-IOT devices, SAAS, Industrial Software
@@ -51,9 +54,9 @@ const HeroSection = () => {
       </div>
 
       {/* Rocket svg */}
-      <div className="absolute z-10 bottom-20 right-14 xs:bottom-20 xs:right-20 md:right-[5.3rem] md:bottom-28 xl:bottom-44 xl:right-28 2xl:right-56">
+      <div className="absolute z-10 bottom-20 right-2 xs:bottom-20 xs:right-9 md:right-9 md:bottom-24 lg:right-3 xl:bottom-44 xl:right-8 2xl:right-36">
         <svg
-          className="w-full h-36 md:h-40 lg:h-60 xl:h-64"
+          className="w-36 h-36 md:w-40 md:h-40 lg:w-60 lg:h-60 xl:w-64 xl:h-64 "
           viewBox="0 0 100 267"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -209,7 +212,7 @@ const HeroSection = () => {
         </svg>
       </div>
 
-      <div className="absolute left-0 z-40 bottom-10 xs:bottom-14 h-[10rem] w-[10rem] xs:h-[12rem] xs:w-[12rem] md:w-64 md:h-64 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96">
+      <div className="absolute left-0 z-40 bottom-10 xs:bottom-14 h-[10rem] w-[10rem] xs:h-[13rem] xs:w-[13rem] md:w-64 md:h-64 sm:w-52 sm:h-52 xl:w-80 xl:h-80 2xl:w-72 2xl:h-96 ">
         <Suspense fallback={<div>Loading...</div>}>
           <RotatingMoon position={[0, 0, 50]} fov={45} />
         </Suspense>
