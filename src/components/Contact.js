@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import React, { useState, useEffect } from "react";
-import StarBg from "../assets/Images/Star_bg.jfif";
+import React, { useState } from "react";
+import StarBg from "../assets/Images/Star_bg.png";
 import TeamSvg from "../assets/SVG/Contact/Contact.svg";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -50,7 +50,7 @@ export default function Contact() {
 
   return (
     <section
-      className="relative min-h-screen overflow-hidden text-white bg-black bg-cover"
+      className="relative max-w-screen-2xl mx-auto overflow-hidden text-white bg-black bg-cover"
       style={{ backgroundImage: `url(${StarBg})` }}
       id="contact"
     >
@@ -62,25 +62,36 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="relative hidden lg:flex"
+            className="relative hidden xl:flex"
           >
             <div className="relative">
               <img
                 src={TeamSvg}
                 alt="Team meeting illustration"
-                className="object-cover w-full h-[112vh]"
+                className="object-cover w-full "
               />
             </div>
           </motion.div>
 
+          {/* Mobile illustration */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center xl:hidden"
+          >
+            <img src={MobileSvg} alt="Mobile SVG" />
+          </motion.div>
+
           {/* Right side - Contact Form */}
-          <div className="flex justify-center py-10">
+          <div className="flex justify-center">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="w-10/12 px-8 py-2 border border-gray-600 shadow-lg rounded-2xl bg-white/10"
+              className="w-10/12 px-8 py-2 my-5 border border-gray-600 shadow-lg rounded-2xl bg-white/10"
             >
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -209,16 +220,6 @@ export default function Contact() {
               </form>
             </motion.div>
           </div>
-          {/* Mobile illustration */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex justify-center lg:hidden"
-          >
-            <img src={MobileSvg} alt="Mobile SVG" />
-          </motion.div>
         </div>
       </div>
     </section>

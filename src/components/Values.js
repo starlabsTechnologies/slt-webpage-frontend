@@ -60,7 +60,7 @@ const Values = () => {
 
   return (
     <div
-      className="relative z-40 w-full pb-32 -mt-20 overflow-hidden text-white sm:-mt-10 xl:-mt-16"
+      className="relative z-40 max-w-screen-2xl mx-auto pb-32 -mt-20 overflow-hidden text-white sm:-mt-10 xl:-mt-16"
       id="values"
     >
       <div className="px-4 mx-auto">
@@ -68,7 +68,7 @@ const Values = () => {
           Our Values
         </h1>
 
-        <div className="relative h-[50vh]  ">
+        <div className="relative pb-10  ">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -83,7 +83,7 @@ const Values = () => {
                   <img
                     src={slides[currentSlide].image}
                     alt={slides[currentSlide].title}
-                    className="object-contain h-[18rem] w-full sm:w-[30rem] sm:h-[30rem] rounded-lg"
+                    className="object-contain h-[10rem] w-full sm:w-[30rem] sm:h-[30rem] rounded-lg"
                   />
                 </div>
                 <div className="space-y-4 sm:w-full">
@@ -99,7 +99,7 @@ const Values = () => {
           </AnimatePresence>
         </div>
         {/* star buttons */}
-        <div className="relative flex items-center justify-center w-full mt-36 sm:mt-36">
+        <div className="relative flex items-center justify-center w-full  sm:mt-36">
           <svg
             width="100%"
             height="54"

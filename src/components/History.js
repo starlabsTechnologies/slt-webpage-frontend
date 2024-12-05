@@ -48,7 +48,7 @@ const History = () => {
     <>
       <motion.section
         ref={sectionRef}
-        className="relative w-full pb-24 overflow-hidden text-white bg-black"
+        className="relative max-w-screen-2xl mx-auto pb-24 overflow-hidden text-white bg-black"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={containerVariants}
