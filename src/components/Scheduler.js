@@ -18,10 +18,25 @@ export default function Scheduler() {
 
   // Fetch roles from the API
   React.useEffect(() => {
-    fetch("https://website-backend.starlabs.co.in/api/jobs/roles")
-      .then((response) => response.json())
-      .then((data) => setRoles(data))
-      .catch((error) => console.error("Error fetching roles:", error));
+    const fetchActiveRoles = async () => {
+      try {
+        const response = await fetch(
+          "https://website-backend.starlabs.co.in/api/jobs"
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch roles");
+        }
+        const data = await response.json();
+        const activeRoles = data.filter((role) => role.status === "active");
+        setRoles(activeRoles);
+      } catch (error) {
+        console.error("Error fetching roles:", error);
+        toast.error("Unable to load roles. Please try again later.");
+      }
+    };
+
+    fetchActiveRoles();
   }, []);
 
   // Fetch time slots from the API
@@ -173,7 +188,7 @@ export default function Scheduler() {
               <label className="block text-sm font-medium">
                 Select the role you've applied for
               </label>
-              <select
+              {/* <select
                 className="w-full mt-1 p-2 border rounded"
                 value={formData.applyingFor}
                 onChange={(e) =>
@@ -187,6 +202,25 @@ export default function Scheduler() {
                 {roles.map((role, index) => (
                   <option key={index} value={role}>
                     {role}
+                  </option>
+                ))}
+              </select> */}
+              <select
+                className="w-full mt-1 p-2 border rounded"
+                value={formData.applyingFor}
+                onChange={(e) =>
+                  setFormData({ ...formData, applyingFor: e.target.value })
+                }
+                required
+              >
+                <option value="" disabled>
+                  Select a role
+                </option>
+                {roles.map((role, index) => (
+                  <option key={index} value={role.role}>
+                    {" "}
+                    {/* Use role.role as value */}
+                    {role.role}
                   </option>
                 ))}
               </select>
