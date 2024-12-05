@@ -72,12 +72,18 @@ const Services = () => {
         "We provide advanced home security systems with intrusion detection, video surveillance, and alarm features to ensure a safe living environment.",
       image: HomeSecuritySvg,
     },
+    {
+      title: "SAAS (Software as a Service)",
+      description:
+        "Our SAAS solutions provide cloud-based software applications that are scalable, flexible, and cost-effective, allowing businesses to focus on their core competencies.",
+      image: SaasSvg,
+    },
   ];
 
   return (
     <>
       <section
-        className="relative pt-16 pb-20 overflow-hidden text-white"
+        className="relative pt-16 pb-20 max-w-screen-2xl mx-auto overflow-hidden text-white"
         id="services"
       >
         {/* Top Curved Divider */}
@@ -138,14 +144,14 @@ const Services = () => {
                     (service, index) =>
                       index % 2 === 0 && (
                         <SwiperSlide key={index}>
-                          <div className="pt-20 h-[105vh] xs:h-[90vh] md:h-[125vh] lg:h-[118vh] xl:h-[109vh] w-full text-white bg-[#151515] rounded-lg  ">
+                          <div className="pt-20 pb-36 max-h-fit   w-full text-white bg-[#151515] rounded-lg  ">
                             <div className="w-11/12 pt-16 mx-auto md:w-full ">
                               <div className="flex items-center text-white rounded-lg">
                                 <div className="md:mr-20 max-md:w-1/2 ">
                                   <img
                                     src={service.image}
                                     alt={service.title}
-                                    className="object-cover w-40 mb-4 -ml-2 h-44 md:h-80 md:w-72 lg:h-96 lg:w-80"
+                                    className="object-cover  mb-4 -ml-2 "
                                   />
                                 </div>
                                 <div className="w-1/2 md:-mt-16 md:w-1/2 lg:-mt-28">
@@ -171,7 +177,7 @@ const Services = () => {
                                     <img
                                       src={services[index + 1].image}
                                       alt={services[index + 1].title}
-                                      className="object-cover mb-4 w-[22rem] h-[10rem]  md:p-10 md:h-[22.7rem] md:w-[24.5rem] xl:h-80 xl:w-[22rem] "
+                                      className="object-cover mb-4  "
                                     />
                                   </div>
                                 </div>
@@ -226,7 +232,7 @@ const Services = () => {
 
         {/* Bottom Curved Divider */}
         <div
-          className="absolute left-0 z-20 w-full bg-black bottom-6 md:bottom-0 h-80"
+          className="absolute left-0 z-20 w-full bg-black bottom-6 md:bottom-0 h-80 md:h-96"
           style={{ clipPath: " ellipse(70% 44% at 50% 100%)" }}
         ></div>
       </section>
