@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -13,4 +14,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@font-face {
+  font-family: AgencyFb;
+  src: url("../src/assets/Fonts/AGENCYB.TTF") format("woff2"),
+    url("../src/assets/Fonts/AGENCYB.TTF") format("woff");
 }

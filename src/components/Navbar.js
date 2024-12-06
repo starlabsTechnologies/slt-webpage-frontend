@@ -119,6 +119,7 @@ const Navbar = () => {
                 initial={{ y: 50 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5, ease: "easeIn" }}
+                className="font-AgencyFb tracking-widest"
               >
                 STARLABS
               </motion.div>

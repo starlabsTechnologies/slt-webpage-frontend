@@ -19,30 +19,30 @@ const HeroSection = () => {
       style={sectionStyle}
     >
       {/* Content */}
-      <div className="max-w-screen-2xl relative mx-auto">
-        <div className=" pb-52   z-20   ">
-          <div className="mx-auto space-y-6 xs:space-y-8 md:space-y-10 text-center">
+      <div className="max-w-screen-2xl relative mx-auto z-20">
+        <div className=" pb-52   ">
+          <div className="mx-auto space-y-6 xs:space-y-8 md:space-y-10 text-center text-white">
             <div
-              style={{
-                fontFamily: "Agency FB",
-                textAlign: "center",
-                color: "white",
-              }}
+            // style={{
+            //   fontFamily: "Agency FB",
+            //   textAlign: "center",
+            //   color: "white",
+            // }}
             >
-              <h1 className="text-4xl xs:text-5xl font-bold tracking-widest lg:text-6xl xl:text-7xl   ">
+              <h1 className="text-4xl xs:text-5xl font-bold tracking-widest lg:text-6xl xl:text-7xl font-AgencyFb  ">
                 STARLABS
               </h1>
-              <h2 className="text-xl xs:text-2xl tracking-wide lg:text-3xl xl:text-4xl  ">
+              <h2 className="text-xl xs:text-2xl tracking-wide lg:text-3xl xl:text-4xl font-AgencyFb ">
                 SPECIALIZED TEAM FOR ALTERNATIVE RESEARCH
               </h2>
             </div>
 
             <p className="mx-auto w-11/12 xs:text-base  text-sm md:text-lg leading-[7.5vw] xs:leading-[11vw]  tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl ">
-              calender is a cutting-edge technology company that specializes in
-              providing innovative solutions to various industries. Our
-              expertise lies in developing and deploying IIOT-IOT devices, SAAS,
-              Industrial Software Solutions, NAS, Automatic RFID-based Boom
-              Barriers, ANPR, AI-powered technologies, and smart home solutions.
+              is a cutting-edge technology company that specializes in providing
+              innovative solutions to various industries. Our expertise lies in
+              developing and deploying IIOT-IOT devices, SAAS, Industrial
+              Software Solutions, NAS, Automatic RFID-based Boom Barriers, ANPR,
+              AI-powered technologies, and smart home solutions.
             </p>
             <div>
               <Btn
@@ -51,7 +51,7 @@ const HeroSection = () => {
                     .getElementById("contact")
                     .scrollIntoView({ behavior: "smooth" })
                 }
-                classname="inline-block px-4 py-1 text-sm xs:text-base md:px-8 md:py-3 text-white transition-colors sm:rounded-md bg-emerald-500 hover:bg-emerald-600 rounded-full"
+                classname=" inline-block px-4 py-1 text-sm xs:text-base md:px-8 md:py-3 text-white transition-colors sm:rounded-md bg-emerald-500 hover:bg-emerald-600 rounded-full"
               >
                 Get Started
               </Btn>
@@ -60,7 +60,7 @@ const HeroSection = () => {
         </div>
 
         {/* Rocket svg */}
-        <div className="absolute z-10 bottom-20 right-2 xs:bottom-20 xs:right-9 md:right-9 md:bottom-24 lg:right-3 xl:bottom-44 xl:right-8 2xl:right-36">
+        <div className="absolute z-20 bottom-20 right-2 xs:bottom-20 xs:right-9 md:right-9 md:bottom-24 lg:right-3 xl:bottom-44 xl:right-8 2xl:right-36">
           <svg
             className="w-36 h-36 md:w-40 md:h-40 lg:w-60 lg:h-60 xl:w-64 xl:h-64 "
             viewBox="0 0 100 267"
@@ -225,7 +225,7 @@ const HeroSection = () => {
         </div>
       </div>
       {/* Cloud svg */}
-      <div className="absolute bottom-0 right-20 sm:right-0 w-full">
+      <div className="absolute bottom-0 right-20 sm:right-0 w-full z-10">
         <div className="">
           <CloudSvgLarge className="max-w-full h-[12rem]  sm:h-auto mx-auto   scale-150 sm:scale-100" />
         </div>
