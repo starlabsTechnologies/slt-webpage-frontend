@@ -18,6 +18,5 @@ code {
 
 @font-face {
   font-family: AgencyFb;
-  src: url("../src/assets/Fonts/AGENCYB.TTF") format("woff2"),
-    url("../src/assets/Fonts/AGENCYB.TTF") format("woff");
+  src: url("../src/assets/Fonts/AGENCYB.TTF") format("truetype");
 }
