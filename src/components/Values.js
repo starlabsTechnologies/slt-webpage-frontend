@@ -23,6 +23,10 @@ const CustomStar = ({ filled }) => (
 const Values = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const handleStarClick = (index) => {
+    setCurrentSlide(index);
+  };
+
   const slides = [
     {
       title: "Integrity",
@@ -60,73 +64,71 @@ const Values = () => {
 
   return (
     <div
-      className="relative z-40 w-full pb-32 -mt-20 overflow-hidden text-white sm:-mt-10 xl:-mt-16"
+      className="relative z-40 max-w-screen-2xl mx-auto pb-32 -mt-20 overflow-hidden text-white sm:-mt-10 xl:-mt-16"
       id="values"
     >
-      <div className="px-4 mx-auto">
+      <div className="">
         <h1 className="mb-12 text-3xl font-bold text-center sm:text-4xl ">
           Our Values
         </h1>
 
-        <div className="relative h-[50vh]  ">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5 }}
-              className=""
-            >
-              <div className="flex flex-col items-center h-full gap-10 md:gap-8 sm:flex-row ">
-                <div className="relative flex justify-center w-full py-4 sm:w-8/12 sm:justify-start md:h-full">
-                  <img
-                    src={slides[currentSlide].image}
-                    alt={slides[currentSlide].title}
-                    className="object-contain h-[18rem] w-full sm:w-[30rem] sm:h-[30rem] rounded-lg"
-                  />
-                </div>
-                <div className="space-y-4 sm:w-full">
-                  <h2 className="text-3xl font-semibold">
-                    {slides[currentSlide].title}
-                  </h2>
-                  <p className="text-gray-400">
-                    {slides[currentSlide].description}
-                  </p>
-                </div>
+        <div className="h-96  ">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5 }}
+            className=""
+          >
+            <div className="flex flex-col items-center h-full gap-10 md:gap-8 sm:flex-row ">
+              <div className="relative flex justify-center w-full py-4 sm:w-8/12 sm:justify-start md:h-full">
+                <img
+                  src={slides[currentSlide].image}
+                  alt={slides[currentSlide].title}
+                  className="object-contain h-[10rem] w-full sm:w-[30rem] sm:h-[30rem] rounded-lg"
+                />
               </div>
-            </motion.div>
-          </AnimatePresence>
+              <div className="space-y-4 sm:w-full">
+                <h2 className="text-3xl font-semibold">
+                  {slides[currentSlide].title}
+                </h2>
+                <p className="text-gray-400">
+                  {slides[currentSlide].description}
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
         {/* star buttons */}
-        <div className="relative flex items-center justify-center w-full mt-36 sm:mt-36">
+        <div className="relative flex items-center justify-center w-full mt-20 sm:mt-32">
           <svg
             width="100%"
             height="54"
-            viewBox="0 0 2200 84"
+            viewBox="0 0 2000 84"
             xmlns="http://www.w3.org/2000/svg"
           >
             {/* Background line */}
             <line
-              x1="10"
-              y1="32"
-              x2="2110"
-              y2="32"
+              x1="-200"
+              y1={window.innerWidth < 768 ? "38 " : "24"}
+              x2="2300"
+              y2={window.innerWidth < 768 ? "38 " : "24"}
               stroke="#4B5563"
               strokeWidth="2"
               className="-z-20 "
             />
             {/* Animated foreground line */}
             <motion.line
-              x1="10"
-              y1="32"
-              x2={(currentSlide / (slides.length - 1)) * 2110}
-              y2="32"
+              x1="-200"
+              y1={window.innerWidth < 768 ? "38 " : "24"}
+              x2={(currentSlide / (slides.length - 1)) * 2300}
+              y2={window.innerWidth < 768 ? "38 " : "24"}
               stroke="#53C888"
               strokeWidth="3"
               initial={{ x2: 0 }}
               animate={{
-                x2: (currentSlide / (slides.length - 1)) * 2110,
+                x2: (currentSlide / (slides.length - 1)) * 2300,
               }}
               transition={{ duration: 0.5 }}
               className="-z-20"
@@ -136,8 +138,10 @@ const Values = () => {
               <g
                 key={index}
                 transform={`translate(${
-                  (index / (slides.length - 1)) * 2100
+                  (index / (slides.length - 1)) * 1900
                 }, 0)`}
+                onClick={() => handleStarClick(index)}
+                className=" cursor-pointer"
               >
                 {/* Static star */}
                 <CustomStar filled={false} />

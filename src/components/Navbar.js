@@ -77,9 +77,9 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full">
-      <div className="fixed z-50 w-full text-white bg-black/80">
-        <div className="z-50 flex items-center justify-between w-11/12 pt-4 mx-auto ">
+    <div className="">
+      <div className="fixed z-50 w-full    text-white bg-black/80">
+        <div className="z-50 flex items-center justify-between px-10 max-w-screen-2xl mx-auto pt-4 ">
           {/* Left side  i.e Logo */}
           <div className="z-50 overflow-hidden ">
             {/* start Svg */}

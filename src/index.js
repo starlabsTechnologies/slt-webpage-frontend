@@ -5,9 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home";
-import Careers from "./Pages/Carrers";
+import ExploreCarrers from "./Pages/ExploreCarrers";
 import { JobDetailPage } from "./components";
 import MeetScheduler from "./Pages/MeetScheduler";
+import Career from "./Pages/Career";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,8 +20,12 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/explorecareers",
+        element: <ExploreCarrers />,
+      },
+      {
         path: "/careers",
-        element: <Careers />,
+        element: <Career />,
       },
       {
         path: "/scheduler",

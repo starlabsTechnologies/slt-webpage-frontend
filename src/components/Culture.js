@@ -7,7 +7,7 @@ const Culture = () => {
   const ref = useRef();
   const inView = useInView(ref, { amount: 0.5, once: true });
   return (
-    <div className="relative py-20 overflow-hidden bg-black">
+    <div className="relative py-20 max-w-screen-2xl mx-auto overflow-hidden bg-black">
       <div className="relative w-11/12 mx-auto text-center" ref={ref}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

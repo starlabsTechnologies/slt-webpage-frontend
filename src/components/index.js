@@ -14,6 +14,10 @@ import JobDetailPage from "./JobDetailsPage";
 import Mission from "./Mission";
 import Footer from "./Footer";
 import SlidingWindow from "./SlidingWindow";
+import ExploreCareer from "./ExploreCareer";
+import WhyWork from "./WhyWork";
+import HiringProcess from "./HiringProcess";
+import CareerStarBg from "./CareerStarBg";
 
 export {
   Navbar,
@@ -32,4 +36,8 @@ export {
   Mission,
   Footer,
   SlidingWindow,
+  ExploreCareer,
+  WhyWork,
+  HiringProcess,
+  CareerStarBg,
 };

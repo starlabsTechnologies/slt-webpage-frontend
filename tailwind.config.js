@@ -5,6 +5,9 @@ module.exports = {
       screens: {
         xs: "410px",
       },
+      fontFamily: {
+        AgencyFb: ["Agency FB"],
+      },
     },
   },
   darkMode: "class",

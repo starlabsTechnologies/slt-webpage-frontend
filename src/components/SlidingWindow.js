@@ -108,6 +108,7 @@ const SlidingWindow = ({ isOpen, navLinks, setIsOpen }) => {
                     <div
                       variants={item}
                       onClick={() => handleNavigation(links.name)}
+                      className="uppercase"
                     >
                       {links.name}
                     </div>

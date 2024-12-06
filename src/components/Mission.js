@@ -8,7 +8,7 @@ const Mission = () => {
   return (
     <>
       <div className="text-white bg-black " ref={ref}>
-        <div className="w-11/12 mx-auto">
+        <div className="max-w-screen-2xl mx-auto">
           <motion.h1
             className="mb-8 text-3xl font-bold text-center sm:text-4xl "
             initial={{ opacity: 0, y: 20 }}
@@ -19,7 +19,7 @@ const Mission = () => {
           </motion.h1>
 
           <motion.p
-            className="w-full mx-auto mb-5 text-sm text-center text-gray-400 sm:text-lg"
+            className="w-11/12 mx-auto text-sm text-center text-gray-400 sm:text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -41,7 +41,7 @@ const Mission = () => {
             <img
               src={PortalSvg}
               alt=""
-              className="w-[18rem] h-[18rem] xs:w-[25rem] xs:h-[25rem] md:w-[30rem] md:h-[30rem] xl:w-[50vw] xl:h-[80vh]"
+              className="w-[18rem] h-[18rem] xs:w-[25rem] xs:h-[25rem] md:w-[30rem] md:h-[30rem] xl:w-[50rem] xl:h-[50rem]"
             />
           </motion.div>
         </div>
