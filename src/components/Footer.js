@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   MapPinIcon,
   MailIcon,
@@ -72,8 +72,8 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#contact"
-                  onClick={() => navigate("/careers")}
+                  href="/explorecareers"
+                  // onClick={() => navigate("/careers")}
                   className="text-gray-200 transition-colors hover:text-blue-600"
                 >
                   Careers

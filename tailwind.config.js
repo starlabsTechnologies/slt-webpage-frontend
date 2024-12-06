@@ -6,7 +6,6 @@ module.exports = {
         xs: "410px",
       },
       fontFamily: {
-        jeju: ["JejuGothic", "sans-serif"],
         AgencyFb: ["Agency FB"],
       },
     },
