@@ -38,11 +38,11 @@ const HeroSection = () => {
             </div>
 
             <p className="mx-auto w-11/12 xs:text-base  text-sm md:text-lg leading-[7.5vw] xs:leading-[11vw]  tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl ">
-              calender is a cutting-edge technology company that specializes in
-              providing innovative solutions to various industries. Our
-              expertise lies in developing and deploying IIOT-IOT devices, SAAS,
-              Industrial Software Solutions, NAS, Automatic RFID-based Boom
-              Barriers, ANPR, AI-powered technologies, and smart home solutions.
+              is a cutting-edge technology company that specializes in providing
+              innovative solutions to various industries. Our expertise lies in
+              developing and deploying IIOT-IOT devices, SAAS, Industrial
+              Software Solutions, NAS, Automatic RFID-based Boom Barriers, ANPR,
+              AI-powered technologies, and smart home solutions.
             </p>
             <div>
               <Btn

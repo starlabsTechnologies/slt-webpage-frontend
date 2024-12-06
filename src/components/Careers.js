@@ -171,13 +171,10 @@ export default function Careers() {
                       <p className="text-sm">Exp: {position.experience}</p>
                     </div>
                   </div>
-                  <div>
-                    <div className="text-gray-200 text-sm pb-3">
-                      Job Type: {position.location}
-                    </div>
+                  <div className="flex items-end">
                     <button
                       onClick={() => handleApplyNow(position.id)}
-                      className="bg-[#00ff9d] hover:bg-[#00cc7d] text-black py-1 px-3 rounded-full transition-colors"
+                      className=" bg-[#00ff9d] hover:bg-[#00cc7d] text-black py-1 px-3 rounded-full transition-colors"
                     >
                       Apply Now
                     </button>
