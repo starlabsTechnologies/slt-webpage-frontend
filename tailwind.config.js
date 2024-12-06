@@ -6,7 +6,7 @@ module.exports = {
         xs: "410px",
       },
       fontFamily: {
-        AgencyFb: ["AgencyFb", "sans-serif "],
+        AgencyFb: ["AgencyFb", "sans-serif"],
       },
     },
   },
