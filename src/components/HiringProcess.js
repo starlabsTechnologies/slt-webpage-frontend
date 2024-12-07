@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
@@ -9,9 +10,47 @@ import CodingChallengeSvg from "../assets/SVG/Careers/CodingChallenge.svg";
 import TechnicaldebrifSvg from "../assets/SVG/Careers/Technicaldebrif.svg";
 import HRInterviewSvg from "../assets/SVG/Careers/HRInterview.svg";
 import WelcomeSvg from "../assets/SVG/Careers/Welcome.svg";
+import { motion, useAnimation, useInView } from "motion/react";
 
 const HiringProcess = () => {
   const swiperRef = useRef(null);
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.3 });
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+        duration: 0.5,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 10,
+        stiffness: 100,
+      },
+    },
+  };
 
   const HiringDetails = [
     {
@@ -48,7 +87,11 @@ const HiringProcess = () => {
   ];
   return (
     <>
-      <section
+      <motion.section
+        ref={ref}
+        initial="hidden"
+        animate={controls}
+        variants={containerVariants}
         className="relative pt-16 pb-20 max-w-screen-2xl mx-auto overflow-hidden text-white"
         id="services"
       >
@@ -85,17 +128,23 @@ const HiringProcess = () => {
                   className="w-full "
                   onSwiper={(swiper) => (swiperRef.current = swiper)}
                   speed={800} // Smooth out the slider animation
-                  //   autoplay={{
-                  //     delay: 3000,
-                  //     disableOnInteraction: false,
-                  //   }}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }}
                 >
                   {HiringDetails.map((service, index) => (
                     <SwiperSlide key={index}>
-                      <div className="pt-20 pb-36   w-full text-white bg-[#151515] rounded-lg  ">
+                      <motion.div
+                        className="pt-20 pb-36   w-full text-white bg-[#151515] rounded-lg  "
+                        variants={containerVariants}
+                      >
                         <div className="w-11/12 h-[40rem]  pt-16 mx-auto md:w-full ">
                           {/* Title  */}
-                          <div className="text-center pt-16  ">
+                          <motion.div
+                            className="text-center pt-16  "
+                            variants={titleVariants}
+                          >
                             <h1 className="text-xl sm:text-3xl pb-5">
                               Ready To Make An Impact?
                             </h1>
@@ -111,18 +160,24 @@ const HiringProcess = () => {
                                 Starlabs Technologies Team
                               </p>
                             </div>
-                          </div>
+                          </motion.div>
                           {/* Image and description */}
                           <div className="flex md:items-center xs:mt-7 md:mt-20 text-white rounded-lg">
                             {/* Image */}
-                            <div className="md:mr-20 max-md:w-8/12  ">
+                            <motion.div
+                              className="md:mr-20 max-md:w-8/12  "
+                              variants={containerVariants}
+                            >
                               <img
                                 src={service.image}
                                 alt={service.title}
                                 className="object-cover md:w-80 lg:w-[23rem] lg:h-[24.5rem] md:h-80-ml-6 md:-ml-2"
                               />
-                            </div>
-                            <div className="w-8/12 md:-mt-16 md:w-1/2 lg:-mt-28 flex flex-col pt-2 ">
+                            </motion.div>
+                            <motion.div
+                              className="w-8/12 md:-mt-16 md:w-1/2 lg:-mt-28 flex flex-col pt-2 "
+                              variants={containerVariants}
+                            >
                               <div className=" hidden md:pb-8  md:flex text-gray-200 md:-ml-40 tracking-wider text-lg md:text-sm lg:text-lg">
                                 <p>
                                   Our Hiring Process: Here's How to Join the
@@ -137,10 +192,10 @@ const HiringProcess = () => {
                                   {service.description}
                                 </p>
                               </div>
-                            </div>
+                            </motion.div>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     </SwiperSlide>
                   ))}
                 </Swiper>
@@ -170,15 +225,15 @@ const HiringProcess = () => {
           style={{ clipPath: " ellipse(70% 44% at 50% 100%)" }}
         ></div>
 
-        <div className=" absolute bottom-0 z-30 left-[45vw]">
-          <a
-            href="/careers"
+        <div className=" absolute bottom-0 z-30 w-full text-center">
+          <Link
+            to="/careers"
             className="md:mt-8 inline-block px-6 sm:px-8 py-3 bg-emerald-400 text-black rounded-full font-medium hover:bg-emerald-500 transition-colors text-sm sm:text-base"
           >
             Explore Career
-          </a>
+          </Link>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };

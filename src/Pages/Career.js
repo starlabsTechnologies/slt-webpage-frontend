@@ -3,11 +3,13 @@ import { Careers, Footer, Navbar } from "../components";
 
 const Career = () => {
   return (
-    <div>
-      <Navbar />
-      <Careers />
-      <Footer />
-    </div>
+    <>
+      <div className="bg-black w-full">
+        <Navbar />
+        <Careers />
+        <Footer />
+      </div>
+    </>
   );
 };
 
