@@ -79,7 +79,7 @@ const HiringProcess = () => {
     },
 
     {
-      title: "Wlecome to Starlabs Technologies!",
+      title: "Welcome to Starlabs Technologies!",
       description:
         "If all goes well and we’re both excited about the opportunity, we’ll move forward with the next steps to welcome you aboard. We’ll finalize the details and set you up to start your journey with us—where exciting challenges, career growth, and innovation await!",
       image: WelcomeSvg,
@@ -99,13 +99,22 @@ const HiringProcess = () => {
         <div
           className="absolute left-0 z-20 flex justify-center w-full bg-black top-6 xs:top-5 sm:top-0 h-96"
           style={{ clipPath: " ellipse(70% 44% at 50% 4%)" }}
-        ></div>
+        >
+          <motion.div className="text-center" variants={titleVariants}>
+            <div className="text-base tracking-wider text-white">
+              <h1 className="pb-5 text-2xl text-white mt-14 sm:text-4xl">
+                Ready To Make An Impact?
+              </h1>
+              <p className="text-sm sm:text-xl text-white/90 ">
+                Our Hiring Process: Here's How to Join the Starlabs Technologies
+                Team
+              </p>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Section Content */}
         <div className="relative w-full overflow-hidden">
-          {/* Title */}
-          <div className="flex items-center justify-end w-11/12 pt-20 mx-auto mb-16"></div>
-
           {/*  */}
           <div className="-mt-48 ">
             {
@@ -136,33 +145,14 @@ const HiringProcess = () => {
                   {HiringDetails.map((service, index) => (
                     <SwiperSlide key={index}>
                       <motion.div
-                        className="pt-20 pb-36   w-full text-white bg-[#151515] rounded-lg  "
+                        className="pt-56 xl:pt-40 pb-36   w-full text-white bg-[#151515] rounded-lg  "
                         variants={containerVariants}
                       >
-                        <div className="w-11/12 h-[40rem]  pt-16 mx-auto md:w-full ">
+                        <div className="w-11/12 h-[30rem] md:h-[35rem]  pt-20 mx-auto md:w-full ">
                           {/* Title  */}
-                          <motion.div
-                            className="pt-16 text-center "
-                            variants={titleVariants}
-                          >
-                            <h1 className="pb-5 text-xl sm:text-3xl">
-                              Ready To Make An Impact?
-                            </h1>
-                            <p className=" text-[0.8rem] leading-relaxed sm:text-base lg:text-lg text-gray-300 max-w-5xl mx-auto">
-                              If you’re driven, curious, and ready to tackle new
-                              challenges, we’d love to hear from you. Apply Now
-                              and start your journey with Starlabs Technologies
-                              today!
-                            </p>
-                            <div className="pt-10 text-base tracking-wider text-gray-200 md:hidden">
-                              <p>
-                                Our Hiring Process: Here's How to Join the
-                                Starlabs Technologies Team
-                              </p>
-                            </div>
-                          </motion.div>
+
                           {/* Image and description */}
-                          <div className="flex mt-8 text-white rounded-lg md:items-center xs:mt-7 md:mt-20">
+                          <div className="flex mt-20 text-white rounded-lg md:items-center xs:mt-20">
                             {/* Image */}
                             <motion.div
                               className=" md:mr-20 max-md:w-8/12"
@@ -178,12 +168,12 @@ const HiringProcess = () => {
                               className="flex flex-col w-8/12 pt-2 md:-mt-16 md:w-1/2 lg:-mt-28 "
                               variants={containerVariants}
                             >
-                              <div className="hidden text-lg tracking-wider text-gray-200 md:pb-8 md:flex md:-ml-40 md:text-sm lg:text-lg">
+                              {/* <div className="hidden text-lg tracking-wider text-gray-200 md:pb-8 md:flex md:-ml-40 md:text-sm lg:text-lg">
                                 <p>
                                   Our Hiring Process: Here's How to Join the
                                   Starlabs Technologies Team
                                 </p>
-                              </div>
+                              </div> */}
                               <div className="md:mt-10 ">
                                 <h2 className="text-sm font-semibold tracking-tighter md:text-3xl">
                                   {index + 1}. {service.title}
