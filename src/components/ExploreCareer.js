@@ -1,6 +1,7 @@
 import { motion, useInView } from "motion/react";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import ExploreSvg from "../assets/SVG/Careers/Explore.svg";
+import { Link } from "react-router-dom";
 
 const ExploreCareer = () => {
   const ref = useRef(null);
@@ -39,6 +40,14 @@ const ExploreCareer = () => {
       },
     },
   };
+
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   return (
     <div className=" overflow-hidden max-w-screen-2xl mx-auto  text-white pt-28 py-16 flex items-center">
@@ -98,12 +107,12 @@ const ExploreCareer = () => {
             </motion.p>
             {/* Button  */}
             <motion.div variants={itemVariants}>
-              <a
-                href="/careers"
+              <Link
+                to="/careers"
                 className="hidden md:mt-8 md:inline-block px-6 sm:px-8 py-3 bg-emerald-400 text-black rounded-full font-medium hover:bg-emerald-500 transition-colors text-sm sm:text-base"
               >
                 Explore Career
-              </a>
+              </Link>
             </motion.div>
           </div>
           {/* Image for larger screen from 786px */}

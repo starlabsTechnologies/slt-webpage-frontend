@@ -9,6 +9,8 @@ import ExploreCarrers from "./Pages/ExploreCarrers";
 import { JobDetailPage } from "./components";
 import MeetScheduler from "./Pages/MeetScheduler";
 import Career from "./Pages/Career";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import TermsOfServices from "./Pages/TermsOfServices";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: "/careers/:jobId",
         element: <JobDetailPage />,
+      },
+      {
+        path: "/privacyPolicy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/termsofservices",
+        element: <TermsOfServices />,
       },
     ],
   },

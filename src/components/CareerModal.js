@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -94,7 +95,7 @@ export default function CareerForm({ selectedJob }) {
               d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <h1 className="text-4xl font-bold font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+          <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
             Thank You!
           </h1>
           <p>
@@ -127,23 +128,23 @@ export default function CareerForm({ selectedJob }) {
   );
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 px-2 xs:px-4 md:px-1 lg:px-5 ">
       {isSubmitted ? (
         thankYouMessage // Render the thank-you message if submitted
       ) : (
         <>
-          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl text-center font-semibold text-green-400 mb-4">
             Apply for {selectedJob}
           </h3>
           <form
-            className="space-y-4"
+            className="space-y-7 pt-12 px-5 md:px-2 text-white/80"
             onSubmit={handleSubmit}
             encType="multipart/form-data"
           >
-            <div>
+            <div className=" ">
               <label
                 htmlFor="modal-name"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm sm:text-base md:text-lg font-medium "
               >
                 Name<span className="text-red-500">*</span>
               </label>
@@ -151,7 +152,8 @@ export default function CareerForm({ selectedJob }) {
                 type="text"
                 id="modal-name"
                 name="name"
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 text-gray-800"
+                placeholder="Enter a Name"
+                className="w-full px-4 py-2 rounded-lg border border-gray-400 mt-3 bg-black"
                 onChange={handleInputChange}
                 required
               />
@@ -159,55 +161,24 @@ export default function CareerForm({ selectedJob }) {
             <div>
               <label
                 htmlFor="modal-email"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm  sm:text-base md:text-lg font-medium "
               >
-                Email<span className="text-red-500">*</span>
+                E-Mail<span className="text-red-500">*</span>
               </label>
               <input
                 type="email"
                 id="modal-email"
                 name="email"
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 text-gray-800"
+                placeholder="Enter E-Mail"
+                className="w-full px-4 py-2 rounded-lg border border-gray-400 mt-3 bg-black"
                 onChange={handleInputChange}
                 required
               />
-            </div>
-            <div>
-              <label
-                htmlFor="modal-phone"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="modal-phone"
-                name="phone"
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 text-gray-800"
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="modal-cover-letter-text"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Cover Letter<span className="text-red-500">*</span>
-              </label>
-              <textarea
-                id="modal-cover-letter-text"
-                name="coverLetterText"
-                rows="4"
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 text-gray-800"
-                placeholder="Write your cover letter here..."
-                onChange={handleInputChange}
-                required
-              ></textarea>
             </div>
             <div>
               <label
                 htmlFor="modal-resume"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm md:text-lg font-medium"
               >
                 Upload Resume<span className="text-red-500">*</span>
               </label>
@@ -217,14 +188,63 @@ export default function CareerForm({ selectedJob }) {
                 name="resume"
                 id="resume"
                 accept=".pdf,.doc,.docx"
-                className="block w-full border border-gray-200 shadow-sm rounded-lg text-sm text-gray-900 file:bg-gray-200 file:border-0 file:me-4 file:py-3 file:px-4"
+                className="block w-full px-4 py-2 rounded-lg border border-gray-400 mt-3 bg-black file:bg-black file:text-white file:border-0 file:me-4 file:py-3 file:px-4"
                 required
               />
             </div>
-            <div className="flex justify-end">
+
+            <div>
+              <label
+                htmlFor="modal-cover-letter-text"
+                className="block text-sm md:text-lg font-medium  "
+              >
+                Cover Letter<span className="text-red-500">*</span>
+              </label>
+              <textarea
+                id="modal-cover-letter-text"
+                name="coverLetterText"
+                rows="4"
+                className="w-full px-4 py-2 rounded-lg border border-gray-400 mt-3 bg-black"
+                placeholder="Write your cover letter here..."
+                onChange={handleInputChange}
+                required
+              ></textarea>
+            </div>
+            <div>
+              <label
+                htmlFor="modal-phone"
+                className="block text-sm sm:text-base md:text-lg font-medium"
+              >
+                Contact Number
+              </label>
+              <input
+                type="tel"
+                id="modal-phone"
+                name="phone"
+                placeholder="Contact Number"
+                className="w-full px-4 py-2 rounded-lg border border-gray-400 mt-3 bg-black"
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="text-center text-[0.84rem]">
+              <p>
+                "I Agree To The{" "}
+                <Link to="/privacypolicy" className="text-blue-500 underline">
+                  Privacy Policy
+                </Link>{" "}
+                And{" "}
+                <Link to="/termsofservices" className="text-blue-500 underline">
+                  Terms Of Services
+                </Link>
+                "
+              </p>
+            </div>
+
+            <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+                className="bg-green-400 text-black py-2 px-4 rounded-lg hover:bg-blue-600"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}

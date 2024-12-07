@@ -81,7 +81,10 @@ const Navbar = () => {
       <div className="fixed z-50 w-full    text-white bg-black/80">
         <div className="z-50 flex items-center justify-between px-10 max-w-screen-2xl mx-auto pt-4 ">
           {/* Left side  i.e Logo */}
-          <div className="z-50 overflow-hidden ">
+          <div
+            className="z-50 overflow-hidden cursor-pointer "
+            onClick={() => handleClick("home")}
+          >
             {/* start Svg */}
             <div className="flex flex-col items-center">
               <div>

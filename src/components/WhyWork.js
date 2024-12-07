@@ -56,15 +56,15 @@ const WhyWork = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-3xl font-semibold text-white text-center mb-12"
+        className="text-3xl font-semibold  text-white text-center mb-12"
       >
         Why Work With Us
       </motion.h2>
       <div
         style={{ backgroundImage: `url(${workBg})` }}
-        className="max-w-screen-2xl mx-auto bg-center bg-cover"
+        className="max-w-screen-2xl mx-auto bg-center bg-cover relative"
       >
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-3xl ">
           <div className="">
             {reasons.map((reason, index) => (
               <motion.div
@@ -76,7 +76,7 @@ const WhyWork = () => {
                   duration: 0.5,
                   delay: index * 0.1, // Stagger the animations
                 }}
-                className="group relative"
+                className="group relative z-40"
               >
                 <div
                   className={`relative  p-6 transition-colors cursor-pointer ${
@@ -93,7 +93,7 @@ const WhyWork = () => {
                       animate={{ rotate: openDropdowns[index] ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ChevronDown className="text-white" />
+                      <ChevronDown className="text-blue-500   scale-110" />
                     </motion.div>
                   </div>
                   <AnimatePresence>
@@ -118,6 +118,22 @@ const WhyWork = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+
+        <div className=" absolute -top-16 hidden md:block lg:right-[14vw] xl:right-[12rem] 2xl:right-[20rem] z-10">
+          <svg
+            width="157"
+            height="155"
+            viewBox="0 0 157 155"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M154.5 77.5C154.5 118.891 120.504 152.5 78.5 152.5C36.496 152.5 2.5 118.891 2.5 77.5C2.5 36.1088 36.496 2.5 78.5 2.5C120.504 2.5 154.5 36.1088 154.5 77.5Z"
+              stroke="#299EF3"
+              stroke-width="5"
+            />
+          </svg>
         </div>
       </div>
     </div>
