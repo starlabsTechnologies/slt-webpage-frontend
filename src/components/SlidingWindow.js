@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SlidingWindow = ({ isOpen, navLinks, setIsOpen }) => {
   const slidingVariant = {
@@ -73,11 +74,21 @@ const SlidingWindow = ({ isOpen, navLinks, setIsOpen }) => {
     },
   };
 
-  const handleNavigation = (section) => {
-    setIsOpen(false); // Close the menu
+  const navigate = useNavigate();
+  const scrollTo = (section) => {
     const element = document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleNavigation = (section) => {
+    setIsOpen(false); // Close the menu
+    if (window.location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => scrollTo(section), 100);
+    } else {
+      scrollTo(section);
     }
   };
 

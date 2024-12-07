@@ -57,10 +57,10 @@ export default function Footer() {
         viewport={{ once: true }}
         variants={containerVariants}
       >
-        <div className="flex gap-10  md:flex-col justify-between px-4 md:px-0">
+        <div className="flex flex-wrap gap-4 xs:gap-10 xs:px-4 xs:justify-between xs:flex-nowrap md:flex-col md:px-0">
           {/* Top side */}
           <motion.div
-            className="md:flex flex-col hidden md:flex-row justify-center gap-10 items-center mb-8"
+            className="flex-col items-center justify-center hidden gap-10 mb-8 md:flex md:flex-row"
             variants={itemVariants}
           >
             {/* Links */}
@@ -84,7 +84,7 @@ export default function Footer() {
                     </li>
                   </motion.div>
                 ))}
-                <li className="text-4xl hidden md:flex "> | </li>
+                <li className="hidden text-4xl md:flex "> | </li>
               </ul>
             </motion.nav>
             {/* Social Links */}
@@ -93,7 +93,7 @@ export default function Footer() {
                 href="https://x.com/StarLabsTechno"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-gray-300 transition-colors"
+                className="transition-colors hover:text-gray-300"
               >
                 <img src={TwiteerSvg} alt="Twitter" className="w-10 h-10" />
               </a>
@@ -101,7 +101,7 @@ export default function Footer() {
                 href="https://www.instagram.com/starlabstechno"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-gray-300 transition-colors"
+                className="transition-colors hover:text-gray-300"
               >
                 <img src={InstagramSvg} alt="Instagram" className="w-10 h-10" />
               </a>
@@ -109,7 +109,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-gray-300 transition-colors"
+                className="transition-colors hover:text-gray-300"
               >
                 <img src={LinkedInSvg} alt="LinkedIn" className="w-10 h-10" />
               </a>
@@ -117,9 +117,9 @@ export default function Footer() {
           </motion.div>
 
           {/* Center side or mobile view right side */}
-          <div className="text-center mt-5 md:mt-16">
+          <div className="flex justify-center w-full mt-2 text-center xs:block xs:mt-5 md:mt-16">
             <motion.div
-              className="mb-10 md:mb-0 flex flex-col justify-center items-center"
+              className="flex flex-col items-center justify-center mb-0 xs:mb-10 md:mb-0"
               variants={itemVariants}
             >
               <motion.svg
@@ -158,12 +158,12 @@ export default function Footer() {
           </div>
           {/* mobile view left side */}
 
-          <div className="flex flex-col gap-3 text-[0.75rem] md:hidden">
+          <div className="flex flex-col px-6 xs:px-0  gap-3 text-[0.75rem] md:hidden">
             <div className="flex flex-col">
               {" "}
               <h3>Message Us</h3>
-              <div className="flex gap-2 items-center">
-                <Mail className="h-4 w-4" />
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4" />
                 <a href="mailto:administrator@starlabs.co.in">
                   administrator@starlabs.co.in
                 </a>
@@ -172,16 +172,16 @@ export default function Footer() {
             <div className="flex flex-col">
               {" "}
               <h3>Call Us</h3>
-              <div className="flex gap-2 items-center">
-                <Phone className="h-4 w-4" />
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4" />
                 <p>+91-5446796599</p>
               </div>
             </div>
             <div className="flex flex-col">
               {" "}
               <h3>Address</h3>
-              <div className="flex gap-2 items-center">
-                <MapPinned className="h-4 w-4" />
+              <div className="flex items-center gap-2">
+                <MapPinned className="w-4 h-4" />
                 <p>Dhanbad, Jharkhand – 828111 - IN</p>
               </div>
             </div>
@@ -191,14 +191,15 @@ export default function Footer() {
         {/* Bottom */}
 
         <motion.nav
-          className="mt-16 flex justify-center my-5 "
+          className="flex justify-center my-5 mt-16 "
           variants={itemVariants}
         >
-          <ul className="md:flex space-x-6 hidden">
+          {/* tablet or laptop privacy and plicy links */}
+          <ul className="hidden space-x-6 md:flex">
             <li>
               <Link
                 to="/privacyPolicy"
-                className="text-sm hover:text-gray-300 transition-colors"
+                className="text-sm transition-colors hover:text-gray-300"
               >
                 Privacy Policy
               </Link>
@@ -206,7 +207,7 @@ export default function Footer() {
             <li>
               <Link
                 to="/termsofservices"
-                className="text-sm hover:text-gray-300 transition-colors"
+                className="text-sm transition-colors hover:text-gray-300"
               >
                 Terms of Use
               </Link>
@@ -214,7 +215,7 @@ export default function Footer() {
             <li>
               <Link
                 to="/"
-                className="text-sm hover:text-gray-300 transition-colors"
+                className="text-sm transition-colors hover:text-gray-300"
               >
                 Legal
               </Link>
@@ -222,14 +223,15 @@ export default function Footer() {
             <li>
               <Link
                 href="/"
-                className="text-sm hover:text-gray-300 transition-colors"
+                className="text-sm transition-colors hover:text-gray-300"
               >
                 Site Map
               </Link>
             </li>
           </ul>
 
-          <ul className="flex md:hidden items-center space-x-6">
+          {/* links in mobile view */}
+          <ul className="flex flex-wrap items-center space-x-6 md:hidden">
             {Links.map((links, index) => (
               <motion.div key={index} className="cursor-pointer ">
                 <li className="font-normal text-white font-jeju">
@@ -238,7 +240,7 @@ export default function Footer() {
                     onClick={() =>
                       index === 5 ? navigate("/explorecareers") : navigate("/")
                     }
-                    className="text-gray-200 transition-colors text-xs "
+                    className="text-xs text-gray-200 transition-colors "
                   >
                     {links.name}
                   </a>
@@ -249,8 +251,8 @@ export default function Footer() {
         </motion.nav>
 
         <motion.div className="border-t border-white ">
-          <div className="flex flex-col mt-2 md:flex-row justify-between items-center"></div>
-          <motion.p className="text-center text-sm " variants={itemVariants}>
+          <div className="flex flex-col items-center justify-between mt-2 md:flex-row"></div>
+          <motion.p className="text-sm text-center " variants={itemVariants}>
             © {currentYear} Starlabs Technologies Pvt. Ltd. All rights reserved.
           </motion.p>
         </motion.div>

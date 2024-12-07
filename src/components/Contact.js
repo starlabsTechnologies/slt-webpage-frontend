@@ -50,7 +50,7 @@ export default function Contact() {
 
   return (
     <section
-      className="relative max-w-screen-2xl mx-auto overflow-hidden text-white bg-black bg-cover"
+      className="relative mx-auto overflow-hidden text-white bg-black bg-cover max-w-screen-2xl"
       style={{ backgroundImage: `url(${StarBg})` }}
       id="contact"
     >
@@ -62,7 +62,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="relative hidden xl:flex"
+            className="relative hidden 2xl:flex"
           >
             <div className="relative">
               <img
@@ -79,7 +79,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex justify-center xl:hidden"
+            className="flex justify-center 2xl:hidden"
           >
             <img src={MobileSvg} alt="Mobile SVG" />
           </motion.div>

@@ -92,7 +92,7 @@ const HiringProcess = () => {
         initial="hidden"
         animate={controls}
         variants={containerVariants}
-        className="relative pt-16 pb-20 max-w-screen-2xl mx-auto overflow-hidden text-white"
+        className="relative pt-16 pb-20 mx-auto overflow-hidden text-white max-w-screen-2xl"
         id="services"
       >
         {/* Top Curved Divider */}
@@ -142,10 +142,10 @@ const HiringProcess = () => {
                         <div className="w-11/12 h-[40rem]  pt-16 mx-auto md:w-full ">
                           {/* Title  */}
                           <motion.div
-                            className="text-center pt-16  "
+                            className="pt-16 text-center "
                             variants={titleVariants}
                           >
-                            <h1 className="text-xl sm:text-3xl pb-5">
+                            <h1 className="pb-5 text-xl sm:text-3xl">
                               Ready To Make An Impact?
                             </h1>
                             <p className=" text-[0.8rem] leading-relaxed sm:text-base lg:text-lg text-gray-300 max-w-5xl mx-auto">
@@ -154,7 +154,7 @@ const HiringProcess = () => {
                               and start your journey with Starlabs Technologies
                               today!
                             </p>
-                            <div className=" text-gray-200 pt-10 tracking-wider text-base md:hidden">
+                            <div className="pt-10 text-base tracking-wider text-gray-200 md:hidden">
                               <p>
                                 Our Hiring Process: Here's How to Join the
                                 Starlabs Technologies Team
@@ -162,30 +162,30 @@ const HiringProcess = () => {
                             </div>
                           </motion.div>
                           {/* Image and description */}
-                          <div className="flex md:items-center xs:mt-7 md:mt-20 text-white rounded-lg">
+                          <div className="flex mt-8 text-white rounded-lg md:items-center xs:mt-7 md:mt-20">
                             {/* Image */}
                             <motion.div
-                              className="md:mr-20 max-md:w-8/12  "
+                              className=" md:mr-20 max-md:w-8/12"
                               variants={containerVariants}
                             >
                               <img
                                 src={service.image}
                                 alt={service.title}
-                                className="object-cover md:w-80 lg:w-[23rem] lg:h-[24.5rem] md:h-80-ml-6 md:-ml-2"
+                                className="object-cover md:w-80 lg:w-[23rem] lg:h-[24.5rem] md:h-80 -ml-6 md:-ml-2"
                               />
                             </motion.div>
                             <motion.div
-                              className="w-8/12 md:-mt-16 md:w-1/2 lg:-mt-28 flex flex-col pt-2 "
+                              className="flex flex-col w-8/12 pt-2 md:-mt-16 md:w-1/2 lg:-mt-28 "
                               variants={containerVariants}
                             >
-                              <div className=" hidden md:pb-8  md:flex text-gray-200 md:-ml-40 tracking-wider text-lg md:text-sm lg:text-lg">
+                              <div className="hidden text-lg tracking-wider text-gray-200 md:pb-8 md:flex md:-ml-40 md:text-sm lg:text-lg">
                                 <p>
                                   Our Hiring Process: Here's How to Join the
                                   Starlabs Technologies Team
                                 </p>
                               </div>
                               <div className="md:mt-10 ">
-                                <h2 className=" text-sm font-semibold tracking-tighter md:text-3xl">
+                                <h2 className="text-sm font-semibold tracking-tighter md:text-3xl">
                                   {index + 1}. {service.title}
                                 </h2>
                                 <p className="md:mt-8  text-[0.7rem] md:text-base xl:text-[1.1rem] leading-loose md:leading-relaxed  text-gray-400">
@@ -221,14 +221,14 @@ const HiringProcess = () => {
 
         {/* Bottom Curved Divider */}
         <div
-          className="absolute left-0 z-20  w-full bg-black bottom-6 md:bottom-0 h-80 md:h-96"
+          className="absolute left-0 z-20 w-full bg-black bottom-6 md:bottom-0 h-80 md:h-96"
           style={{ clipPath: " ellipse(70% 44% at 50% 100%)" }}
         ></div>
 
-        <div className=" absolute bottom-0 z-30 w-full text-center">
+        <div className="absolute bottom-0 z-30 w-full text-center ">
           <Link
             to="/careers"
-            className="md:mt-8 inline-block px-6 sm:px-8 py-3 bg-emerald-400 text-black rounded-full font-medium hover:bg-emerald-500 transition-colors text-sm sm:text-base"
+            className="inline-block px-6 py-3 text-sm font-medium text-black transition-colors rounded-full md:mt-8 sm:px-8 bg-emerald-400 hover:bg-emerald-500 sm:text-base"
           >
             Explore Career
           </Link>

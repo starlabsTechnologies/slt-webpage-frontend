@@ -50,7 +50,7 @@ const ExploreCareer = () => {
   }, []);
 
   return (
-    <div className=" overflow-hidden max-w-screen-2xl mx-auto  text-white pt-28 py-16 flex items-center">
+    <div className="flex items-center py-16 mx-auto overflow-hidden text-white max-w-screen-2xl pt-28">
       <motion.div
         ref={ref}
         variants={containerVariants}
@@ -75,7 +75,7 @@ const ExploreCareer = () => {
                 <img
                   src={ExploreSvg}
                   alt="Career illustration"
-                  className="w-full max-w-64 mx-auto lg:max-w-md"
+                  className="w-full mx-auto max-w-64 lg:max-w-md"
                 />
               </div>
 
@@ -91,7 +91,7 @@ const ExploreCareer = () => {
                       delay: i * 0.2,
                       ease: "easeInOut",
                     }}
-                    className="w-1 h-1 sm:w-2 sm:h-2 bg-yellow-400 rounded-full justify-self-center self-center"
+                    className="self-center w-1 h-1 bg-yellow-400 rounded-full sm:w-2 sm:h-2 justify-self-center"
                   />
                 ))}
               </div>
@@ -99,17 +99,20 @@ const ExploreCareer = () => {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-sm text-center md:text-left sm:text-lg leading-loose text-gray-400 max-w-2xl mx-auto md:mx-0"
+              className="max-w-2xl mx-auto text-sm leading-loose text-center text-gray-400 md:text-left sm:text-lg md:mx-0"
             >
               We&apos;re always looking for talented individuals to join our
               team! Whether you&apos;re a developer, consultant, marketer, or
               operations expert, we&apos;re excited to meet you.
             </motion.p>
             {/* Button  */}
-            <motion.div variants={itemVariants}>
+            <motion.div
+              variants={itemVariants}
+              className="flex justify-center md:justify-start"
+            >
               <Link
                 to="/careers"
-                className="hidden md:mt-8 md:inline-block px-6 sm:px-8 py-3 bg-emerald-400 text-black rounded-full font-medium hover:bg-emerald-500 transition-colors text-sm sm:text-base"
+                className="p-3 text-sm font-medium text-black transition-colors rounded-full md:px-6 md:py-3 md:mt-8 md:inline-block sm:px-8 bg-emerald-400 hover:bg-emerald-500 sm:text-base"
               >
                 Explore Career
               </Link>
@@ -118,7 +121,7 @@ const ExploreCareer = () => {
           {/* Image for larger screen from 786px */}
           <motion.div
             variants={imageVariants}
-            className="relative hidden  md:flex justify-end mt-8 md:mt-0"
+            className="relative justify-end hidden mt-8 md:flex md:mt-0"
           >
             <div className="relative z-10">
               <img
@@ -140,7 +143,7 @@ const ExploreCareer = () => {
                     delay: i * 0.2,
                     ease: "easeInOut",
                   }}
-                  className="w-1 h-1 sm:w-2 sm:h-2 bg-yellow-400 rounded-full justify-self-center self-center"
+                  className="self-center w-1 h-1 bg-yellow-400 rounded-full sm:w-2 sm:h-2 justify-self-center"
                 />
               ))}
             </div>

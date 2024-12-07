@@ -2,6 +2,7 @@ import React from "react";
 import "../index.css";
 import InnovationSvg from "../assets/SVG/Innovation.svg";
 import IndustrieSvg from "../assets/SVG/Industries.svg";
+import ClientCentricSvg from "../assets/SVG/Client.svg";
 
 const About = () => {
   const FeaturedDetails = [
@@ -11,20 +12,20 @@ const About = () => {
       desc: "We thrive on innovation, crafting solutions that are not only functional but futuristic.",
     },
     {
-      img: InnovationSvg,
-      title: "Innovative Solutions",
-      desc: "We thrive on innovation, crafting solutions that are not only functional but futuristic.",
+      img: IndustrieSvg,
+      title: "Expertise Across Industries",
+      desc: "With deep expertise in Computer Systems Design and Technical Services, we cater to a wide range of industries.",
     },
     {
-      img: InnovationSvg,
-      title: "Innovative Solutions",
-      desc: "We thrive on innovation, crafting solutions that are not only functional but futuristic.",
+      img: ClientCentricSvg,
+      title: "Client-Centric Approach",
+      desc: "Our solutions are designed with your unique business needs in mind, ensuring optimal performance and a competitive edge.",
     },
   ];
 
   return (
     <section className="bg-[#151515]  " id="about">
-      <div className=" max-w-screen-2xl mx-auto relative">
+      <div className="relative mx-auto max-w-screen-2xl">
         {/* Star Decoration */}
         <div className="absolute top-0 right-10 xs:right-16 md:right-[4.5rem] lg:right-24 xl:right-28 2xl:right-56 opacity-65 md:opacity-85">
           <svg
@@ -54,10 +55,10 @@ const About = () => {
         </div>
         {/* Content Headline */}
         <div className="flex flex-col items-center w-11/12 py-16 mx-auto">
-          <h2 className="mb-5 text-3xl font-bold text-white  sm:mb-16 sm:text-4xl">
+          <h2 className="mb-5 text-3xl font-bold text-white sm:mb-16 sm:text-4xl">
             Who We Are
           </h2>
-          <p className="z-50 text-[0.9rem] leading-loose   xs:text-[1rem] xs:leading-loose text-center text-gray-300 md:text-lg">
+          <p className="z-30 text-[0.9rem] leading-loose   xs:text-[1rem] xs:leading-loose text-center text-gray-300 md:text-lg">
             STARLABS stands for Specialized Team for Alternative Research Labs.
             At STARLABS, we are passionate about harnessing the power of
             technology to transform industries and lives. Our team of experts is
