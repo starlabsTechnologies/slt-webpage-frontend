@@ -26,7 +26,7 @@ const About = () => {
     <section className="bg-[#151515]  " id="about">
       <div className=" max-w-screen-2xl mx-auto relative">
         {/* Star Decoration */}
-        <div className="absolute top-0 right-4 xs:right-16 xl:right-36 2xl:right-44 opacity-65 md:opacity-85">
+        <div className="absolute top-0 right-10 xs:right-16 md:right-[4.5rem] lg:right-24 xl:right-28 2xl:right-56 opacity-65 md:opacity-85">
           <svg
             className=" h-[32rem] xl:h-[33rem]  2xl:h-[35rem]"
             viewBox="0 0 96 625"

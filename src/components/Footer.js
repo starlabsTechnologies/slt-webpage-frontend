@@ -1,13 +1,9 @@
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  Twitter,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPinned,
-  Phone,
-} from "lucide-react";
+import { Mail, MapPinned, Phone } from "lucide-react";
+import InstagramSvg from "../assets/SVG/Icons/Instagram.svg";
+import LinkedInSvg from "../assets/SVG/Icons/LinkedIn.svg";
+import TwiteerSvg from "../assets/SVG/Icons/Twiteer.svg";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -94,20 +90,20 @@ export default function Footer() {
             {/* Social Links */}
             <motion.div className="flex space-x-4" variants={itemVariants}>
               <a
-                href="https://twitter.com"
+                href="https://x.com/StarLabsTechno"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gray-300 transition-colors"
               >
-                <Twitter size={24} />
+                <img src={TwiteerSvg} alt="Twitter" className="w-10 h-10" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/starlabstechno"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gray-300 transition-colors"
               >
-                <Instagram size={24} />
+                <img src={InstagramSvg} alt="Instagram" className="w-10 h-10" />
               </a>
               <a
                 href="https://linkedin.com"
@@ -115,7 +111,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="hover:text-gray-300 transition-colors"
               >
-                <Linkedin size={24} />
+                <img src={LinkedInSvg} alt="LinkedIn" className="w-10 h-10" />
               </a>
             </motion.div>
           </motion.div>
