@@ -133,7 +133,7 @@ const SlidingWindow = ({ isOpen, navLinks, setIsOpen }) => {
                     variants={item}
                     className="fixed text-sm font-medium text-center uppercase bottom-10 font"
                   >
-                    Starlabs @{date.getFullYear()} || All rights reserved
+                    Starlabs ©{date.getFullYear()} || All rights reserved
                   </motion.h1>
                 </div>
               </div>
