@@ -81,10 +81,49 @@ export default function JobDetailPage() {
               </ul>
             </div>
           </div>
-          <div className=" absolute md:left-[45%] lg:left-[46.3%] xl:left-[47.6%] 2xl:left-[47.7%] z-40 hidden md:flex">
+          <div className=" absolute md:left-[45%] lg:left-[46.3%] xl:left-[47.6%] 2xl:left-[47.7%] z-40 md:flex overflow-visible">
             {" "}
+            {/*For Larger Screen*/}
             <motion.svg
               className="md:h-[45rem] xl:h-[40rem]  2xl:h-[40rem]"
+              viewBox="0 0 96 902"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.path
+                d="M47.4995 0.500192L52.7572 853.25L95.1003 845.507L55.9249 863.345L76.3733 901.222L47.303 869.477L17.5977 900.629L38.8067 863.172L-0.000523802 844.547L42.1776 853.143L47.4995 0.500192Z"
+                initial={{ pathLength: 0, fill: "none" }}
+                animate={{
+                  pathLength: 1,
+                  fill: "url(#paint0_linear_639_1599)",
+                }}
+                transition={{
+                  pathLength: { duration: 2, ease: "easeInOut" },
+                  fill: { duration: 1, delay: 2 },
+                }}
+                stroke="url(#paint0_linear_639_1599)"
+                strokeWidth="2"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_639_1599"
+                  x1="62.5304"
+                  y1="-5.51988"
+                  x2="52.5505"
+                  y2="982.925"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0.3" stopColor="#53C888" />
+                  <stop offset="1" stopColor="#3A86FF" />
+                </linearGradient>
+              </defs>
+            </motion.svg>
+          </div>
+
+          {/*For Mobile Screen*/}
+          <div className="absolute top-[58%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 flex md:hidden">
+            <motion.svg
+              className="h-48 w-auto rotate-90"
               viewBox="0 0 96 902"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
