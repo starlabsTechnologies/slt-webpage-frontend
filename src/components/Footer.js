@@ -212,22 +212,22 @@ export default function Footer() {
                 Terms of Use
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/"
                 className="text-sm transition-colors hover:text-gray-300"
               >
                 Legal
               </Link>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <Link
                 href="/"
                 className="text-sm transition-colors hover:text-gray-300"
               >
                 Site Map
               </Link>
-            </li>
+            </li> */}
           </ul>
 
           {/* links in mobile view */}

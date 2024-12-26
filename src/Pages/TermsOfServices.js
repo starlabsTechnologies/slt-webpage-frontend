@@ -141,7 +141,7 @@ const TermsOfServices = () => {
                 </motion.section>
 
                 <motion.section variants={itemVariants}>
-                  <h2 className="text-lg mb-1">5 .Limitation of Liability</h2>
+                  <h2 className="text-lg mb-1">5. Limitation of Liability</h2>
                   <ul className="list-disc pl-6 mt-1 text-sm text-gray-300 space-y-2">
                     <li>
                       No Warranty: We make no representations or warranties
@@ -159,7 +159,7 @@ const TermsOfServices = () => {
                 </motion.section>
 
                 <motion.section variants={itemVariants}>
-                  <h2 className="text-lg mb-1">6.Termination</h2>
+                  <h2 className="text-lg mb-1">6. Termination</h2>
 
                   <ul className="list-disc pl-6 mt-1 text-sm text-gray-300 space-y-2">
                     <li>
@@ -171,7 +171,7 @@ const TermsOfServices = () => {
                 </motion.section>
 
                 <motion.section variants={itemVariants}>
-                  <h2 className="text-lg mb-1">7.Governing Law</h2>
+                  <h2 className="text-lg mb-1">7. Governing Law</h2>
                   <ul className="list-disc pl-6 mt-1 text-sm text-gray-300 space-y-2">
                     <li>
                       Jurisdiction: These Terms shall be governed by and
@@ -196,7 +196,7 @@ const TermsOfServices = () => {
                 </motion.section>
 
                 <motion.section variants={itemVariants}>
-                  <h2 className="text-lg mb-1">9.Contact Us</h2>
+                  <h2 className="text-lg mb-1">9. Contact Us</h2>
                   <p>
                     If you have any questions about this Privacy Policy or how
                     we handle your personal information, please contact us at:

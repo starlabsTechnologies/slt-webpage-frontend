@@ -153,7 +153,7 @@ const PrivacyPolicy = () => {
 
                 <motion.section variants={itemVariants}>
                   <h2 className="text-lg mb-1">
-                    3.How We Protect Your Information
+                    3. How We Protect Your Information
                   </h2>
                   <p>
                     We are committed to protecting your personal information. We
@@ -206,7 +206,7 @@ const PrivacyPolicy = () => {
 
                 <motion.section variants={itemVariants}>
                   <h2 className="text-lg mb-1">
-                    5 . Cookies and Tracking Technologies
+                    5. Cookies and Tracking Technologies
                   </h2>
                   <p>
                     We use cookies and similar technologies to collect
@@ -218,7 +218,7 @@ const PrivacyPolicy = () => {
                 </motion.section>
 
                 <motion.section variants={itemVariants}>
-                  <h2 className="text-lg mb-1">6.Your Rights and Choices</h2>
+                  <h2 className="text-lg mb-1">6. Your Rights and Choices</h2>
                   <p>
                     As a user, you have the following rights regarding your
                     personal data:
@@ -246,7 +246,7 @@ const PrivacyPolicy = () => {
                 </motion.section>
 
                 <motion.section variants={itemVariants}>
-                  <h2 className="text-lg mb-1">7.Data Retention</h2>
+                  <h2 className="text-lg mb-1">7. Data Retention</h2>
                   <p>
                     We retain your personal data for as long as it is necessary
                     to fulfill the purposes outlined in this Privacy Policy or
@@ -267,7 +267,7 @@ const PrivacyPolicy = () => {
                 </motion.section>
 
                 <motion.section variants={itemVariants}>
-                  <h2 className="text-lg mb-1">9.Contact Us</h2>
+                  <h2 className="text-lg mb-1">9. Contact Us</h2>
                   <p>
                     If you have any questions about this Privacy Policy or how
                     we handle your personal information, please contact us at:
