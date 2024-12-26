@@ -3,6 +3,7 @@ import "../index.css";
 import InnovationSvg from "../assets/SVG/Innovation.svg";
 import IndustrieSvg from "../assets/SVG/Industries.svg";
 import ClientCentricSvg from "../assets/SVG/Client.svg";
+import AboutBgSvg from "../assets/SVG/About/AboutBg.svg";
 
 const About = () => {
   const FeaturedDetails = [
@@ -24,8 +25,27 @@ const About = () => {
   ];
 
   return (
-    <section className="bg-[#151515]  " id="about">
+    <section className="bg-black " id="about">
       <div className="relative mx-auto max-w-screen-2xl">
+        {/* Curl at bottom */}
+        <div className="absolute bottom-0 left-0 hidden w-full h-full overflow-hidden md:block">
+          <svg
+            className="w-full h-full"
+            preserveAspectRatio="none"
+            viewBox="0 0 1360 1349"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0H1360V1346.5H757H374H356L37 1224.5L12 1213.5L0 1187V0Z"
+              fill="#272525"
+            />
+            <path
+              d="M-4.55379e-05 0H1360V1349H359C359 1349 283.36 1312.31 249 1273C208.398 1226.54 184 1129 184 1129C184 1129 118 1221.5 80.5 1221.5C43 1221.5 10.5176 1228.57 -4.55379e-05 1197.5C-4.1319 1185.29 -4.55379e-05 1164.5 -4.55379e-05 1164.5V0Z"
+              fill="#151515"
+            />
+          </svg>
+        </div>
         {/* Star Decoration */}
         <div className="absolute top-0 right-10 xs:right-16 md:right-[4.5rem] lg:right-24 xl:right-28 2xl:right-56 opacity-65 md:opacity-85">
           <svg
@@ -54,8 +74,8 @@ const About = () => {
           </svg>
         </div>
         {/* Content Headline */}
-        <div className="flex flex-col items-center w-11/12 py-16 mx-auto">
-          <h2 className="mb-5 text-3xl font-bold text-white sm:mb-16 sm:text-4xl">
+        <div className="flex flex-col items-center w-11/12 py-16 mx-auto ">
+          <h2 className="z-20 mb-5 text-3xl font-bold text-white sm:mb-16 sm:text-4xl">
             Who We Are
           </h2>
           <p className="z-30 text-[0.9rem] leading-loose   xs:text-[1rem] xs:leading-loose text-center text-gray-300 md:text-lg">
