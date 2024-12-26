@@ -77,11 +77,14 @@ const Navbar = () => {
   };
 
   return (
-    <div className="">
-      <div className="fixed z-50 w-full    text-white bg-black/80">
-        <div className="z-50 flex items-center justify-between px-10 max-w-screen-2xl mx-auto pt-4 ">
+    <div className="w-ful">
+      <div className="fixed z-50 w-full text-white bg-black/80">
+        <div className="z-50 flex items-center justify-between px-10 pt-4 mx-auto max-w-screen-2xl ">
           {/* Left side  i.e Logo */}
-          <div className="z-50 overflow-hidden ">
+          <div
+            className="z-50 overflow-hidden cursor-pointer "
+            onClick={() => handleClick("home")}
+          >
             {/* start Svg */}
             <div className="flex flex-col items-center">
               <div>
@@ -119,6 +122,7 @@ const Navbar = () => {
                 initial={{ y: 50 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5, ease: "easeIn" }}
+                className="tracking-widest font-AgencyFb"
               >
                 STARLABS
               </motion.div>
@@ -150,7 +154,7 @@ const Navbar = () => {
           </motion.div>
 
           <motion.div
-            className="justify-end hidden text-base font-semibold tracking-tight h-7 lg:flex"
+            className="z-50 justify-end hidden text-base font-semibold tracking-tight h-7 lg:flex"
             variants={container}
             initial="initial"
             animate="animate"

@@ -112,7 +112,7 @@ const Loader = ({ handleLoading }) => {
             {"STARLABS".split("").map((word, index) => (
               <motion.span
                 key={index}
-                className="inline-block"
+                className="inline-block font-AgencyFb"
                 variants={textVariant}
                 initial="initial"
                 animate={textTransition}

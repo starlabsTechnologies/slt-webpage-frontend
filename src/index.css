@@ -15,3 +15,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+@font-face {
+  font-family: AgencyFb;
+  src: url("../public/Fonts/AgencyFB-Bold.ttf") format("truetype"),
+    url("../public/Fonts/AgencyFB-Bold.woff") format("woff"),
+    url("../public/Fonts/AgencyFB-Bold.woff2") format("woff2");
+}

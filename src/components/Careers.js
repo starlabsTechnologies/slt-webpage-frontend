@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { MapPinIcon } from "lucide-react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DiamondBG from "../assets/Images/DiamondGradient.png";
 import StarBg from "../assets/SVG/Careers/WorkBg.svg";
 
@@ -10,13 +9,15 @@ export default function Careers() {
   const fileInputRef = useRef(null);
   const [openPositions, setOpenPositions] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [expanded, setExpanded] = useState(null);
   const navigate = useNavigate();
 
-  // Handle accordion expand/collapse
-  const handleExpand = (jobId) => {
-    setExpanded(expanded === jobId ? null : jobId);
-  };
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   // Handle navigation to job application page
   const handleApplyNow = (jobId) => {
@@ -148,7 +149,7 @@ export default function Careers() {
 
         {/* Accordion for Job Positions */}
         <div className="space-y-4 mb-6 pt-10">
-          <h1 className="text-white text-center text-3xl">
+          <h1 className="text-white text-center text-2xl md:text-3xl">
             Featured Jobs In Starlabs
           </h1>
           <div
@@ -156,50 +157,33 @@ export default function Careers() {
             style={{ backgroundImage: `url(${StarBg})` }}
           >
             {openPositions.length === 0 ? (
-              <p className="text-center text-gray-200 shadow-lg p-4 m-6 max-w-4xl mx-auto rounded-lg bg-[#151515]">
+              <p className="text-center text-gray-200 shadow-lg p-4 m-6 md:max-w-4xl mx-auto rounded-lg bg-[#151515]">
                 No open positions available
               </p>
             ) : (
               openPositions.map((position) => (
                 <div
                   key={position.id}
-                  className="shadow-lg flex justify-between p-4 m-6 max-w-4xl mx-auto rounded-lg bg-[#151515]"
+                  className="shadow-lg flex justify-between p-4 m-6 max-w-2xl md:max-w-4xl mx-auto rounded-lg bg-[#151515]"
                 >
-                  <div className="text-white">
-                    <h3 className="text-xl pb-3 ">{position.role}</h3>
+                  <div className="text-white w-8/12">
+                    <h3 className=" text-base md:text-xl pb-3 ">
+                      {position.role}
+                    </h3>
                     <div className="">
-                      <p className="text-sm">Exp: {position.experience}</p>
+                      <p className="text-sm">
+                        Exp: {position.experience.slice(0, 9)}
+                      </p>
                     </div>
                   </div>
-                  <div>
-                    <div className="text-gray-200 text-sm pb-3">
-                      Job Type: {position.location}
-                    </div>
+                  <div className="flex items-end">
                     <button
                       onClick={() => handleApplyNow(position.id)}
-                      className="bg-[#00ff9d] hover:bg-[#00cc7d] text-black py-1 px-3 rounded-full transition-colors"
+                      className=" bg-[#00ff9d] hover:bg-[#00cc7d] text-black text-[0.73rem] xs:text-sm md:text-base py-1 px-3 rounded-full transition-colors"
                     >
                       Apply Now
                     </button>
                   </div>
-
-                  {/* {expanded === position.id && (
-                    <div className="px-6 py-4 border-t border-gray-200">
-                      <div className="flex items-center mb-2">
-                        <MapPinIcon className="w-5 h-5 mr-2 text-blue-600" />
-                        <p className="text-gray-600">{position.location}</p>
-                      </div>
-                      <p className="text-gray-600 mb-2">
-                        Experience: {position.experience}
-                      </p>
-                      <button
-                        onClick={() => handleApplyNow(position.id)}
-                        className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 mt-4"
-                      >
-                        Apply Now
-                      </button>
-                    </div>
-                  )} */}
                 </div>
               ))
             )}
@@ -219,12 +203,12 @@ export default function Careers() {
               Send Us Your Resume, And We&apos;ll Keep You In Mind For Future
               Opportunities.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 text-white/80">
               {/* Name */}
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-[#7a7a7a] mb-1"
+                  className="block text-sm font-medium  mb-1"
                 >
                   Name<span className="text-red-500">*</span>
                 </label>
@@ -243,7 +227,7 @@ export default function Careers() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-600 mb-1"
+                  className="block text-sm font-medium   mb-1"
                 >
                   Email<span className="text-red-500">*</span>
                 </label>
@@ -262,7 +246,7 @@ export default function Careers() {
               <div>
                 <label
                   htmlFor="job_role"
-                  className="block text-sm font-medium text-gray-600 mb-1"
+                  className="block text-sm font-medium  mb-1"
                 >
                   Looking for<span className="text-red-500">*</span>
                 </label>
@@ -281,7 +265,7 @@ export default function Careers() {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-600 mb-1"
+                  className="block text-sm font-medium   mb-1"
                 >
                   Message<span className="text-red-500">*</span>
                 </label>
@@ -299,7 +283,7 @@ export default function Careers() {
               <div>
                 <label
                   htmlFor="resume"
-                  className="block text-sm font-medium text-gray-600 mb-1"
+                  className="block text-sm font-medium mb-1"
                 >
                   Upload Resume<span className="text-red-500">*</span>
                 </label>
@@ -316,6 +300,22 @@ export default function Careers() {
                   required
                   onChange={handleInputChange}
                 />
+              </div>
+              <div className="text-white text-[0.84rem]">
+                <p>
+                  "I Agree To The{" "}
+                  <Link to="/privacypolicy" className="text-blue-500 underline">
+                    Privacy Policy
+                  </Link>{" "}
+                  And{" "}
+                  <Link
+                    to="/termsofservices"
+                    className="text-blue-500 underline"
+                  >
+                    Terms Of Services
+                  </Link>
+                  "
+                </p>
               </div>
 
               <div>
