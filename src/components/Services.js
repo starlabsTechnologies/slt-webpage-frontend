@@ -83,7 +83,7 @@ const Services = () => {
   return (
     <>
       <section
-        className="relative pt-16 pb-20 max-w-screen-2xl mx-auto overflow-hidden text-white"
+        className="relative pt-16 pb-20 mx-auto overflow-hidden text-white max-w-screen-2xl"
         id="services"
       >
         {/* Top Curved Divider */}
@@ -96,14 +96,10 @@ const Services = () => {
           </h2>
         </div>
 
-        <div className="w-11/12 mx-auto text-5xl font-bold text-center">
-          Our Core Services
-        </div>
-
         {/* Section Content */}
         <div className="relative w-full overflow-hidden">
           {/* Title */}
-          <div className="flex items-center justify-end w-11/12 pt-20 mx-auto mb-16"></div>
+          <div className="flex items-center justify-end w-11/12 pt-32 mx-auto mb-16"></div>
           {/* <div className="flex items-center justify-end w-11/12 pt-20 mx-auto mb-16">
             <button
               onClick={() => setShowAllServices((prevState) => !prevState)}
@@ -144,14 +140,14 @@ const Services = () => {
                     (service, index) =>
                       index % 2 === 0 && (
                         <SwiperSlide key={index}>
-                          <div className="pt-20 pb-36 max-h-fit   w-full text-white bg-[#151515] rounded-lg  ">
-                            <div className="w-11/12 pt-16 mx-auto md:w-full ">
-                              <div className="flex items-center text-white rounded-lg">
+                          <div className="pt-20 sm:pt-10 md:pt-24 pb-36 w-full   text-white bg-[#151515] rounded-lg  ">
+                            <div className="flex flex-col  pt-16 mx-auto h-[42rem] xs:h-[43rem] sm:h-[55rem]  md:w-full">
+                              <div className="flex items-center text-white rounded-lg ">
                                 <div className="md:mr-20 max-md:w-1/2 ">
                                   <img
                                     src={service.image}
                                     alt={service.title}
-                                    className="object-cover  mb-4 -ml-2 "
+                                    className="object-cover mb-4 -ml-2 sm:-ml-10 sm:scale-75 md:scale-100 md:ml-0 "
                                   />
                                 </div>
                                 <div className="w-1/2 md:-mt-16 md:w-1/2 lg:-mt-28">
@@ -164,7 +160,7 @@ const Services = () => {
                                 </div>
                               </div>
                               {services[index + 1] && (
-                                <div className="flex justify-end text-white rounded-lg ">
+                                <div className="flex justify-end text-white rounded-lg h-1/2 ">
                                   <div className="w-1/2 mt-16 md:w-6/12 md:mt-10 xl:w-7/12 lg:-mt-10 ">
                                     <h2 className="mb-2 text-sm font-semibold tracking-tighter md:text-3xl xl:text-4xl">
                                       {services[index + 1].title}
@@ -173,11 +169,11 @@ const Services = () => {
                                       {services[index + 1].description}
                                     </p>
                                   </div>
-                                  <div className="mt-10 md:-mt-10 lg:-mt-28 max-md:w-8/12">
+                                  <div className="mt-10 xs:-mt-5 md:-mt-10 lg:-mt-28 max-md:w-8/12 ">
                                     <img
                                       src={services[index + 1].image}
                                       alt={services[index + 1].title}
-                                      className="object-cover mb-4  "
+                                      className="object-cover mb-4 sm:ml-10 sm:scale-75 md:scale-100 md:ml-0"
                                     />
                                   </div>
                                 </div>
