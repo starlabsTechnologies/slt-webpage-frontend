@@ -3,7 +3,6 @@ import "../index.css";
 import InnovationSvg from "../assets/SVG/Innovation.svg";
 import IndustrieSvg from "../assets/SVG/Industries.svg";
 import ClientCentricSvg from "../assets/SVG/Client.svg";
-import AboutBgSvg from "../assets/SVG/About/AboutBg.svg";
 
 const About = () => {
   const FeaturedDetails = [
@@ -97,9 +96,9 @@ const About = () => {
               <div
                 key={index}
                 className={
-                  index == 1
+                  index === 1
                     ? "md:mt-44 lg:mt-32"
-                    : index == 2
+                    : index === 2
                     ? "md:mt-96 lg:mt-72"
                     : ""
                 }

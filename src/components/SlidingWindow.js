@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const SlidingWindow = ({ isOpen, navLinks, setIsOpen }) => {
@@ -21,28 +21,6 @@ const SlidingWindow = ({ isOpen, navLinks, setIsOpen }) => {
         type: "spring",
         damping: 30,
         duration: 1,
-      },
-    },
-  };
-
-  const pageVariant = {
-    initial: {
-      y: "-100%",
-    },
-    animate: {
-      y: isOpen ? "0%" : "-100%",
-      transition: {
-        type: "spring",
-        duration: 1,
-        damping: 25,
-      },
-    },
-    exit: {
-      y: "-115%",
-      transition: {
-        type: "spring",
-        duration: 1,
-        damping: 30,
       },
     },
   };
