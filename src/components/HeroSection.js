@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useRef, useMemo } from "react";
+import React, { lazy, Suspense, useMemo } from "react";
 import bgImage from "../assets/Images/Star_bg.png";
 import { ReactComponent as CloudSvgLarge } from "../assets/SVG/Hero/Cloud.svg";
 

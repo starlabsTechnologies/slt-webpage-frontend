@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import React, { useState } from "react";
 import { SlidingWindow } from "./index";
 import { useNavigate } from "react-router-dom";
