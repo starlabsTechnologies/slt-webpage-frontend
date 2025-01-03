@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import React, { useState } from "react";
 import { SlidingWindow } from "./index";
 import { useNavigate } from "react-router-dom";
@@ -167,9 +167,10 @@ const Navbar = () => {
                   variants={item}
                   onClick={() => handleClick(links.name)}
                 >
-                  <li className="font-normal uppercase font-jeju">
+                  <li className="font-normal uppercase font-jeju group-hover:text-green-400">
                     {links.name}
                   </li>
+                  <span className=" absolute w-full h-[1px] scale-x-0 bg-emerald-500 group-hover:scale-x-100 transition-all duration-150 "></span>
                 </motion.div>
               ))}
             </ul>

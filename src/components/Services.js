@@ -130,9 +130,9 @@ const Services = () => {
                   loop={true}
                   className="w-full "
                   onSwiper={(swiper) => (swiperRef.current = swiper)}
-                  speed={800} // Smooth out the slider animation
+                  speed={1000} // Smooth out the slider animation
                   autoplay={{
-                    delay: 3000,
+                    delay: 6000,
                     disableOnInteraction: false,
                   }}
                 >
