@@ -121,45 +121,45 @@ export default function JobDetailPage() {
           </div>
 
           {/*For Mobile Screen*/}
-          <div className="absolute top-[58%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 flex md:hidden">
+          <div className=" z-40 flex md:hidden h-10 -mt-10 xs:-mt-10 ">
             <motion.svg
-              className="h-48 w-auto rotate-90"
-              viewBox="0 0 96 902"
+              className="h-20 w-full scale-y-150 rotate-180 -translate-y-1/2  "
+              viewBox="0 0 1277 90"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <motion.path
-                d="M47.4995 0.500192L52.7572 853.25L95.1003 845.507L55.9249 863.345L76.3733 901.222L47.303 869.477L17.5977 900.629L38.8067 863.172L-0.000523802 844.547L42.1776 853.143L47.4995 0.500192Z"
+                d="M1276.56 35.551L1237.16 39.9893L1251.04 69.3049L1226.23 44.7733L1200.83 68.6953L1215.42 39.7254L0.272747 31.6399L1215.54 29.8935L1201.66 0.577974L1226.47 25.1095L1251.87 1.18753L1237.28 30.1575L1276.56 35.551Z"
                 initial={{ pathLength: 0, fill: "none" }}
                 animate={{
                   pathLength: 1,
-                  fill: "url(#paint0_linear_639_1599)",
+                  fill: "url(#paint0_linear_253_2266)",
                 }}
                 transition={{
                   pathLength: { duration: 2, ease: "easeInOut" },
                   fill: { duration: 1, delay: 2 },
                 }}
-                stroke="url(#paint0_linear_639_1599)"
+                stroke="url(#paint0_linear_253_2266)"
                 strokeWidth="2"
               />
               <defs>
                 <linearGradient
-                  id="paint0_linear_639_1599"
-                  x1="62.5304"
-                  y1="-5.51988"
-                  x2="52.5505"
-                  y2="982.925"
+                  id="paint0_linear_253_2266"
+                  x1="638.9"
+                  y1="-6.25382"
+                  x2="638.073"
+                  y2="61.8635"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop offset="0.3" stopColor="#53C888" />
-                  <stop offset="1" stopColor="#3A86FF" />
+                  <stop offset="0.2" stopColor="#53C888" />
+                  <stop offset="0.741" stopColor="#3A86FF" />
                 </linearGradient>
               </defs>
             </motion.svg>
           </div>
 
           {/* Right side - Application Summary */}
-          <div className="w-full md:w-1/2 py-10 md:p-6 backdrop-blur-[16px] backdrop-saturate-[180%] bg-[rgba(71,71,71,0.38)] rounded-[12px] border border-[rgba(255,255,255,0.125)] mb-6">
+          <div className="w-full -mt-12 sm:-mt-9 md:mt-0 md:w-1/2 py-10 md:p-6 backdrop-blur-[16px] backdrop-saturate-[180%] bg-[rgba(71,71,71,0.38)] rounded-[12px] border border-[rgba(255,255,255,0.125)] mb-6">
             <CareerModal selectedJob={jobDetails.role} />
           </div>
         </div>
