@@ -2,16 +2,18 @@ import { motion } from "motion/react";
 import React, { useState } from "react";
 import StarBg from "../assets/Images/Star_bg.png";
 import TeamSvg from "../assets/SVG/Contact/Contact.svg";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MobileSvg from "../assets/SVG/Contact/Mobile.svg";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     message: "",
     subject: "",
+    phoneNumber: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -19,9 +21,25 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Email validation function
+  const validateEmail = (email) => {
+    const regex = /\b[\w.-]+@[\w.-]+\.\w{2,4}\b/gi;
+    return regex.test(email);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Validate email
+    if (!validateEmail(formData.email)) {
+      toast.error("Please enter a valid email address.", {
+        position: "top-left",
+      });
+
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API}/contact-us`, {
@@ -54,6 +72,7 @@ export default function Contact() {
       style={{ backgroundImage: `url(${StarBg})` }}
       id="contact"
     >
+      <ToastContainer />
       <div className="relative mx-auto overflow-hidden">
         <div className="grid gap-10 lg:grid-cols-2">
           {/* Left side - Illustration */}

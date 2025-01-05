@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function CareerForm({ selectedJob }) {
@@ -14,9 +14,23 @@ export default function CareerForm({ selectedJob }) {
     resume: null,
   });
 
+  // Email validation function
+  const validateEmail = (email) => {
+    const regex =
+      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+    return regex.test(email);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Validate email
+    if (!validateEmail(formData.email)) {
+      toast.error("Please enter a valid email address.");
+      setIsSubmitting(false);
+      return;
+    }
 
     // Create form data for both requests
     const formDataWithJob = new FormData();
@@ -133,6 +147,7 @@ export default function CareerForm({ selectedJob }) {
         thankYouMessage // Render the thank-you message if submitted
       ) : (
         <>
+          <ToastContainer />
           <h3 className="mb-4 text-2xl font-semibold text-center text-green-400">
             Apply for {selectedJob}
           </h3>
