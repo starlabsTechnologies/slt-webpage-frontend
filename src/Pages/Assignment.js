@@ -61,7 +61,7 @@ const Assignment = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/jobs`);
+        const response = await fetch(`${process.env.REACT_APP_API}/jobs`);
 
         if (response.ok) {
           const jobs = await response.json();
@@ -93,16 +93,13 @@ const Assignment = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/assignments`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(`${process.env.REACT_APP_API}/assignments`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       if (response.ok) {
         toast.success("Application Submitted Successfully!");
