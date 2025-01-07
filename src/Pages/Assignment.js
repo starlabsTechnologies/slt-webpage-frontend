@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import bgImage from "../assets/Images/Star_bg.png";
 import { ReactComponent as CloudSvgLarge } from "../assets/SVG/Hero/Cloud.svg";
 import { Navbar } from "../components";
@@ -25,27 +25,27 @@ const Assignment = () => {
   const navigate = useNavigate();
 
   // Fetch roles from the API
-  React.useEffect(() => {
-    const fetchActiveRoles = async () => {
-      try {
-        const response = await fetch(
-          "https://website-backend.starlabs.co.in/api/jobs"
-        );
+  // useEffect(() => {
+  //   const fetchActiveRoles = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://website-backend.starlabs.co.in/api/jobs"
+  //       );
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch roles");
-        }
-        const data = await response.json();
-        const activeRoles = data.filter((role) => role.status === "active");
-        setRoles(activeRoles);
-      } catch (error) {
-        console.error("Error fetching roles:", error);
-        toast.error("Unable to load roles. Please try again later.");
-      }
-    };
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch roles");
+  //       }
+  //       const data = await response.json();
+  //       const activeRoles = data.filter((role) => role.status === "active");
+  //       setRoles(activeRoles);
+  //     } catch (error) {
+  //       console.error("Error fetching roles:", error);
+  //       toast.error("Unable to load roles. Please try again later.");
+  //     }
+  //   };
 
-    fetchActiveRoles();
-  }, []);
+  //   fetchActiveRoles();
+  // }, []);
 
   useEffect(() => {
     // Scroll to the top when the component mounts
@@ -61,15 +61,14 @@ const Assignment = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API}/jobs`, {
-          method: "GET",
-        });
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/jobs`);
 
         if (response.ok) {
           const jobs = await response.json();
 
           // Filter jobs to include only those with status "active"
           const activeJobs = jobs.filter((job) => job.status === "active");
+          setRoles(activeJobs);
           setOpenPositions(activeJobs);
         } else {
           toast.error("Failed to fetch job positions");
@@ -85,7 +84,7 @@ const Assignment = () => {
 
   const [formData, setFormData] = useState({
     email: "",
-    job_role: "",
+    appliedFor: "",
     link: "",
   });
 
@@ -93,51 +92,31 @@ const Assignment = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Create form data for both requests
-    const formDataWithJob = new FormData();
-
-    formDataWithJob.append("email", formData.email);
-    formDataWithJob.append("link", formData.link);
-    formDataWithJob.append("job_role", formData.job_role);
-
-    // Prepare formData for the second API
-    const formDataForResumesApi = new FormData();
-    formDataForResumesApi.append("email", formData.email);
-    formDataForResumesApi.append("role", formData.job_role);
-    formDataForResumesApi.append("link", formData.link);
-
     try {
-      const response = await fetch(`${process.env.REACT_APP_API}/carrier`, {
-        method: "POST",
-        body: formDataWithJob,
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/assignments`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
-        const responseResume = await fetch(
-          `${process.env.REACT_APP_API}/assignments`,
-          {
-            method: "POST",
-            body: formDataForResumesApi,
-          }
-        );
-
-        if (responseResume.ok) {
-          toast.success("Application Submitted Successfully!");
-          setIsSubmitting(false);
-          setFormData({
-            email: "",
-            job_role: "",
-            link: "",
-          });
-          if (fileInputRef.current) {
-            fileInputRef.current.value = "";
-          }
-        } else {
-          toast.error("Failed to submit application to resumes API");
-          setIsSubmitting(false);
+        toast.success("Application Submitted Successfully!");
+        setIsSubmitting(false);
+        setFormData({
+          email: "",
+          appliedFor: "",
+          link: "",
+        });
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
         }
       } else {
-        toast.error("Failed to submit application to carrier API");
+        toast.error("Failed to submit application to resumes API");
         setIsSubmitting(false);
       }
     } catch (error) {
@@ -162,41 +141,42 @@ const Assignment = () => {
   );
   return (
     <>
+      <ToastContainer />
       <Navbar />
       <section
         id="home"
-        className=" w-full h-auto xs:h-auto md:h-dvh  relative pt-36   lg:pt-40      overflow-hidden bg-black bg-center bg-cover"
+        className=" w-full   relative pt-28 sm:pt-20   lg:pt-28 overflow-hidden bg-center bg-cover"
         style={sectionStyle}
       >
         {/* Content */}
-        <div className="  h-full relative mx-auto z-20">
-          <div className=" ">
-            <div className="mx-auto space-y-6 xs:space-y-8 md:space-y-8 text-center text-white">
+        <div className="relative mx-auto max-w-screen-2xl z-20">
+          <div className="pb-28 lg:pb-24">
+            <div className="mx-auto space-y-6 xs:space-y-8 md:space-y-3 text-center text-white">
               <div>
-                <h1 className="text-4xl xs:text-5xl font-bold tracking-widest lg:text-6xl xl:text-7xl font-AgencyFb mt-[-50px]   ">
+                <h1 className="text-3xl xs:text-4xl font-bold tracking-widest lg:text-5xl  font-AgencyFb    ">
                   STARLABS
                 </h1>
-                <h2 className="text-xl xs:text-2xl tracking-wide lg:text-3xl xl:text-4xl font-AgencyFb  ">
+                <h2 className="text-md xs:text-xl tracking-wide lg:text-3xl  font-AgencyFb  ">
                   SPECIALIZED TEAM FOR ALTERNATIVE RESEARCH
                 </h2>
               </div>
 
-              <div className="mx-auto w-10/12 md:w-5/12 xs:text-base  text-sm md:text-lg leading-[7.5vw] xs:leading-[11vw]  tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl flex flex-col gap-5">
+              <div className="mx-auto w-10/12 sm:w-8/12 md:w-7/12 lg:w-6/12 xl:w-5/12 text-sm sm:text-base md:text-lg leading-[7.5vw] sm:leading-[6vw] md:leading-[5vw] lg:leading-relaxed xl:leading-loose tracking-wider text-white flex flex-col gap-5">
                 <div className="bg-cover bg-top w-full h-full">
-                  <div className="w-full max-w-2xl mx-auto p-6 backdrop-blur-[16px] backdrop-saturate-[180%] bg-[rgba(71,71,71,0.38)] rounded-[12px] border border-[rgba(255,255,255,0.125)]">
-                    <h3 className="text-2xl font-semibold mb-2 text-[#00ff9d]">
+                  <div className="w-full max-w-2xl mx-auto p-4 sm:p-6 backdrop-blur-[10px] backdrop-saturate-[180%] bg-[rgba(71,71,71,0.38)] rounded-lg border border-[rgba(255,255,255,0.125)]">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-7 md:mb-8 text-[#00ff9d]">
                       Submit your Assignment
                     </h3>
 
                     <form
                       onSubmit={handleSubmit}
-                      className="space-y-6 text-white/80 text-start"
+                      className="space-y-4 sm:space-y-8 text-white/80 text-start md:px-10"
                     >
                       {/* Email */}
                       <div>
                         <label
                           htmlFor="email"
-                          className="block text-sm font-medium   mb-1 ml-1"
+                          className="block text-sm font-medium mb-2 ml-1"
                         >
                           Email<span className="text-red-500">*</span>
                         </label>
@@ -206,46 +186,44 @@ const Assignment = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
-                          className="w-full px-4 rounded-lg border-white/30 border bg-black text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
+                          className="w-full px-3  sm:px-4  py-1 rounded-lg border border-white/30 bg-black text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
                           required
                         />
                       </div>
 
                       {/* Job Role */}
                       <div>
-                        <label className="block text-sm font-medium ml-1 mb-1">
+                        <label className="block text-sm font-medium ml-1 mb-2">
                           Select the role you've applied for{" "}
                           <span className="text-red-500">*</span>
                         </label>
-
                         <select
-                          className="w-full mt-1 p-2 border rounded text-white bg-black "
-                          value={formData.applyingFor}
+                          className="w-full px-3 py-2 sm:px-4   border border-white/30 rounded text-white bg-black placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
+                          value={formData.appliedFor}
                           onChange={(e) =>
                             setFormData({
                               ...formData,
-                              applyingFor: e.target.value,
+                              appliedFor: e.target.value,
                             })
                           }
                           required
                         >
-                          <option value="" disabled className="text-white">
+                          <option value="" disabled>
                             Select a role
                           </option>
                           {roles.map((role, index) => (
                             <option key={index} value={role.role}>
-                              {" "}
-                              {/* Use role.role as value */}
                               {role.role}
                             </option>
                           ))}
                         </select>
                       </div>
 
+                      {/* Link */}
                       <div>
                         <label
                           htmlFor="link"
-                          className="block text-sm font-medium  mb-1 ml-1"
+                          className="block text-sm font-medium mb-2 ml-1"
                         >
                           Link<span className="text-red-500">*</span>
                         </label>
@@ -255,15 +233,16 @@ const Assignment = () => {
                           name="link"
                           value={formData.link}
                           onChange={handleInputChange}
-                          className="w-full px-4  rounded-lg border-white/30 border bg-black text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
+                          className="w-full px-3 py-1 sm:px-4   rounded-lg border border-white/30 bg-black text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
                           required
                         />
                       </div>
 
-                      <div>
+                      {/* Submit Button */}
+                      <div className="w-1/3 mx-auto">
                         <button
                           type="submit"
-                          className="w-full bg-[#00ff9d] hover:bg-[#00cc7d] text-black font-medium py-2 rounded transition-colors"
+                          className="w-full bg-[#00ff9d] hover:bg-[#00cc7d] text-black font-medium py-2 sm:py-2 rounded-xl transition-colors"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? "Sending..." : "Submit"}
@@ -275,9 +254,8 @@ const Assignment = () => {
               </div>
             </div>
           </div>
-
           {/* Rocket svg */}
-          <div className="absolute z-20 bottom-0 right-2 xs:bottom-[-10px] sm:bottom-[-20px]  xs:right-9 md:right-9 md:bottom-12  lg:bottom-16 lg:right-3 xl:bottom-32 xl:right-8 2xl:right-36 ">
+          <div className="hidden md:block absolute z-20 bottom-20 right-2 xs:bottom-20 xs:right-9 md:right-9 md:bottom-24 lg:right-3 xl:bottom-44 xl:right-8 2xl:right-36">
             <svg
               className="w-36 h-36 md:w-40 md:h-40 lg:w-60 lg:h-60 xl:w-64 xl:h-64 "
               viewBox="0 0 100 267"
@@ -407,7 +385,7 @@ const Assignment = () => {
           </div>
 
           {/* Rocket smoke */}
-          <div className="absolute bottom-[-50px] lg:-right-[4rem] -right-[2.8rem] xs:-right-[1rem] xl:-right-[5.2rem]  2xl:right-0">
+          <div className="hidden md:block absolute bottom-0 lg:-right-[4rem] -right-[2.8rem] xs:-right-[1rem] xl:-right-[5.2rem]  2xl:right-0">
             <svg
               className="w-[20rem] h-[7rem] md:w-[22rem] md:h-[9rem]  lg:w-[32rem] xl:w-[40rem] xl:h-[15.4rem] 2xl:w-[44rem] lg:h-[12rem] 2xl:h-[15.5rem]"
               viewBox="0 0 601 259"
@@ -435,14 +413,15 @@ const Assignment = () => {
             </svg>
           </div>
 
-          <div className="absolute left-0 z-40 bottom-10 xs:bottom-14 h-[10rem] w-[10rem] xs:h-[12rem] xs:w-[12rem] md:w-64 md:h-64 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 ">
+          <div className="hidden md:block absolute left-0 z-40 bottom-10 xs:bottom-14 h-[10rem] w-[10rem] xs:h-[12rem] xs:w-[12rem] md:w-64 md:h-64 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 ">
             <Suspense fallback={<div>Loading...</div>}>
               <RotatingMoon position={[0, 0, 50]} fov={45} />
             </Suspense>
           </div>
         </div>
+
         {/* Cloud svg */}
-        <div className="absolute bottom-0 right-20 sm:right-0 w-full z-10">
+        <div className="hidden md:block  absolute  bottom-0 right-20 sm:right-0 w-full z-10">
           <div className="">
             <CloudSvgLarge className="max-w-full h-[12rem]  sm:h-auto mx-auto   scale-150 sm:scale-100" />
           </div>
