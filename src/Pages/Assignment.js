@@ -24,30 +24,7 @@ const Assignment = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [userData, setUserData] = useState(null);
-  const navigate = useNavigate();
-
-  // Fetch roles from the API
-  // useEffect(() => {
-  //   const fetchActiveRoles = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         "https://website-backend.starlabs.co.in/api/jobs"
-  //       );
-
-  //       if (!response.ok) {
-  //         throw new Error("Failed to fetch roles");
-  //       }
-  //       const data = await response.json();
-  //       const activeRoles = data.filter((role) => role.status === "active");
-  //       setRoles(activeRoles);
-  //     } catch (error) {
-  //       console.error("Error fetching roles:", error);
-  //       toast.error("Unable to load roles. Please try again later.");
-  //     }
-  //   };
-
-  //   fetchActiveRoles();
-  // }, []);
+  const [name, setName] = useState("");
 
   useEffect(() => {
     // Scroll to the top when the component mounts
@@ -88,7 +65,6 @@ const Assignment = () => {
     email: "",
     appliedFor: "",
     link: "",
-    name: "",
   });
 
   const handleNextStep = async (e) => {
@@ -106,10 +82,11 @@ const Assignment = () => {
         setUserData(data);
         setFormData((prev) => ({
           ...prev,
-          name: data.name,
           email: data.email,
+          appliedFor: data.roles[0],
         }));
         setRoles(data.roles);
+        setName(data.name);
         setCurrentStep(2);
       } else {
         toast.error("Email not found");
@@ -140,7 +117,6 @@ const Assignment = () => {
           email: "",
           appliedFor: "",
           link: "",
-          name: "",
         });
         if (fileInputRef.current) {
           fileInputRef.current.value = "";
@@ -170,6 +146,37 @@ const Assignment = () => {
     () => ({ backgroundImage: `url(${bgImage})` }),
     []
   );
+
+  //Greeting according to time
+  const [greeting, setGreeting] = useState("");
+
+  useEffect(() => {
+    const getGreeting = () => {
+      const currentTime = new Date();
+
+      // Determine the user's local time zone (you can use Intl.DateTimeFormat for specific locales)
+      const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+      // Get the current hour in the user's local time
+      const userHour = new Date().toLocaleString("en-US", {
+        timeZone: userTimezone,
+        hour: "2-digit",
+        hour12: false,
+      });
+
+      // Determine greeting based on the user's hour of the day
+      if (userHour >= 5 && userHour < 12) {
+        setGreeting("Good Morning");
+      } else if (userHour >= 12 && userHour < 18) {
+        setGreeting("Good Afternoon");
+      } else {
+        setGreeting("Good Evening");
+      }
+    };
+
+    getGreeting();
+  }, []);
+
   return (
     <>
       <ToastContainer />
@@ -245,15 +252,9 @@ const Assignment = () => {
                         <>
                           {/* Name (readonly) */}
                           <div>
-                            <label className="block text-sm font-medium mb-2 ml-1">
-                              Name
-                            </label>
-                            <input
-                              type="text"
-                              value={formData.name}
-                              className="w-full px-3 sm:px-4 py-1 rounded-lg border border-white/30 bg-black/50 text-white/70"
-                              readOnly
-                            />
+                            <h3 className="  animate-text bg-gradient-to-r from-[#00ff9d] via-[#00dd7d] to-[#00ea56] bg-clip-text text-transparent text-center text-lg sm:text-xl md:text-xl font-semibold -mt-4">
+                              Hello, {name}. {greeting}!
+                            </h3>
                           </div>
 
                           {/* Email (readonly) */}
@@ -286,9 +287,6 @@ const Assignment = () => {
                               }
                               required
                             >
-                              <option value="" disabled>
-                                Select a role
-                              </option>
                               {roles.map((role, index) => (
                                 <option key={index} value={role}>
                                   {role}
