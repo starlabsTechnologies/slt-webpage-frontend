@@ -22,6 +22,8 @@ const Assignment = () => {
   const [openPositions, setOpenPositions] = useState([]);
   const [roles, setRoles] = React.useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
 
   // Fetch roles from the API
@@ -86,7 +88,37 @@ const Assignment = () => {
     email: "",
     appliedFor: "",
     link: "",
+    name: "",
   });
+
+  const handleNextStep = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API}/resumer?email=${encodeURIComponent(
+          formData.email
+        )}`
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        setUserData(data);
+        setFormData((prev) => ({
+          ...prev,
+          name: data.name,
+          email: data.email,
+        }));
+        setRoles(data.roles);
+        setCurrentStep(2);
+      } else {
+        toast.error("Email not found");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Error fetching user data");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -165,86 +197,123 @@ const Assignment = () => {
                       Submit your Assignment
                     </h3>
 
-                    <form
-                      onSubmit={handleSubmit}
-                      className="space-y-4 sm:space-y-8 text-white/80 text-start md:px-10"
-                    >
-                      {/* Email */}
-                      <div>
-                        <label
-                          htmlFor="email"
-                          className="block text-sm font-medium mb-2 ml-1"
-                        >
-                          Email<span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          className="w-full px-3  sm:px-4  py-1 rounded-lg border border-white/30 bg-black text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
-                          required
-                        />
-                      </div>
+                    <form className="space-y-4 sm:space-y-8 text-white/80 text-start md:px-10">
+                      {currentStep === 1 ? (
+                        <>
+                          <div>
+                            <label
+                              htmlFor="email"
+                              className="block text-sm font-medium mb-2 ml-1"
+                            >
+                              Email<span className="text-red-500">*</span>
+                            </label>
+                            <input
+                              type="email"
+                              id="email"
+                              name="email"
+                              value={formData.email}
+                              onChange={handleInputChange}
+                              className="w-full px-3 sm:px-4 py-1 rounded-lg border border-white/30 bg-black text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
+                              required
+                            />
+                          </div>
+                          <div className="w-1/3 mx-auto">
+                            <button
+                              type="button"
+                              onClick={handleNextStep}
+                              className="w-full bg-[#00ff9d] hover:bg-[#00cc7d] text-black font-medium py-2 sm:py-2 rounded-xl transition-colors"
+                            >
+                              Next
+                            </button>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          {/* Name (readonly) */}
+                          <div>
+                            <label className="block text-sm font-medium mb-2 ml-1">
+                              Name
+                            </label>
+                            <input
+                              type="text"
+                              value={formData.name}
+                              className="w-full px-3 sm:px-4 py-1 rounded-lg border border-white/30 bg-black/50 text-white/70"
+                              readOnly
+                            />
+                          </div>
 
-                      {/* Job Role */}
-                      <div>
-                        <label className="block text-sm font-medium ml-1 mb-2">
-                          Select the role you've applied for{" "}
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <select
-                          className="w-full px-3 py-2 sm:px-4   border border-white/30 rounded text-white bg-black placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
-                          value={formData.appliedFor}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              appliedFor: e.target.value,
-                            })
-                          }
-                          required
-                        >
-                          <option value="" disabled>
-                            Select a role
-                          </option>
-                          {roles.map((role, index) => (
-                            <option key={index} value={role.role}>
-                              {role.role}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+                          {/* Email (readonly) */}
+                          <div>
+                            <label className="block text-sm font-medium mb-2 ml-1">
+                              Email
+                            </label>
+                            <input
+                              type="email"
+                              value={formData.email}
+                              className="w-full px-3 sm:px-4 py-1 rounded-lg border border-white/30 bg-black/50 text-white/70"
+                              readOnly
+                            />
+                          </div>
 
-                      {/* Link */}
-                      <div>
-                        <label
-                          htmlFor="link"
-                          className="block text-sm font-medium mb-2 ml-1"
-                        >
-                          Link<span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          id="link"
-                          name="link"
-                          value={formData.link}
-                          onChange={handleInputChange}
-                          className="w-full px-3 py-1 sm:px-4   rounded-lg border border-white/30 bg-black text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
-                          required
-                        />
-                      </div>
+                          {/* Role dropdown */}
+                          <div>
+                            <label className="block text-sm font-medium ml-1 mb-2">
+                              Select the role you've applied for{" "}
+                              <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                              className="w-full px-3 py-2 sm:px-4 border border-white/30 rounded text-white bg-black placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
+                              value={formData.appliedFor}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  appliedFor: e.target.value,
+                                })
+                              }
+                              required
+                            >
+                              <option value="" disabled>
+                                Select a role
+                              </option>
+                              {roles.map((role, index) => (
+                                <option key={index} value={role}>
+                                  {role}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
 
-                      {/* Submit Button */}
-                      <div className="w-1/3 mx-auto">
-                        <button
-                          type="submit"
-                          className="w-full bg-[#00ff9d] hover:bg-[#00cc7d] text-black font-medium py-2 sm:py-2 rounded-xl transition-colors"
-                          disabled={isSubmitting}
-                        >
-                          {isSubmitting ? "Sending..." : "Submit"}
-                        </button>
-                      </div>
+                          {/* Link input */}
+                          <div>
+                            <label
+                              htmlFor="link"
+                              className="block text-sm font-medium mb-2 ml-1"
+                            >
+                              Link<span className="text-red-500">*</span>
+                            </label>
+                            <input
+                              type="text"
+                              id="link"
+                              name="link"
+                              value={formData.link}
+                              onChange={handleInputChange}
+                              className="w-full px-3 py-1 sm:px-4 rounded-lg border border-white/30 bg-black text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
+                              required
+                            />
+                          </div>
+
+                          {/* Submit Button */}
+                          <div className="w-1/3 mx-auto">
+                            <button
+                              type="submit"
+                              className="w-full bg-[#00ff9d] hover:bg-[#00cc7d] text-black font-medium py-2 sm:py-2 rounded-xl transition-colors"
+                              disabled={isSubmitting}
+                            >
+                              {isSubmitting ? "Sending..." : "Submit"}
+                            </button>
+                          </div>
+                        </>
+                      )}
                     </form>
                   </div>
                 </div>
