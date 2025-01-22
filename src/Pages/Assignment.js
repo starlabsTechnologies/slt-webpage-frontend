@@ -146,7 +146,8 @@ const Assignment = () => {
           fileInputRef.current.value = "";
         }
       } else {
-        toast.error("Failed to submit application to resumes API");
+        const errorResponse = await response.json();
+        toast.error(errorResponse.message || "Something went wrong!");
         setIsSubmitting(false);
       }
     } catch (error) {
@@ -175,7 +176,7 @@ const Assignment = () => {
       <Navbar />
       <section
         id="home"
-        className=" w-full min-h-screen relative pt-28 sm:pt-20   lg:pt-28 overflow-hidden bg-center bg-cover"
+        className=" w-full min-h-screen relative pt-28 sm:pt-20   lg:pt-28 overflow-hidden bg-center bg-contain md:bg-cover"
         style={sectionStyle}
       >
         {/* Content */}
