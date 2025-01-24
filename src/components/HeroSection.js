@@ -1,5 +1,4 @@
-import React, { lazy, Suspense, useMemo } from "react";
-import bgImage from "../assets/Images/Star_bg.png";
+import React, { lazy, Suspense } from "react";
 import { ReactComponent as CloudSvgLarge } from "../assets/SVG/Hero/Cloud.svg";
 
 import Btn from "./Btn";
@@ -8,15 +7,10 @@ import StarryNightSky from "./Stars";
 const RotatingMoon = lazy(() => import("./RotatingMoon"));
 
 const HeroSection = () => {
-  // Memoize styles for better performance
-  const sectionStyle = useMemo(
-    () => ({ backgroundImage: `url(${bgImage})` }),
-    []
-  );
   return (
     <section
       id="home"
-      className="relative w-full overflow-hidden bg-transparent  pt-36 lg:pt-40"
+      className="relative w-full overflow-hidden bg-transparent pt-36 lg:pt-40"
       // style={sectionStyle}
     >
       <StarryNightSky />
@@ -53,7 +47,7 @@ const HeroSection = () => {
                     .getElementById("contact")
                     .scrollIntoView({ behavior: "smooth" })
                 }
-                classname="inline-block px-4 py-1 text-sm text-white transition-colors rounded-full  xs:text-base md:px-8 md:py-3 sm:rounded-md bg-emerald-500 hover:bg-emerald-600"
+                classname="inline-block px-4 py-1 text-sm text-white transition-colors rounded-full xs:text-base md:px-8 md:py-3 sm:rounded-md bg-emerald-500 hover:bg-emerald-600"
               >
                 Get Started
               </Btn>

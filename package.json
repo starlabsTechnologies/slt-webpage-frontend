@@ -6,6 +6,7 @@
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@formspree/react": "^2.5.1",
+    "@mediapipe/tasks-vision": "^0.10.20",
     "@mui/material": "^6.1.9",
     "@mui/x-date-pickers": "^7.23.0",
     "@react-three/drei": "^9.117.3",
@@ -43,7 +44,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "no-unused-vars": "off"
+    }
   },
   "browserslist": {
     "production": [
