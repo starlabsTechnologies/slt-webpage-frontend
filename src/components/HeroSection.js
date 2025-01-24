@@ -1,27 +1,23 @@
-import React, { lazy, Suspense, useMemo } from "react";
-import bgImage from "../assets/Images/Star_bg.png";
+import React, { lazy, Suspense } from "react";
 import { ReactComponent as CloudSvgLarge } from "../assets/SVG/Hero/Cloud.svg";
 
 import Btn from "./Btn";
+import StarryNightSky from "./Stars";
 
 const RotatingMoon = lazy(() => import("./RotatingMoon"));
 
 const HeroSection = () => {
-  // Memoize styles for better performance
-  const sectionStyle = useMemo(
-    () => ({ backgroundImage: `url(${bgImage})` }),
-    []
-  );
   return (
     <section
       id="home"
-      className=" w-full relative pt-36   lg:pt-40      overflow-hidden bg-black bg-center bg-cover"
-      style={sectionStyle}
+      className="relative w-full overflow-hidden bg-transparent pt-36 lg:pt-40"
+      // style={sectionStyle}
     >
+      <StarryNightSky />
       {/* Content */}
-      <div className="max-w-screen-2xl relative mx-auto z-20">
-        <div className=" pb-52   ">
-          <div className="mx-auto space-y-6 xs:space-y-8 md:space-y-10 text-center text-white">
+      <div className="relative z-20 mx-auto max-w-screen-2xl">
+        <div className=" pb-52">
+          <div className="mx-auto space-y-6 text-center text-white xs:space-y-8 md:space-y-10">
             <div
             // style={{
             //   fontFamily: "Agency FB",
@@ -29,10 +25,10 @@ const HeroSection = () => {
             //   color: "white",
             // }}
             >
-              <h1 className="text-4xl xs:text-5xl font-bold tracking-widest lg:text-6xl xl:text-7xl font-AgencyFb  ">
+              <h1 className="text-4xl font-bold tracking-widest xs:text-5xl lg:text-6xl xl:text-7xl font-AgencyFb ">
                 STARLABS
               </h1>
-              <h2 className="text-xl xs:text-2xl tracking-wide lg:text-3xl xl:text-4xl font-AgencyFb ">
+              <h2 className="text-xl tracking-wide xs:text-2xl lg:text-3xl xl:text-4xl font-AgencyFb ">
                 SPECIALIZED TEAM FOR ALTERNATIVE RESEARCH
               </h2>
             </div>
@@ -51,7 +47,7 @@ const HeroSection = () => {
                     .getElementById("contact")
                     .scrollIntoView({ behavior: "smooth" })
                 }
-                classname=" inline-block px-4 py-1 text-sm xs:text-base md:px-8 md:py-3 text-white transition-colors sm:rounded-md bg-emerald-500 hover:bg-emerald-600 rounded-full"
+                classname="inline-block px-4 py-1 text-sm text-white transition-colors rounded-full xs:text-base md:px-8 md:py-3 sm:rounded-md bg-emerald-500 hover:bg-emerald-600"
               >
                 Get Started
               </Btn>
@@ -225,7 +221,7 @@ const HeroSection = () => {
         </div>
       </div>
       {/* Cloud svg */}
-      <div className="absolute bottom-0 right-20 sm:right-0 w-full z-10">
+      <div className="absolute bottom-0 z-10 w-full right-20 sm:right-0">
         <div className="">
           <CloudSvgLarge className="max-w-full h-[12rem]  sm:h-auto mx-auto   scale-150 sm:scale-100" />
         </div>

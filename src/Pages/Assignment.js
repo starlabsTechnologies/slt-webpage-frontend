@@ -11,7 +11,6 @@ import bgImage from "../assets/Images/Star_bg.png";
 import { ReactComponent as CloudSvgLarge } from "../assets/SVG/Hero/Cloud.svg";
 import { Navbar } from "../components";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
 
 const RotatingMoon = lazy(() => import("../components/RotatingMoon"));
 
@@ -19,11 +18,9 @@ const Assignment = () => {
   // Memoize styles for better performance
 
   const fileInputRef = useRef(null);
-  const [openPositions, setOpenPositions] = useState([]);
   const [roles, setRoles] = React.useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
-  const [userData, setUserData] = useState(null);
   const [name, setName] = useState("");
 
   useEffect(() => {
@@ -35,31 +32,6 @@ const Assignment = () => {
   }, []);
 
   // Handle navigation to job application page
-
-  // Fetch jobs from the API
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const response = await fetch(`${process.env.REACT_APP_API}/jobs`);
-
-        if (response.ok) {
-          const jobs = await response.json();
-
-          // Filter jobs to include only those with status "active"
-          const activeJobs = jobs.filter((job) => job.status === "active");
-
-          setOpenPositions(activeJobs);
-        } else {
-          toast.error("Failed to fetch job positions");
-        }
-      } catch (error) {
-        console.error("Error fetching jobs:", error);
-        toast.error("Error fetching job positions");
-      }
-    };
-
-    fetchJobs();
-  }, []);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -79,7 +51,6 @@ const Assignment = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setUserData(data);
         setFormData((prev) => ({
           ...prev,
           email: data.email,
@@ -152,8 +123,6 @@ const Assignment = () => {
 
   useEffect(() => {
     const getGreeting = () => {
-      const currentTime = new Date();
-
       // Determine the user's local time zone (you can use Intl.DateTimeFormat for specific locales)
       const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
@@ -183,7 +152,7 @@ const Assignment = () => {
       <Navbar />
       <section
         id="home"
-        className=" w-full min-h-screen relative pt-28 sm:pt-20   lg:pt-28 overflow-hidden bg-center bg-contain md:bg-cover"
+        className="relative w-full min-h-screen overflow-hidden bg-center bg-contain pt-28 sm:pt-20 lg:pt-28 md:bg-cover"
         style={sectionStyle}
       >
         {/* Content */}
@@ -193,12 +162,12 @@ const Assignment = () => {
           }`}
         >
           <div className="pb-28 lg:pb-24">
-            <div className="mx-auto space-y-6 xs:space-y-8 md:space-y-3 text-center text-white">
+            <div className="mx-auto space-y-6 text-center text-white xs:space-y-8 md:space-y-3">
               <div>
-                <h1 className="text-3xl xs:text-4xl font-bold tracking-widest lg:text-5xl  font-AgencyFb    ">
+                <h1 className="text-3xl font-bold tracking-widest xs:text-4xl lg:text-5xl font-AgencyFb ">
                   STARLABS
                 </h1>
-                <h2 className="text-md xs:text-xl tracking-wide lg:text-3xl  font-AgencyFb  ">
+                <h2 className="tracking-wide text-md xs:text-xl lg:text-3xl font-AgencyFb ">
                   SPECIALIZED TEAM FOR ALTERNATIVE RESEARCH
                 </h2>
               </div>
@@ -225,7 +194,7 @@ const Assignment = () => {
                           <div className="">
                             <label
                               htmlFor="email"
-                              className="block text-sm font-medium mb-2 ml-1"
+                              className="block mb-2 ml-1 text-sm font-medium"
                             >
                               Email<span className="text-red-500">*</span>
                             </label>
@@ -235,7 +204,7 @@ const Assignment = () => {
                               name="email"
                               value={formData.email}
                               onChange={handleInputChange}
-                              className="w-full px-3 sm:px-4 py-1 rounded-lg border border-white/30 bg-black/50 text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
+                              className="w-full px-3 py-1 text-white placeholder-white border rounded-lg sm:px-4 border-white/30 bg-black/50 focus:outline-none focus:ring-1 focus:ring-green-500"
                               required
                             />
                           </div>
@@ -259,25 +228,25 @@ const Assignment = () => {
 
                           {/* Email (readonly) */}
                           <div>
-                            <label className="block text-sm font-medium mb-2 ml-1">
+                            <label className="block mb-2 ml-1 text-sm font-medium">
                               Email
                             </label>
                             <input
                               type="email"
                               value={formData.email}
-                              className="w-full px-3 sm:px-4 py-1 rounded-lg border border-white/30 bg-black/50 text-white/70"
+                              className="w-full px-3 py-1 border rounded-lg sm:px-4 border-white/30 bg-black/50 text-white/70"
                               readOnly
                             />
                           </div>
 
                           {/* Role dropdown */}
                           <div>
-                            <label className="block text-sm font-medium ml-1 mb-2">
+                            <label className="block mb-2 ml-1 text-sm font-medium">
                               Select the role you've applied for{" "}
                               <span className="text-red-500">*</span>
                             </label>
                             <select
-                              className="w-full px-3 py-2 sm:px-4 border border-white/30 rounded text-white bg-black/50 placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
+                              className="w-full px-3 py-2 text-white placeholder-white border rounded sm:px-4 border-white/30 bg-black/50 focus:outline-none focus:ring-1 focus:ring-green-500"
                               value={formData.appliedFor}
                               onChange={(e) =>
                                 setFormData({
@@ -299,7 +268,7 @@ const Assignment = () => {
                           <div>
                             <label
                               htmlFor="link"
-                              className="block text-sm font-medium mb-2 ml-1"
+                              className="block mb-2 ml-1 text-sm font-medium"
                             >
                               Link<span className="text-red-500">*</span>
                             </label>
@@ -309,7 +278,7 @@ const Assignment = () => {
                               name="link"
                               value={formData.link}
                               onChange={handleInputChange}
-                              className="w-full px-3 py-1 sm:px-4 rounded-lg border border-white/30 bg-black/50 text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-green-500"
+                              className="w-full px-3 py-1 text-white placeholder-white border rounded-lg sm:px-4 border-white/30 bg-black/50 focus:outline-none focus:ring-1 focus:ring-green-500"
                               required
                             />
                           </div>
@@ -334,7 +303,7 @@ const Assignment = () => {
           </div>
         </div>
         {/* Rocket svg */}
-        <div className="hidden md:block absolute z-20 bottom-20 right-2 xs:bottom-20 xs:right-9 md:right-9 md:bottom-24 lg:right-3 xl:bottom-44 xl:right-8 2xl:right-36">
+        <div className="absolute z-20 hidden md:block bottom-20 right-2 xs:bottom-20 xs:right-9 md:right-9 md:bottom-24 lg:right-3 xl:bottom-44 xl:right-8 2xl:right-36">
           <svg
             className="w-36 h-36 md:w-40 md:h-40 lg:w-60 lg:h-60 xl:w-64 xl:h-64 "
             viewBox="0 0 100 267"
@@ -498,7 +467,7 @@ const Assignment = () => {
           </Suspense>
         </div>
         {/* Cloud svg */}
-        <div className="hidden md:block  absolute  bottom-0 right-20 sm:right-0 w-full z-10">
+        <div className="absolute bottom-0 z-10 hidden w-full md:block right-20 sm:right-0">
           <div className="">
             <CloudSvgLarge className="max-w-full h-[12rem]  sm:h-auto mx-auto   scale-150 sm:scale-100" />
           </div>

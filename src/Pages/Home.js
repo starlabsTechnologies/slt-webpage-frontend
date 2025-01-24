@@ -13,7 +13,7 @@ import {
 
 const Home = () => {
   return (
-    <main className="w-full bg-black">
+    <main className="w-full">
       <Navbar />
       <HeroSection />
       <About />
