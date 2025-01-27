@@ -5,6 +5,7 @@ import TeamSvg from "../assets/SVG/Contact/Contact.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MobileSvg from "../assets/SVG/Contact/Mobile.svg";
+import StarryNight from "./Stars";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -69,9 +70,10 @@ export default function Contact() {
   return (
     <section
       className="relative mx-auto overflow-hidden text-white bg-black bg-cover max-w-screen-2xl"
-      style={{ backgroundImage: `url(${StarBg})` }}
+      // style={{ backgroundImage: `url(${StarBg})` }}
       id="contact"
     >
+      <StarryNight />
       <ToastContainer />
       <div className="relative mx-auto overflow-hidden">
         <div className="grid gap-10 lg:grid-cols-2">

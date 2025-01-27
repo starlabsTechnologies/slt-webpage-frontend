@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import Spheres from "../components/Sphere";
 import AstroSvg from "../assets/SVG/Astronaut.svg";
 import AnimatedLineSVG from "../components/NotFound/AnimatedLine";
-import UFO from "../assets/SVG/ufo-svgrepo.svg";
 
 const NotFound = () => {
   return (
