@@ -3,9 +3,20 @@ import { Navbar, RotatingMoon } from "../components";
 import { Suspense } from "react";
 import Spheres from "../components/Sphere";
 import AstroSvg from "../assets/SVG/Astronaut.svg";
-import AnimatedLineSVG from "../components/NotFound/AnimatedLine";
+import { motion } from "framer-motion";
 
 const NotFound = () => {
+  const floatingAnimation = {
+    animate: {
+      y: [-5, 5],
+      transition: {
+        duration: 4,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut",
+      },
+    },
+  };
   return (
     <div className="w-full relative min-h-screen  bg-gradient-to-b from-black to-[#2151ffdd]/50 overflow-hidden">
       <Navbar />
@@ -24,16 +35,28 @@ const NotFound = () => {
             4
           </div>
         </Suspense>
-        <div className=" absolute top-48 xs:top-60 lg:top-52 xl:top-48">
-          <img
+        {/* Floating astronaut */}
+        <motion.div
+          className="absolute top-48 xs:top-60 lg:top-52 xl:top-48"
+          variants={floatingAnimation}
+          animate="animate"
+        >
+          <motion.img
             src={AstroSvg}
-            alt="astro"
-            className=" h-32 w-32 lg:h-48 lg:w-48"
+            alt="Lost Astronaut"
+            className="w-full h-full"
+            initial={{ rotate: -5 }}
+            animate={{
+              rotate: 5,
+              transition: {
+                duration: 6,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              },
+            }}
           />
-        </div>
-        <div className=" absolute top-[5.5rem] left-[45%] xs:top-[8.5rem] lg:top-[7.5rem] lg:left-[48%] sm:left-[46%] md:left-[47.5%] xl:top-[6.5rem] xl:left-[49%] ">
-          <AnimatedLineSVG />
-        </div>
+        </motion.div>
 
         <div className="w-full  text-4xl text-center absolute top-[30rem] xs:top-[35rem] font-AgencyFb tracking-[0.5rem]">
           Oops! Lost in the void?
