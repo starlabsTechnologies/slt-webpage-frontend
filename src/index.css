@@ -33,6 +33,23 @@ code {
   border: 1px solid rgba(255, 255, 255, 0.818);
 }
 
+#contact .react-tel-input .selected-flag {
+  background-color: transparent !important;
+  border: 0px;
+}
+
+#contact .react-tel-input .form-control {
+  border-bottom: 1px solid #4b5563;
+}
+#contact .react-tel-input .form-control:focus {
+  border: 1px solid #34d399;
+}
+
+#contact .react-tel-input .selected-flag:hover {
+  background-color: #4ade80 !important;
+  transition: background-color 0.3s ease;
+}
+
 .react-tel-input .highlight {
   background-color: #4ade80 !important;
 }

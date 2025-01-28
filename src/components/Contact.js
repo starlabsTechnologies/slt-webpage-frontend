@@ -6,6 +6,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MobileSvg from "../assets/SVG/Contact/Mobile.svg";
 import StarryNight from "./Stars";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,13 +15,18 @@ export default function Contact() {
     lastName: "",
     email: "",
     message: "",
-    subject: "",
     phoneNumber: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handlePhoneChange = (value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      phoneNumber: value,
+    }));
   };
 
   // Email validation function
@@ -55,7 +62,7 @@ export default function Contact() {
         const result = await response.json();
         console.log("SUCCESS!", result);
         toast.success("Message sent successfully!"); // Show success toast
-        setFormData({ name: "", email: "", message: "", subject: "" });
+        setFormData({ name: "", email: "", message: "" });
       } else {
         throw new Error("Network response was not ok.");
       }
@@ -192,14 +199,25 @@ export default function Contact() {
                   />
                 </div>
 
-                <div>
+                <div className="contact">
                   <label
                     htmlFor="phoneNumber"
                     className="block mb-1 font-semibold text-white"
                   >
                     Phone number
                   </label>
-                  <input
+                  <PhoneInput
+                    country={"in"} // Default country code
+                    value={formData.phoneNumber}
+                    onChange={handlePhoneChange}
+                    containerClass="w-full"
+                    inputClass="!w-full !h-11 !bg-transparent !border-b-2 !border-0  !text-gray-200 !pl-14 "
+                    buttonClass="!bg-transparent !border-0 !text-white"
+                    dropdownClass="!bg-black !text-white"
+                    searchClass="!bg-black !text-white !border-red-400"
+                    required
+                  />
+                  {/* <input
                     id="phoneNumber"
                     name="phoneNumber"
                     type="tel"
@@ -208,7 +226,7 @@ export default function Contact() {
                     className="w-full p-2 text-gray-200 bg-transparent border-b-2 border-gray-600 focus:outline-none focus:border-emerald-500"
                     placeholder="Enter phone number"
                     required
-                  />
+                  /> */}
                 </div>
 
                 <div>
