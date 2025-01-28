@@ -39,7 +39,7 @@ function Moon() {
         <meshStandardMaterial
           color={"white"}
           side={THREE.AlwaysDepth}
-          emissive={"violet"}
+          emissive={"white"}
           emissiveIntensity={2}
         />
       </Sphere>
