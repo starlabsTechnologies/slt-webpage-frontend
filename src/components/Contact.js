@@ -10,17 +10,33 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 export default function Contact() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     message: "",
+    subject: "",
     phoneNumber: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // const handleChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === "subject") {
+      // Limit the subject field to 10 words
+      if (value.length > 40) {
+        setFormData({ ...formData, [name]: value.slice(0, 40) });
+        return;
+      }
+    }
+
+    setFormData({ ...formData, [name]: value });
   };
   const handlePhoneChange = (value) => {
     setFormData((prevData) => ({
@@ -49,20 +65,27 @@ export default function Contact() {
       return;
     }
 
+    const updatedFormData = {
+      ...formData,
+      name: `${firstName} ${lastName}`,
+    };
+
     try {
       const response = await fetch(`${process.env.REACT_APP_API}/contact-us`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(updatedFormData),
       });
 
       if (response.ok) {
         const result = await response.json();
         console.log("SUCCESS!", result);
         toast.success("Message sent successfully!"); // Show success toast
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", message: "", subject: "" });
+        setFirstName("");
+        setLastName("");
       } else {
         throw new Error("Network response was not ok.");
       }
@@ -154,8 +177,8 @@ export default function Contact() {
                     <input
                       id="firstName"
                       name="firstName"
-                      value={formData.firstName}
-                      onChange={handleChange}
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                       className="w-full p-2 text-gray-200 bg-transparent border-b-2 border-gray-600 focus:outline-none focus:border-emerald-500"
                       placeholder="Enter first name"
                       required
@@ -171,8 +194,8 @@ export default function Contact() {
                     <input
                       id="lastName"
                       name="lastName"
-                      value={formData.lastName}
-                      onChange={handleChange}
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                       className="w-full p-2 text-gray-200 bg-transparent border-b-2 border-gray-600 focus:outline-none focus:border-emerald-500"
                       placeholder="Enter last name"
                       required
@@ -180,53 +203,64 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block mb-1 font-semibold text-white"
-                  >
-                    Email address
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full p-2 text-gray-200 bg-transparent border-b-2 border-gray-600 focus:outline-none focus:border-emerald-500"
-                    placeholder="Enter email"
-                    required
-                  />
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block mb-1 font-semibold text-white"
+                    >
+                      Email address
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full p-2 text-gray-200 bg-transparent border-b-2 border-gray-600 focus:outline-none focus:border-emerald-500"
+                      placeholder="Enter email"
+                      required
+                    />
+                  </div>
+                  <div className="contact">
+                    <label
+                      htmlFor="phoneNumber"
+                      className="block mb-1 font-semibold text-white "
+                    >
+                      Phone number
+                    </label>
+                    <PhoneInput
+                      id="phoneNumber"
+                      country={"in"} // Default country code
+                      value={formData.phoneNumber}
+                      onChange={handlePhoneChange}
+                      containerClass="w-full"
+                      inputClass="!w-full !h-[2.65rem] !bg-transparent !rounded-none !border-b-2 !border-0  !text-gray-200 !pl-11 "
+                      buttonClass="!bg-transparent !border-0 !text-white"
+                      dropdownClass="!bg-black !text-white"
+                      searchClass="!bg-black !text-white !border-red-400"
+                      required
+                    />
+                  </div>
                 </div>
 
-                <div className="contact">
+                <div>
                   <label
-                    htmlFor="phoneNumber"
+                    htmlFor="subject"
                     className="block mb-1 font-semibold text-white"
                   >
-                    Phone number
+                    Subject
                   </label>
-                  <PhoneInput
-                    country={"in"} // Default country code
-                    value={formData.phoneNumber}
-                    onChange={handlePhoneChange}
-                    containerClass="w-full"
-                    inputClass="!w-full !h-11 !bg-transparent !border-b-2 !border-0  !text-gray-200 !pl-14 "
-                    buttonClass="!bg-transparent !border-0 !text-white"
-                    dropdownClass="!bg-black !text-white"
-                    searchClass="!bg-black !text-white !border-red-400"
-                    required
-                  />
-                  {/* <input
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    type="tel"
-                    value={formData.phoneNumber}
+                  <input
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    value={formData.subject}
                     onChange={handleChange}
                     className="w-full p-2 text-gray-200 bg-transparent border-b-2 border-gray-600 focus:outline-none focus:border-emerald-500"
-                    placeholder="Enter phone number"
+                    placeholder="Enter subject"
                     required
-                  /> */}
+                  />
                 </div>
 
                 <div>
