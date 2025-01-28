@@ -6,8 +6,13 @@ module.exports = {
     extend: {
       animation: {
         text: "text 5s ease infinite",
+        twinkle: "twinkle var(--twinkle-duration, 3s) ease-in-out infinite",
       },
       keyframes: {
+        twinkle: {
+          "0%, 100%": { opacity: 0.3 },
+          "50%": { opacity: 1 },
+        },
         text: {
           "0%, 100%": {
             "background-size": "200% 200%",
