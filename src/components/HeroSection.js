@@ -48,7 +48,7 @@ const HeroSection = () => {
               <ShinyCard
                 className="inline-block px-4 py-1 text-sm text-white
               transition-colors rounded-full xs:text-base md:px-6 md:py-1 
-              sm:rounded-md bg-emerald-500 hover:bg-emerald-600 bg-[linear-gradient(145deg,transparent_25%,rgba(144,238,144,.8)_60%,transparent_75%,transparent_100%)] "
+              sm:rounded-md bg-emerald-500 hover:bg-emerald-600 "
               >
                 <Btn
                   onClick={() =>

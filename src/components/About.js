@@ -12,9 +12,6 @@ import InnovationSvg from "../assets/SVG/Innovation.svg";
 import IndustrieSvg from "../assets/SVG/Industries.svg";
 import ClientCentricSvg from "../assets/SVG/Client.svg";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import InnovationLottie from "../assets/SVG/Lottie-Animation/Innovation.lottie";
-import IndustrieLottie from "../assets/SVG/Lottie-Animation/Industries.lottie";
-import ClientCentricLottie from "../assets/SVG/Lottie-Animation/Client.lottie";
 import ParticleAnimation from "./ParticleAnimation";
 import { SplitText } from "./Animations";
 
@@ -29,19 +26,19 @@ const About = () => {
   const FeaturedDetails = useMemo(
     () => [
       {
-        src: InnovationLottie,
+        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Innovation.lottie`,
         img: InnovationSvg,
         title: "Innovative Solutions",
         desc: "We thrive on innovation, crafting solutions that are not only functional but futuristic.",
       },
       {
-        src: IndustrieLottie,
+        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Industries.lottie`,
         img: IndustrieSvg,
         title: "Expertise Across Industries",
         desc: "With deep expertise in Computer Systems Design and Technical Services, we cater to a wide range of industries.",
       },
       {
-        src: ClientCentricLottie,
+        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Client.lottie`,
         img: ClientCentricSvg,
         title: "Client-Centric Approach",
         desc: "Our solutions are designed with your unique business needs in mind, ensuring optimal performance and a competitive edge.",
