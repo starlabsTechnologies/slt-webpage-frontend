@@ -1,62 +1,71 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useRef } from "react";
 import { ReactComponent as CloudSvgLarge } from "../assets/SVG/Hero/Cloud.svg";
 
 import Btn from "./Btn";
 import StarryNightSky from "./Stars";
+import { ShinyCard, ShinyText, VariableFont } from "./Animations";
 
 const RotatingMoon = lazy(() => import("./RotatingMoon"));
 
 const HeroSection = () => {
+  const containerRef = useRef(null);
   return (
     <section
       id="home"
       className="relative w-full overflow-hidden bg-transparent pt-36 lg:pt-40"
-      // style={sectionStyle}
     >
       <StarryNightSky />
       {/* Content */}
-      <div className="relative z-20 mx-auto max-w-screen-2xl">
+      <div className="relative mx-auto max-w-screen-2xl z-20 ">
         <div className=" pb-52">
-          <div className="mx-auto space-y-6 text-center text-white xs:space-y-8 md:space-y-10">
+          <div className="mx-auto space-y-6 text-center text-white xs:space-y-8 md:space-y-10 z-20">
             <div
-            // style={{
-            //   fontFamily: "Agency FB",
-            //   textAlign: "center",
-            //   color: "white",
-            // }}
+              ref={containerRef}
+              className="font-AgencyFb  pointer-events-none"
             >
-              <h1 className="text-4xl font-bold tracking-widest xs:text-5xl lg:text-6xl xl:text-7xl font-AgencyFb ">
+              <h1 className="text-4xl font-bold tracking-widest xs:text-5xl lg:text-6xl xl:text-7xl ">
                 STARLABS
               </h1>
-              <h2 className="text-xl tracking-wide xs:text-2xl lg:text-3xl xl:text-4xl font-AgencyFb ">
+              <h2 className="text-xl tracking-wide xs:text-2xl lg:text-3xl xl:text-4xl  ">
                 SPECIALIZED TEAM FOR ALTERNATIVE RESEARCH
               </h2>
             </div>
 
-            <p className="mx-auto w-11/12 xs:text-base  text-sm md:text-lg leading-[7.5vw] xs:leading-[11vw]  tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl ">
-              is a cutting-edge technology company that specializes in providing
+            <p className=" pointer-events-none mx-auto w-11/12 xs:text-base  text-sm md:text-lg leading-[7.5vw] xs:leading-[11vw]  tracking-wider text-white md:max-w-2xl lg:max-w-4xl lg:leading-relaxed xl:leading-loose lg:text-xl ">
+              <VariableFont
+                label="  is a cutting-edge technology company that specializes in providing
               innovative solutions to various industries. Our expertise lies in
               developing and deploying IIOT-IOT devices, SAAS, Industrial
               Software Solutions, NAS, Automatic RFID-based Boom Barriers, ANPR,
-              AI-powered technologies, and smart home solutions.
+              AI-powered technologies, and smart home solutions."
+                fromFontVariationSettings="'wght' 300, 'opsz' 9"
+                toFontVariationSettings="'wght' 900, 'opsz' 40"
+                containerRef={containerRef}
+                className="font-roboto"
+              />
             </p>
             <div>
-              <Btn
-                onClick={() =>
-                  document
-                    .getElementById("contact")
-                    .scrollIntoView({ behavior: "smooth" })
-                }
-                classname="inline-block px-4 py-1 text-sm text-white transition-colors rounded-full xs:text-base md:px-8 md:py-3 sm:rounded-md bg-emerald-500 hover:bg-emerald-600"
+              <ShinyCard
+                className="inline-block px-4 py-1 text-sm text-white
+              transition-colors rounded-full xs:text-base md:px-6 md:py-1 
+              sm:rounded-md bg-emerald-500 hover:bg-emerald-600 bg-[linear-gradient(135deg,transparent_25%,rgba(144,238,144,.8)_60%,transparent_75%,transparent_100%)] "
               >
-                Get Started
-              </Btn>
+                <Btn
+                  onClick={() =>
+                    document
+                      .getElementById("contact")
+                      .scrollIntoView({ behavior: "smooth" })
+                  }
+                >
+                  <ShinyText text="Get Started" className="text-white/80" />
+                </Btn>
+              </ShinyCard>
             </div>
           </div>
         </div>
 
         {/* Rocket svg */}
-        <div className="absolute z-20 bottom-20 right-2 xs:bottom-20 xs:right-9 md:right-9 md:bottom-24 lg:right-3 xl:bottom-44 xl:right-8 2xl:right-36">
+        <div className="z-20 absolute   bottom-20 right-2 xs:bottom-20 xs:right-9 md:right-9 md:bottom-24 lg:right-3 xl:bottom-44 xl:right-8 2xl:right-36">
           <svg
             className="w-36 h-36 md:w-40 md:h-40 lg:w-60 lg:h-60 xl:w-64 xl:h-64 "
             viewBox="0 0 100 267"
@@ -184,9 +193,8 @@ const HeroSection = () => {
             </defs>
           </svg>
         </div>
-
         {/* Rocket smoke */}
-        <div className="absolute bottom-0 lg:-right-[4rem] -right-[2.8rem] xs:-right-[1rem] xl:-right-[5.2rem]  2xl:right-0">
+        <div className="absolute -z-20 bottom-0 lg:-right-[4rem] -right-[2.8rem] xs:-right-[1rem] xl:-right-[5.2rem]  2xl:right-0 ">
           <svg
             className="w-[20rem] h-[7rem] md:w-[22rem] md:h-[9rem]  lg:w-[32rem] xl:w-[40rem] xl:h-[15.4rem] 2xl:w-[44rem] lg:h-[12rem] 2xl:h-[15.5rem]"
             viewBox="0 0 601 259"
@@ -214,16 +222,17 @@ const HeroSection = () => {
           </svg>
         </div>
 
-        <div className="absolute left-0 z-40 bottom-10 xs:bottom-14 h-[10rem] w-[10rem] xs:h-[12rem] xs:w-[12rem] md:w-64 md:h-64 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 ">
+        <div className="z-20 absolute left-0  bottom-10 xs:bottom-14 h-[10rem] w-[10rem] xs:h-[12rem] xs:w-[12rem] md:w-64 md:h-64 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 ">
           <Suspense fallback={<div>Loading...</div>}>
             <RotatingMoon position={[0, 0, 50]} fov={45} />
           </Suspense>
         </div>
-      </div>
-      {/* Cloud svg */}
-      <div className="absolute bottom-0 z-10 w-full right-20 sm:right-0">
-        <div className="">
-          <CloudSvgLarge className="max-w-full h-[12rem]  sm:h-auto mx-auto   scale-150 sm:scale-100" />
+
+        {/* Cloud svg */}
+        <div className="absolute bottom-0 w-full right-20 sm:right-0 -z-10">
+          <div className="">
+            <CloudSvgLarge className="max-w-full h-[12rem]  sm:h-auto mx-auto scale-150 sm:scale-100" />
+          </div>
         </div>
       </div>
     </section>
