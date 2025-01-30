@@ -11,6 +11,7 @@ import bgImage from "../assets/Images/Star_bg.png";
 import { ReactComponent as CloudSvgLarge } from "../assets/SVG/Hero/Cloud.svg";
 import { Navbar } from "../components";
 import "react-toastify/dist/ReactToastify.css";
+import StarryNight from "../components/Stars";
 
 const RotatingMoon = lazy(() => import("../components/RotatingMoon"));
 
@@ -113,11 +114,6 @@ const Assignment = () => {
     }
   };
 
-  const sectionStyle = useMemo(
-    () => ({ backgroundImage: `url(${bgImage})` }),
-    []
-  );
-
   //Greeting according to time
   const [greeting, setGreeting] = useState("");
 
@@ -153,8 +149,8 @@ const Assignment = () => {
       <section
         id="home"
         className="relative w-full min-h-screen overflow-hidden bg-center bg-contain pt-28 sm:pt-20 lg:pt-28 md:bg-cover"
-        style={sectionStyle}
       >
+        <StarryNight />
         {/* Content */}
         <div
           className={`relative mx-auto max-w-screen-2xl z-20 ${
