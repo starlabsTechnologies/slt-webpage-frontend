@@ -45,14 +45,14 @@ const WhyWork = () => {
   ];
 
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { amount: 0.1 });
+  const isInView = useInView(containerRef, { amount: 0.1, once: true });
   const controls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
       controls.start("visible");
     } else {
-      controls.start("hidden"); // Reset animation when out of view
+      controls.start("hidden");
     }
   }, [isInView, controls]);
 
@@ -147,44 +147,63 @@ const WhyWork = () => {
           >
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#53C888" />
-                <stop offset="100%" stopColor="#FF4D4D" />
+                <stop offset="0%" stopColor="#0000ff" />
+                <stop offset="100%" stopColor="#0000ff" />
               </linearGradient>
+
+              {/* Enhanced Glow Effect */}
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow
+                  dx="0"
+                  dy="0"
+                  stdDeviation="6"
+                  floodColor="#288aff "
+                  floodOpacity="1"
+                />
+                <feGaussianBlur stdDeviation="6" result="blurred" />
+                <feMerge>
+                  <feMergeNode in="blurred" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
             </defs>
+
+            {/* Background Circle */}
             <motion.path
               d="M154.5 77.5C154.5 118.891 120.504 152.5 78.5 152.5C36.496 152.5 2.5 118.891 2.5 77.5C2.5 36.1088 36.496 2.5 78.5 2.5C120.504 2.5 154.5 36.1088 154.5 77.5Z"
-              stroke="url(#gradient)"
-              strokeWidth="5"
+              stroke="#299EF4"
+              strokeWidth="4"
+              fill="none"
               variants={{
-                hidden: { pathLength: 0, stroke: "#000" },
-                visible: {
-                  pathLength: 1,
-                  transition: { duration: 2, ease: "easeInOut" },
-                },
+                hidden: { pathLength: 0 },
+                visible: { pathLength: 1 },
               }}
               initial="hidden"
               animate={controls}
+              transition={{ duration: 2, ease: "easeInOut" }}
             />
-            {/* Separate color animation path */}
+
+            {/* Light Trail Effect */}
             <motion.path
               d="M154.5 77.5C154.5 118.891 120.504 152.5 78.5 152.5C36.496 152.5 2.5 118.891 2.5 77.5C2.5 36.1088 36.496 2.5 78.5 2.5C120.504 2.5 154.5 36.1088 154.5 77.5Z"
-              stroke="url(#gradient)"
+              stroke="#006cee "
               strokeWidth="5"
+              strokeLinecap="round"
+              filter="url(#glow)"
+              strokeDasharray="25 300"
+              // strokeDashoffset="300"
               variants={{
-                hidden: { stroke: "#000" },
-                visible: {
-                  stroke: ["#53C888", "#3A86FF", "#FFC857", "#FF4D4D"],
-                  transition: {
-                    duration: 3,
-                    delay: 2, // Delay color change after the pathLength completes
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                  },
-                },
+                hidden: { strokeDashoffset: 0 },
+                visible: { strokeDashoffset: [300, 0, -350] },
               }}
               initial="hidden"
               animate={controls}
+              transition={{
+                duration: 3.5,
+                delay: 2,
+                repeat: Infinity,
+                ease: "linear",
+              }}
             />
           </svg>
         </div>
