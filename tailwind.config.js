@@ -5,10 +5,15 @@ module.exports = {
   theme: {
     extend: {
       animation: {
+        shine: "shine 5s linear infinite",
         text: "text 5s ease infinite",
         twinkle: "twinkle var(--twinkle-duration, 3s) ease-in-out infinite",
       },
       keyframes: {
+        shine: {
+          "0%": { "background-position": "100%" },
+          "100%": { "background-position": "-100%" },
+        },
         twinkle: {
           "0%, 100%": { opacity: 0.3 },
           "50%": { opacity: 1 },
@@ -29,6 +34,8 @@ module.exports = {
       },
       fontFamily: {
         AgencyFb: ["AgencyFb", "sans-serif"],
+        bigShoulders: ["Big Shoulders Text", "AgencyFb"],
+        roboto: ["Roboto", "AgencyFb"],
       },
     },
   },
