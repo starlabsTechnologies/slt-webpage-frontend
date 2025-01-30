@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const ParticleAnimation = ({ className = "" }) => {
@@ -7,43 +7,54 @@ const ParticleAnimation = ({ className = "" }) => {
   const secref = useRef(null);
   const inView = useInView(secref);
 
-  const randomPosition = () => {
+  const randomPosition = useCallback(() => {
     const angle = Math.random() * Math.PI * 2;
-    const radius = 50 + Math.random() * 150; // Wider spread
+    const radius = 50 + Math.random() * 150;
     return {
       x: Math.cos(angle) * radius,
       y: Math.sin(angle) * radius,
     };
-  };
+  }, []);
 
-  const createParticle = () => ({
-    id: Math.random(),
-    ...randomPosition(),
-  });
+  const createParticle = useCallback(
+    () => ({
+      id: crypto.randomUUID(), // More efficient unique ID
+      ...randomPosition(),
+      timestamp: Date.now(),
+    }),
+    [randomPosition]
+  );
 
   useEffect(() => {
     let animationFrame;
+
     if (inView) {
       const updateParticles = () => {
         const now = Date.now();
-        particlesRef.current = particlesRef.current
-          .filter((p) => now - p.timestamp < 3000) // Remove old particles
-          .concat(
-            Array.from({ length: 1 }, () => ({
-              ...createParticle(),
-              timestamp: now,
-            }))
-          );
 
-        setParticles([...particlesRef.current]); // Update state in batches
+        // Remove old particles
+        particlesRef.current = particlesRef.current.filter(
+          (p) => now - p.timestamp < 3000
+        );
+
+        // Add new particles
+        if (particlesRef.current.length % 5 === 0) {
+          // Update state every 5 frames
+          setParticles([...particlesRef.current]);
+        }
+
+        particlesRef.current.push(createParticle());
+
         animationFrame = requestAnimationFrame(updateParticles);
       };
 
       animationFrame = requestAnimationFrame(updateParticles);
     }
 
-    return () => cancelAnimationFrame(animationFrame);
-  }, [inView]);
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, [inView, createParticle]);
 
   return (
     <div
