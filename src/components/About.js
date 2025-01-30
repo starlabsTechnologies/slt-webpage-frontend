@@ -26,19 +26,19 @@ const About = () => {
   const FeaturedDetails = useMemo(
     () => [
       {
-        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Innovation.lottie`,
+        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Innovation.json`,
         img: InnovationSvg,
         title: "Innovative Solutions",
         desc: "We thrive on innovation, crafting solutions that are not only functional but futuristic.",
       },
       {
-        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Industries.lottie`,
+        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Industries.json`,
         img: IndustrieSvg,
         title: "Expertise Across Industries",
         desc: "With deep expertise in Computer Systems Design and Technical Services, we cater to a wide range of industries.",
       },
       {
-        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Client.lottie`,
+        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Client.json`,
         img: ClientCentricSvg,
         title: "Client-Centric Approach",
         desc: "Our solutions are designed with your unique business needs in mind, ensuring optimal performance and a competitive edge.",
