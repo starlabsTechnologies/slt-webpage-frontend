@@ -2,26 +2,73 @@ import { motion } from "motion/react";
 import React, { useState } from "react";
 import StarBg from "../assets/Images/Star_bg.png";
 import TeamSvg from "../assets/SVG/Contact/Contact.svg";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MobileSvg from "../assets/SVG/Contact/Mobile.svg";
+import StarryNight from "./Stars";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 export default function Contact() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
     subject: "",
+    phoneNumber: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // const handleChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === "subject") {
+      // Limit the subject field to 10 words
+      if (value.length > 40) {
+        setFormData({ ...formData, [name]: value.slice(0, 40) });
+        return;
+      }
+    }
+
+    setFormData({ ...formData, [name]: value });
+  };
+  const handlePhoneChange = (value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      phoneNumber: value,
+    }));
+  };
+
+  // Email validation function
+  const validateEmail = (email) => {
+    const regex = /\b[\w.-]+@[\w.-]+\.\w{2,4}\b/gi;
+    return regex.test(email);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Validate email
+    if (!validateEmail(formData.email)) {
+      toast.error("Please enter a valid email address.", {
+        position: "top-left",
+      });
+
+      setIsSubmitting(false);
+      return;
+    }
+
+    const updatedFormData = {
+      ...formData,
+      name: `${firstName} ${lastName}`,
+    };
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API}/contact-us`, {
@@ -29,7 +76,7 @@ export default function Contact() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(updatedFormData),
       });
 
       if (response.ok) {
@@ -37,6 +84,8 @@ export default function Contact() {
         console.log("SUCCESS!", result);
         toast.success("Message sent successfully!"); // Show success toast
         setFormData({ name: "", email: "", message: "", subject: "" });
+        setFirstName("");
+        setLastName("");
       } else {
         throw new Error("Network response was not ok.");
       }
@@ -51,9 +100,11 @@ export default function Contact() {
   return (
     <section
       className="relative mx-auto overflow-hidden text-white bg-black bg-cover max-w-screen-2xl"
-      style={{ backgroundImage: `url(${StarBg})` }}
+      // style={{ backgroundImage: `url(${StarBg})` }}
       id="contact"
     >
+      <StarryNight />
+      <ToastContainer />
       <div className="relative mx-auto overflow-hidden">
         <div className="grid gap-10 lg:grid-cols-2">
           {/* Left side - Illustration */}
@@ -126,8 +177,8 @@ export default function Contact() {
                     <input
                       id="firstName"
                       name="firstName"
-                      value={formData.firstName}
-                      onChange={handleChange}
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                       className="w-full p-2 text-gray-200 bg-transparent border-b-2 border-gray-600 focus:outline-none focus:border-emerald-500"
                       placeholder="Enter first name"
                       required
@@ -143,8 +194,8 @@ export default function Contact() {
                     <input
                       id="lastName"
                       name="lastName"
-                      value={formData.lastName}
-                      onChange={handleChange}
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                       className="w-full p-2 text-gray-200 bg-transparent border-b-2 border-gray-600 focus:outline-none focus:border-emerald-500"
                       placeholder="Enter last name"
                       required
@@ -152,40 +203,62 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block mb-1 font-semibold text-white"
-                  >
-                    Email address
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full p-2 text-gray-200 bg-transparent border-b-2 border-gray-600 focus:outline-none focus:border-emerald-500"
-                    placeholder="Enter email"
-                    required
-                  />
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block mb-1 font-semibold text-white"
+                    >
+                      Email address
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full p-2 text-gray-200 bg-transparent border-b-2 border-gray-600 focus:outline-none focus:border-emerald-500"
+                      placeholder="Enter email"
+                      required
+                    />
+                  </div>
+                  <div className="contact">
+                    <label
+                      htmlFor="phoneNumber"
+                      className="block mb-1 font-semibold text-white "
+                    >
+                      Phone number
+                    </label>
+                    <PhoneInput
+                      id="phoneNumber"
+                      country={"in"} // Default country code
+                      value={formData.phoneNumber}
+                      onChange={handlePhoneChange}
+                      containerClass="w-full"
+                      inputClass="!w-full !h-[2.65rem] !bg-transparent !rounded-none !border-b-2 !border-0  !text-gray-200 !pl-11 "
+                      buttonClass="!bg-transparent !border-0 !text-white"
+                      dropdownClass="!bg-black !text-white"
+                      searchClass="!bg-black !text-white !border-red-400"
+                      required
+                    />
+                  </div>
                 </div>
 
                 <div>
                   <label
-                    htmlFor="phoneNumber"
+                    htmlFor="subject"
                     className="block mb-1 font-semibold text-white"
                   >
-                    Phone number
+                    Subject
                   </label>
                   <input
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    type="tel"
-                    value={formData.phoneNumber}
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    value={formData.subject}
                     onChange={handleChange}
                     className="w-full p-2 text-gray-200 bg-transparent border-b-2 border-gray-600 focus:outline-none focus:border-emerald-500"
-                    placeholder="Enter phone number"
+                    placeholder="Enter subject"
                     required
                   />
                 </div>

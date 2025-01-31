@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import React, { useState, useEffect } from "react";
 import IntegritySvg from "../assets/SVG/Values/Integrity.svg";
 import InnovationSvg from "../assets/SVG/Values/Innovation.svg";
@@ -64,7 +64,7 @@ const Values = () => {
 
   return (
     <div
-      className="relative z-40 max-w-screen-2xl mx-auto pb-32 -mt-20 overflow-hidden text-white sm:-mt-10 xl:-mt-16"
+      className="relative z-40 pb-32 mx-auto -mt-20 overflow-hidden text-white max-w-screen-2xl sm:-mt-10 xl:-mt-16"
       id="values"
     >
       <div className="">
@@ -72,7 +72,7 @@ const Values = () => {
           Our Values
         </h1>
 
-        <div className="h-96  ">
+        <div className="h-96 ">
           <motion.div
             key={currentSlide}
             initial={{ opacity: 0, x: 100 }}
@@ -141,7 +141,7 @@ const Values = () => {
                   (index / (slides.length - 1)) * 1900
                 }, 0)`}
                 onClick={() => handleStarClick(index)}
-                className=" cursor-pointer"
+                className="cursor-pointer "
               >
                 {/* Static star */}
                 <CustomStar filled={false} />

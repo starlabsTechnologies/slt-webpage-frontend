@@ -11,6 +11,8 @@ import MeetScheduler from "./Pages/MeetScheduler";
 import Career from "./Pages/Career";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import TermsOfServices from "./Pages/TermsOfServices";
+import Assignment from "./Pages/Assignment";
+import NotFound from "./Pages/NotFound";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +46,14 @@ const router = createBrowserRouter([
       {
         path: "/termsofservices",
         element: <TermsOfServices />,
+      },
+      {
+        path: "/assignment",
+        element: <Assignment />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

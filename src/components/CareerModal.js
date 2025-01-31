@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+// import "semantic-ui-css/semantic.min.css";
 
 export default function CareerForm({ selectedJob }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,9 +17,23 @@ export default function CareerForm({ selectedJob }) {
     resume: null,
   });
 
+  // Email validation function
+  const validateEmail = (email) => {
+    const regex =
+      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+    return regex.test(email);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Validate email
+    if (!validateEmail(formData.email)) {
+      toast.error("Please enter a valid email address.");
+      setIsSubmitting(false);
+      return;
+    }
 
     // Create form data for both requests
     const formDataWithJob = new FormData();
@@ -76,6 +93,12 @@ export default function CareerForm({ selectedJob }) {
       [name]: files ? files[0] : value,
     }));
   };
+  const handlePhoneChange = (value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      phone: value,
+    }));
+  };
 
   const thankYouMessage = (
     <div className="flex items-center justify-center h-screen">
@@ -133,6 +156,7 @@ export default function CareerForm({ selectedJob }) {
         thankYouMessage // Render the thank-you message if submitted
       ) : (
         <>
+          <ToastContainer />
           <h3 className="mb-4 text-2xl font-semibold text-center text-green-400">
             Apply for {selectedJob}
           </h3>
@@ -216,13 +240,16 @@ export default function CareerForm({ selectedJob }) {
               >
                 Contact Number
               </label>
-              <input
-                type="tel"
-                id="modal-phone"
-                name="phone"
-                placeholder="Contact Number"
-                className="w-full px-4 py-2 mt-3 bg-black border border-gray-400 rounded-lg"
-                onChange={handleInputChange}
+              <PhoneInput
+                country={"in"} // Default country code
+                value={formData.phone}
+                onChange={handlePhoneChange}
+                containerClass="w-full mt-3"
+                inputClass="!w-full !h-11 !bg-black !border !border-gray-400 !rounded-lg !text-white/80 !pl-14"
+                buttonClass="!bg-transparent   !text-white"
+                dropdownClass="!bg-black !text-white"
+                searchClass="!bg-black !text-white !border-gray-400"
+                required
               />
             </div>
 
