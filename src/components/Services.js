@@ -13,8 +13,10 @@ import ISsSvg from "../assets/SVG/Services/ISS.svg";
 import NAsSvg from "../assets/SVG/Services/NAS.svg";
 import RFIDSvg from "../assets/SVG/Services/RFID.svg";
 import SaasSvg from "../assets/SVG/Services/SaaS.svg";
+import { SplitText } from "./Animations";
 
 const Services = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
   const [showAllServices, setShowAllServices] = useState(false);
   const swiperRef = useRef(null);
   const services = [
@@ -79,6 +81,7 @@ const Services = () => {
       image: SaasSvg,
     },
   ];
+  // console.log(activeIndex);
 
   return (
     <>
@@ -91,8 +94,8 @@ const Services = () => {
           className="absolute left-0 z-20 flex justify-center w-full bg-black top-6 xs:top-5 sm:top-0 h-96"
           style={{ clipPath: " ellipse(70% 44% at 50% 4%)" }}
         >
-          <h2 className="mt-24 text-4xl font-bold sm:mt-16 sm:text-5xl">
-            Our Core Services
+          <h2 className="mt-24 text-3xl font-bold sm:mt-28 sm:text-4xl">
+            <SplitText text="Our Core Services" />
           </h2>
         </div>
 
@@ -119,61 +122,82 @@ const Services = () => {
                   effect="coverflow"
                   grabCursor={true}
                   centeredSlides={true}
-                  slidesPerView="auto"
+                  slidesPerView={"auto"}
                   coverflowEffect={{
-                    rotate: 20,
+                    rotate: 30,
                     stretch: 0,
-                    depth: 10,
-                    modifier: 1,
+                    depth: 500,
+                    modifier: 1.2,
                     slideShadows: true,
                   }}
                   loop={true}
-                  className="w-full "
+                  className="w-full"
                   onSwiper={(swiper) => (swiperRef.current = swiper)}
-                  speed={1000} // Smooth out the slider animation
+                  speed={1000}
                   autoplay={{
                     delay: 6000,
                     disableOnInteraction: false,
                   }}
+                  onSlideChange={(swiper) =>
+                    setActiveIndex(swiper.realIndex * 2)
+                  }
                 >
                   {services.map(
                     (service, index) =>
                       index % 2 === 0 && (
-                        <SwiperSlide key={index}>
-                          <div className="pt-20 sm:pt-10 md:pt-24 pb-36 w-full   text-white bg-[#151515] rounded-lg  ">
-                            <div className="flex flex-col  pt-16 mx-auto h-[42rem] xs:h-[43rem] sm:h-[55rem]  md:w-full">
-                              <div className="flex items-center text-white rounded-lg ">
-                                <div className="md:mr-20 max-md:w-1/2 ">
+                        <SwiperSlide key={index} className="mx-auto">
+                          <div
+                            className={`pt-44 sm:pt-36  w-10/12  mx-auto text-white bg-[#151515] rounded-lg overflow-hidden ${
+                              activeIndex === index
+                                ? "opacity-100 blur-0"
+                                : "opacity-50 blur-md"
+                            }`}
+                            style={{
+                              transformStyle: "preserve-3d",
+                              perspective: "1200px",
+                              transform: `
+                                perspective(1200px)
+                                rotateX(${activeIndex === index ? 0 : 5}deg)
+                                rotateY(${activeIndex === index ? 0 : -5}deg)
+                                translateZ(${activeIndex === index ? 50 : 0}px)
+                              `,
+                              transition:
+                                "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
+                            }}
+                          >
+                            <div className="flex flex-col  pt-4 mx-auto h-[34rem] xs:h-[30rem] sm:h-[33rem]  md:h-[37rem] lg:h-[40rem]">
+                              <div className="flex text-white rounded-lg ">
+                                <div className="  xs:w-[40%] ">
                                   <img
                                     src={service.image}
                                     alt={service.title}
-                                    className="object-cover mb-4 -ml-2 sm:-ml-10 sm:scale-75 md:scale-100 md:ml-0 "
+                                    className="object-contain h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 2xl:h-72 2xl:w-72 -ml-2"
                                   />
                                 </div>
-                                <div className="w-1/2 md:-mt-16 md:w-1/2 lg:-mt-28">
-                                  <h2 className="mb-2 text-sm font-semibold tracking-tighter md:text-3xl xl:text-4xl">
+                                <div className=" max-sm:pl-2 w-1/2 xs:w-10/12 md:mt-8 2xl:pr-56 space-y-3">
+                                  <h2 className="text-[0.7rem] xs:text-[0.75rem] font-semibold tracking-tighter sm:text-xl md:text-2xl lg:text-3xl 2xl:text-4xl ">
                                     {service.title}
                                   </h2>
-                                  <p className=" mt-10 text-[0.7rem] md:text-base xl:text-[1.1rem] leading-loose md:leading-relaxed  text-gray-400">
+                                  <p className="text-[0.7rem] sm:text-[0.8rem] md:text-base xl:text-[1.1rem] md:leading-relaxed  text-gray-400">
                                     {service.description}
                                   </p>
                                 </div>
                               </div>
                               {services[index + 1] && (
-                                <div className="flex justify-end text-white rounded-lg h-1/2 ">
-                                  <div className="w-1/2 mt-16 md:w-6/12 md:mt-10 xl:w-7/12 lg:-mt-10 ">
-                                    <h2 className="mb-2 text-sm font-semibold tracking-tighter md:text-3xl xl:text-4xl">
+                                <div className="flex justify-end text-white rounded-lg xs:-mt-8 lg:-mt-16 ">
+                                  <div className="w-7/12 mt-16 sm:w-8/12 lg:w-7/12 space-y-3">
+                                    <h2 className="mb-2 text-sm font-semibold tracking-tighter sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
                                       {services[index + 1].title}
                                     </h2>
-                                    <p className="mt-10 w-11/12 md:w-10/12  text-[0.7rem] md:text-base xl:text-[1.1rem] leading-loose md:leading-relaxed  text-gray-400">
+                                    <p className=" w-11/12 md:w-10/12  text-[0.7rem] sm:text-[0.8rem] md:text-base xl:text-[1.1rem] md:leading-relaxed  text-gray-400">
                                       {services[index + 1].description}
                                     </p>
                                   </div>
-                                  <div className="mt-10 xs:-mt-5 md:-mt-10 lg:-mt-28 max-md:w-8/12 ">
+                                  <div className="mt-10 2xl:-mt-4 flex justify-end">
                                     <img
                                       src={services[index + 1].image}
                                       alt={services[index + 1].title}
-                                      className="object-cover mb-4 sm:ml-10 sm:scale-75 md:scale-100 md:ml-0"
+                                      className="object-contain mb-4 h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 2xl:h-64 2xl:w-64 "
                                     />
                                   </div>
                                 </div>

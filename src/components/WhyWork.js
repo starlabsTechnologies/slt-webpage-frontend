@@ -1,5 +1,10 @@
-import { motion, AnimatePresence } from "motion/react";
-import React, { useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useInView,
+  useAnimation,
+} from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 import workBg from "../assets/SVG/Careers/WorkBg.svg";
 import { ChevronDown } from "lucide-react";
 
@@ -39,6 +44,18 @@ const WhyWork = () => {
     },
   ];
 
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { amount: 0.1, once: true });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [isInView, controls]);
+
   const [openDropdowns, setOpenDropdowns] = useState(
     Array(reasons.length).fill(false)
   );
@@ -50,13 +67,13 @@ const WhyWork = () => {
   };
 
   return (
-    <div className=" p-6">
+    <div className="p-6" ref={containerRef}>
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-3xl font-semibold  text-white text-center mb-12"
+        className="text-3xl font-semibold text-white text-center mb-12"
       >
         Why Work With Us
       </motion.h2>
@@ -64,7 +81,7 @@ const WhyWork = () => {
         style={{ backgroundImage: `url(${workBg})` }}
         className="max-w-screen-2xl mx-auto bg-center bg-cover relative"
       >
-        <div className="mx-auto max-w-3xl ">
+        <div className="mx-auto max-w-3xl">
           <div className="">
             {reasons.map((reason, index) => (
               <motion.div
@@ -79,7 +96,7 @@ const WhyWork = () => {
                 className="group relative z-40"
               >
                 <div
-                  className={`relative  p-6 transition-colors cursor-pointer ${
+                  className={`relative p-6 transition-colors cursor-pointer ${
                     index % 2 === 0 ? "bg-[#151515]" : "bg-[#202020]"
                   }`}
                   onClick={() => toggleDropdown(index)}
@@ -93,7 +110,7 @@ const WhyWork = () => {
                       animate={{ rotate: openDropdowns[index] ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ChevronDown className="text-blue-500   scale-110" />
+                      <ChevronDown className="text-blue-500 scale-110" />
                     </motion.div>
                   </div>
                   <AnimatePresence>
@@ -106,7 +123,7 @@ const WhyWork = () => {
                           height: { duration: 0.3, ease: "easeInOut" },
                           opacity: { duration: 0.2, ease: "easeInOut" },
                         }}
-                        className={` px-8  transition-colors text-gray-300 ${
+                        className={`px-8 transition-colors text-gray-300 ${
                           index % 2 === 0 ? "bg-[#151515]" : "bg-[#202020]"
                         }`}
                       >
@@ -120,7 +137,7 @@ const WhyWork = () => {
           </div>
         </div>
 
-        <div className=" absolute -top-16 hidden md:block lg:right-[14vw] xl:right-[12rem] 2xl:right-[20rem] z-10">
+        <div className="absolute -top-16 hidden md:block lg:right-[14vw] xl:right-[12rem] 2xl:right-[20rem] z-10">
           <svg
             width="157"
             height="155"
@@ -128,10 +145,65 @@ const WhyWork = () => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#0000ff" />
+                <stop offset="100%" stopColor="#0000ff" />
+              </linearGradient>
+
+              {/* Enhanced Glow Effect */}
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow
+                  dx="0"
+                  dy="0"
+                  stdDeviation="6"
+                  floodColor="#288aff "
+                  floodOpacity="1"
+                />
+                <feGaussianBlur stdDeviation="6" result="blurred" />
+                <feMerge>
+                  <feMergeNode in="blurred" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            {/* Background Circle */}
+            <motion.path
               d="M154.5 77.5C154.5 118.891 120.504 152.5 78.5 152.5C36.496 152.5 2.5 118.891 2.5 77.5C2.5 36.1088 36.496 2.5 78.5 2.5C120.504 2.5 154.5 36.1088 154.5 77.5Z"
-              stroke="#299EF3"
-              stroke-width="5"
+              stroke="#299EF4"
+              strokeWidth="4"
+              fill="none"
+              variants={{
+                hidden: { pathLength: 0 },
+                visible: { pathLength: 1 },
+              }}
+              initial="hidden"
+              animate={controls}
+              transition={{ duration: 2, ease: "easeInOut" }}
+            />
+
+            {/* Light Trail Effect */}
+            <motion.path
+              d="M154.5 77.5C154.5 118.891 120.504 152.5 78.5 152.5C36.496 152.5 2.5 118.891 2.5 77.5C2.5 36.1088 36.496 2.5 78.5 2.5C120.504 2.5 154.5 36.1088 154.5 77.5Z"
+              stroke="#006cee "
+              strokeWidth="5"
+              strokeLinecap="round"
+              filter="url(#glow)"
+              strokeDasharray="25 300"
+              // strokeDashoffset="300"
+              variants={{
+                hidden: { strokeDashoffset: 0 },
+                visible: { strokeDashoffset: [300, 0, -350] },
+              }}
+              initial="hidden"
+              animate={controls}
+              transition={{
+                duration: 3.5,
+                delay: 2,
+                repeat: Infinity,
+                ease: "linear",
+              }}
             />
           </svg>
         </div>
