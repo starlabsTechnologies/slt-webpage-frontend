@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
@@ -13,12 +13,13 @@ import WelcomeSvg from "../assets/SVG/Careers/Welcome.svg";
 import { motion, useAnimation, useInView } from "motion/react";
 
 const HiringProcess = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef(null);
   const controls = useAnimation();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       controls.start("visible");
     }
@@ -127,10 +128,10 @@ const HiringProcess = () => {
                   centeredSlides={true}
                   slidesPerView="auto"
                   coverflowEffect={{
-                    rotate: 20,
+                    rotate: 30,
                     stretch: 0,
-                    depth: 10,
-                    modifier: 1,
+                    depth: 500,
+                    modifier: 1.2,
                     slideShadows: true,
                   }}
                   loop={true}
@@ -141,11 +142,27 @@ const HiringProcess = () => {
                     delay: 3000,
                     disableOnInteraction: false,
                   }}
+                  onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                 >
                   {HiringDetails.map((service, index) => (
                     <SwiperSlide key={index}>
                       <motion.div
-                        className="pt-56 xl:pt-40 pb-36   w-full text-white bg-[#151515] rounded-lg  "
+                        className={`pt-56 xl:pt-40 pb-36   w-11/12  mx-auto text-white bg-[#151515] rounded-lg overflow-hidden    ${
+                          activeIndex === index
+                            ? "opacity-100 blur-0"
+                            : "opacity-50 blur-md"
+                        } `}
+                        style={{
+                          transformStyle: "preserve-3d",
+                          perspective: "1200px",
+                          transform: `
+                            perspective(1200px)
+                            rotateX(${activeIndex === index ? 0 : 5}deg)
+                            rotateY(${activeIndex === index ? 0 : -5}deg)
+                            translateZ(${activeIndex === index ? 50 : 0}px)
+                          `,
+                          transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
+                        }}
                         variants={containerVariants}
                       >
                         <div className="w-11/12 h-[30rem] md:h-[35rem]  pt-20 mx-auto md:w-full ">

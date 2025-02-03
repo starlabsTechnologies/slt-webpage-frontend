@@ -12,21 +12,21 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative w-full overflow-hidden bg-transparent pt-36 lg:pt-40"
+      className="relative z-10 w-full overflow-hidden bg-transparent pt-36 lg:pt-40"
     >
       <StarryNightSky />
       {/* Content */}
-      <div className="relative mx-auto max-w-screen-2xl z-20 ">
+      <div className="relative z-20 mx-auto max-w-screen-2xl ">
         <div className=" pb-52">
-          <div className="mx-auto space-y-6 text-center text-white xs:space-y-8 md:space-y-10 z-20">
+          <div className="z-20 mx-auto space-y-6 text-center text-white xs:space-y-8 md:space-y-10">
             <div
               ref={containerRef}
-              className="font-AgencyFb  pointer-events-none"
+              className="pointer-events-none font-AgencyFb"
             >
               <h1 className="text-4xl font-bold tracking-widest xs:text-5xl lg:text-6xl xl:text-7xl ">
                 STARLABS
               </h1>
-              <h2 className="text-xl tracking-wide xs:text-2xl lg:text-3xl xl:text-4xl  ">
+              <h2 className="text-xl tracking-wide xs:text-2xl lg:text-3xl xl:text-4xl ">
                 SPECIALIZED TEAM FOR ALTERNATIVE RESEARCH
               </h2>
             </div>
@@ -45,11 +45,7 @@ const HeroSection = () => {
               />
             </p>
             <div>
-              <ShinyCard
-                className="inline-block px-4 py-1 text-sm text-white
-              transition-colors rounded-full xs:text-base md:px-6 md:py-1 
-              sm:rounded-md bg-emerald-500 hover:bg-emerald-600 "
-              >
+              <ShinyCard className="inline-block px-4 py-1 text-sm text-white transition-colors rounded-full xs:text-base md:px-6 md:py-1 sm:rounded-md bg-emerald-500 hover:bg-emerald-600 ">
                 <Btn
                   onClick={() =>
                     document
@@ -65,7 +61,7 @@ const HeroSection = () => {
         </div>
 
         {/* Rocket svg */}
-        <div className="z-20 absolute   bottom-20 right-2 xs:bottom-20 xs:right-9 md:right-9 md:bottom-24 lg:right-3 xl:bottom-44 xl:right-8 2xl:right-36">
+        <div className="absolute z-20 bottom-20 right-2 xs:bottom-20 xs:right-9 md:right-9 md:bottom-24 lg:right-3 xl:bottom-44 xl:right-8 2xl:right-36">
           <svg
             className="w-36 h-36 md:w-40 md:h-40 lg:w-60 lg:h-60 xl:w-64 xl:h-64 "
             viewBox="0 0 100 267"
