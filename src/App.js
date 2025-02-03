@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Outlet } from "react-router";
 import { Loader } from "./components";
+import { ReactLenis } from "lenis/react";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -16,9 +17,11 @@ export default function App() {
           <Loader handleLoading={handleLoadingProcess} />
         </div>
       ) : (
-        <div className="w-full min-h-screen bg-black">
-          <Outlet />
-        </div>
+        <ReactLenis root options={{ smoothWheel: true, lerp: 0.09 }}>
+          <div className="w-full min-h-screen bg-black">
+            <Outlet />
+          </div>
+        </ReactLenis>
       )}
     </>
   );

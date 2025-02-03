@@ -81,8 +81,8 @@ const About = () => {
   };
 
   return (
-    <section className="bg-black -z-10" id="about">
-      <div className="relative mx-auto max-w-screen-2xl overflow-hidden">
+    <section className=" -z-50" id="about">
+      <div className="relative mx-auto overflow-hidden max-w-screen-2xl">
         {/* Curl at bottom */}
         <div className="absolute bottom-0 left-0 hidden w-full h-full overflow-hidden md:block ">
           <svg
@@ -146,7 +146,7 @@ const About = () => {
           className="flex flex-col items-center w-11/12 py-16 mx-auto "
           ref={contentRef}
         >
-          <h2 className="z-20 mb-5 text-3xl font-bold text-white sm:mb-16 sm:text-4xl overflow-hidden">
+          <h2 className="z-20 mb-5 overflow-hidden text-3xl font-bold text-white sm:mb-16 sm:text-4xl">
             <SplitText text="Who We Are" />
           </h2>
           <motion.p
@@ -189,7 +189,7 @@ const About = () => {
                   }
                 `}
               >
-                <div className="mb-4 relative">
+                <div className="relative mb-4">
                   {index === currentIndex && !animationFinished ? (
                     <Suspense fallback={<div>Loading...</div>}>
                       <DotLottieReact
