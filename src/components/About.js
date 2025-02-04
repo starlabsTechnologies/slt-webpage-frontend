@@ -11,7 +11,6 @@ import "../index.css";
 import InnovationSvg from "../assets/SVG/Innovation.svg";
 import IndustrieSvg from "../assets/SVG/Industries.svg";
 import ClientCentricSvg from "../assets/SVG/Client.svg";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import ParticleAnimation from "./ParticleAnimation";
 import { SplitText } from "./Animations";
 
@@ -26,19 +25,16 @@ const About = () => {
   const FeaturedDetails = useMemo(
     () => [
       {
-        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Innovation.json`,
         img: InnovationSvg,
         title: "Innovative Solutions",
         desc: "We thrive on innovation, crafting solutions that are not only functional but futuristic.",
       },
       {
-        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Industries.json`,
         img: IndustrieSvg,
         title: "Expertise Across Industries",
         desc: "With deep expertise in Computer Systems Design and Technical Services, we cater to a wide range of industries.",
       },
       {
-        src: `${process.env.PUBLIC_URL}/Lottie-Animation/Client.json`,
         img: ClientCentricSvg,
         title: "Client-Centric Approach",
         desc: "Our solutions are designed with your unique business needs in mind, ensuring optimal performance and a competitive edge.",
@@ -46,24 +42,6 @@ const About = () => {
     ],
     []
   );
-
-  const handleAnimationEnd = useCallback(() => {
-    setAnimationFinished(true);
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === FeaturedDetails.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 1000);
-  }, [FeaturedDetails.length]);
-
-  useEffect(() => {
-    if (isInView) {
-      setAnimationFinished(false);
-      const duration = 2000;
-      const timer = setTimeout(handleAnimationEnd, duration);
-      return () => clearTimeout(timer);
-    }
-  }, [isInView, currentIndex, handleAnimationEnd]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -190,35 +168,13 @@ const About = () => {
                 `}
               >
                 <div className="relative mb-4">
-                  {index === currentIndex && !animationFinished ? (
-                    <Suspense fallback={<div>Loading...</div>}>
-                      <DotLottieReact
-                        src={data.src}
-                        loop={false}
-                        autoplay
-                        key={`anim-${index}`}
-                        className={`w-56 h-56 mx-auto relative z-50 ${
-                          index === 1
-                            ? "scale-125"
-                            : index === 0
-                            ? "scale-110"
-                            : ""
-                        }`}
-                      />
-                    </Suspense>
-                  ) : (
-                    <img
-                      src={data.img}
-                      alt={data.title}
-                      className={`w-56 h-56 mx-auto ${
-                        index === 1
-                          ? "scale-125"
-                          : index === 0
-                          ? "scale-110"
-                          : ""
-                      }`}
-                    />
-                  )}
+                  <img
+                    src={data.img}
+                    alt={data.title}
+                    className={`w-56 h-56 mx-auto ${
+                      index === 1 ? "scale-125" : index === 0 ? "scale-110" : ""
+                    }`}
+                  />
                   <ParticleAnimation className="top-1/3" />
                   {/* <img
                     src={data.img}
