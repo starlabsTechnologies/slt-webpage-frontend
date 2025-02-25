@@ -167,7 +167,19 @@ const About = () => {
                   }
                 `}
               >
-                <div className="relative mb-4">
+                <motion.div
+                  className="relative mb-4"
+                  initial={{
+                    filter: "drop-shadow(0px 0px 0px rgba(255,255,255,0))",
+                  }}
+                  animate={{
+                    filter: "drop-shadow(0px 0px 0px rgba(255,255,255,0))",
+                  }}
+                  whileHover={{
+                    filter: "drop-shadow(0px 0px 2px rgba(255,255,255,0.6))",
+                    transition: { duration: 0.3, ease: "easeInOut" },
+                  }}
+                >
                   <img
                     src={data.img}
                     alt={data.title}
@@ -183,7 +195,7 @@ const About = () => {
                       index === 1 && "scale-110"
                     }`}
                   /> */}
-                </div>
+                </motion.div>
                 <h3 className="w-9/12 mx-auto mb-3 text-2xl font-bold text-white lg:text-3xl">
                   {data.title}
                 </h3>

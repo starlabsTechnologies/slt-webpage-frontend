@@ -58,7 +58,7 @@ export default function Footer() {
     },
     {
       name: FaLinkedin,
-      path: "https://linkedin.com",
+      path: "https://www.linkedin.com/company/starlabs-linkedin/",
     },
   ];
 
