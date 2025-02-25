@@ -67,7 +67,7 @@ const Values = () => {
       className="relative z-40 pb-32 mx-auto -mt-20 overflow-hidden text-white max-w-screen-2xl sm:-mt-10 xl:-mt-16"
       id="values"
     >
-      <div className="">
+      <div className="pt-8">
         <h1 className="mb-12 text-3xl font-bold text-center sm:text-4xl ">
           Our Values
         </h1>
