@@ -64,7 +64,7 @@ const Values = () => {
 
   return (
     <div
-      className="relative z-40 pb-32 mx-auto -mt-20 overflow-hidden text-white max-w-screen-2xl sm:-mt-10 xl:-mt-16"
+      className="relative z-40 pb-24 mx-auto -mt-20 overflow-hidden text-white max-w-screen-2xl sm:-mt-10 xl:-mt-16"
       id="values"
     >
       <div className="pt-8">
